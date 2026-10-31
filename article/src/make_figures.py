@@ -89,7 +89,7 @@ save(fig, "fig_summary")
 # ====================================================================================================================
 COLS = ["point", "a50", "a70", "f90", "gauss", "static", "cum", "oracle"]; CLAB = ["point\nRUL", "safety\n0.5", "safety\n0.7", "fixed\n90%", "Gauss\nquantile", "static\n$\\tau^*$", "$\\tau^*$-cum.\n(ours)", "popul.\nquantile"]
 cm = LinearSegmentedColormap.from_list("seq", ["#f4f8fe", "#a9c9f2", "#2a78d6", "#0b2d63"]); norm = LogNorm(vmin=0.22, vmax=5.0)
-fig, axs = plt.subplots(2, 1, figsize=(7.53, 5.6), sharex=True)
+fig, axs = plt.subplots(2, 1, figsize=(7.53, 6.3), sharex=True)
 for ax, cu, tt in zip(axs, (2, 20), ("(a) $c_u/c_o=2$", "(b) $c_u/c_o=20$")):
     M = np.array([[fmean(n, p, cu) for p in COLS] for n in PRED]); ax.imshow(M, cmap=cm, norm=norm, aspect="auto")
     for i in range(M.shape[0]):
