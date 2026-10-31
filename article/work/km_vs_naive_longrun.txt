@@ -1,0 +1,10 @@
+N0 = 20: q* = 0.627, Phi(q*) = 0.5255
+   oracle        final multiplier 0.628 (sd 0.014); mean excess cost over the stream 0.0029
+   kaplan-meier  final multiplier 0.629 (sd 0.015); mean excess cost over the stream 0.0035
+   naive         final multiplier 0.567 (sd 0.049); mean excess cost over the stream 0.0202
+   drop          final multiplier 0.392 (sd 0.026); mean excess cost over the stream 0.1124
+N0 = 100: q* = 0.627, Phi(q*) = 0.5255
+   oracle        final multiplier 0.628 (sd 0.014); mean excess cost over the stream 0.0017
+   kaplan-meier  final multiplier 0.629 (sd 0.015); mean excess cost over the stream 0.0018
+   naive         final multiplier 0.598 (sd 0.024); mean excess cost over the stream 0.0053
+   drop          final multiplier 0.469 (sd 0.023); mean excess cost over the stream 0.0508

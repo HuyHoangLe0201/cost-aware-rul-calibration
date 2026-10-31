@@ -1,0 +1,19 @@
+tau = 0.0909, q* = 0.6267
+(1) pathwise bound  err <= 2 S / R_n(x):
+   km      max err / bound = 0.540 (must be <= 1);  sup|M_n| / sqrt(n log n) in [0.06, 0.39]
+   walk    max err / bound = 0.409 (must be <= 1);  sup|M_n| / sqrt(n log n) in [0.13, 0.60]
+   minrun  max err / bound = 0.591 (must be <= 1);  sup|M_n| / sqrt(n log n) in [0.08, 0.22]
+(2) part (a): frequency of ever replacing below x = q* - Delta within 300 units, against the bound
+   N0= 20 Delta=0.10 (G(x)=0.033): empirical 0.205   bound 1.000
+   N0= 20 Delta=0.15 (G(x)=0.017): empirical 0.052   bound 1.000
+   N0= 20 Delta=0.20 (G(x)=0.007): empirical 0.015   bound 0.384
+   N0= 50 Delta=0.10 (G(x)=0.033): empirical 0.045   bound 1.000
+   N0= 50 Delta=0.15 (G(x)=0.017): empirical 0.003   bound 0.227
+   N0= 50 Delta=0.20 (G(x)=0.007): empirical 0.000   bound 0.005
+   N0=100 Delta=0.10 (G(x)=0.033): empirical 0.000   bound 0.865
+   N0=100 Delta=0.15 (G(x)=0.017): empirical 0.000   bound 0.004
+   N0=100 Delta=0.20 (G(x)=0.007): empirical 0.000   bound 0.000
+(3) part (b): number of units with multiplier >= x+ = q* + 0.15 (single long runs)
+   n= 500: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 56
+   n=1000: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 83
+   n=2000: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 123

@@ -67,6 +67,7 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Tables 3, 4 (censoring, Kaplan-Meier) | `src/censor_eval.py`, `src/censor_ci.py` | `results_censor_*.txt`, `results_censor_ci.txt` |
 | Sec. 5.3 and Fig. 8 (theory checks) | `src/verify_theory.py`, `src/check_const.py` | printed output; `fig8_stats.json` |
 | Table 6 (seven physics mechanisms) | `src/explore_physics.py`, `src/explore_timescale.py`, `src/physics_eval.py`, `src/semisup_physics.py`, `src/semisup_oof.py`, `src/ssm_physics.py`, `src/pron_physfeat.py`, `src/pron_control.py` | `semisup_*.log`, `results_fleet_ss*.txt`, `ssm_sens_FD001.log`, `pron_control.log`, `results_pron_*.txt` |
+| Theorem 5, Corollary 6 (Sec. 3, App. A) and their numerical checks (Sec. 5.4) | `src/km_theory_check.py`, `src/km_vs_naive_longrun.py`; the library tests `tests/test_km_theory.py` | `km_theory_check.txt`, `km_vs_naive_longrun.txt` |
 | Sec. 5.4 stress test (biased initial pool) | `src/adversarial_init.py` | `adversarial_init.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
