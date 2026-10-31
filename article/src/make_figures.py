@@ -66,7 +66,7 @@ fig.legend(handles=[Line2D([], [], color=BLUE, lw=1.7, marker="o", ms=3.6, label
 save(fig, "fig_reliability")
 
 # ====================================================================================================================
-# Fig 4: summary curves. (a) all policies (MLP, mean of four fleets)  (b) the proposed policy under every predictor
+# Fig 4: summary curves. (a) eight policies (MLP, mean of four fleets)  (b) the proposed policy under every predictor
 # ====================================================================================================================
 fig, axs = plt.subplots(1, 2, figsize=(7.53, 3.1))
 ax = axs[0]
@@ -75,7 +75,7 @@ for pol in ("a50", "a70", "point", "f90", "gauss", "static", "oracle", "cum"):
     if pol == "cum":
         lo = [min(np.nanmean(SU[("mlp", f)]["per"]["cum"][c]) for f in FL) for c in CU]; hi = [max(np.nanmean(SU[("mlp", f)]["per"]["cum"][c]) for f in FL) for c in CU]; ax.fill_between(CU, lo, hi, color=BLUE, alpha=0.18, lw=0)
     ax.plot(CU, y, color=col, ls=ls, lw=2.0 if pol == "cum" else 1.3, marker=mk, ms=5 if pol == "cum" else 4, mec="white", mew=0.5, label=lab, zorder=5 if pol == "cum" else 3)
-ax.set_xscale("log"); ax.set_yscale("log"); clean_log(ax, CU, [0.25, 0.5, 1, 2]); ax.set_ylim(0.2, 14.0); ax.grid(True, which="major"); ax.set_xlabel("$c_u/c_o$"); ax.set_ylabel("cost per alarm / $P_0$"); panel(ax, "(a) all policies, MLP predictor")
+ax.set_xscale("log"); ax.set_yscale("log"); clean_log(ax, CU, [0.25, 0.5, 1, 2]); ax.set_ylim(0.2, 14.0); ax.grid(True, which="major"); ax.set_xlabel("$c_u/c_o$"); ax.set_ylabel("cost per alarm / $P_0$"); panel(ax, "(a) eight policies, MLP predictor")
 ax.legend(loc="upper left", ncol=2, handlelength=2.0, labelspacing=0.2, columnspacing=1.0, borderaxespad=0.2)
 ax = axs[1]; pc = {"ridge": GREY, "hgb": YELLOW, "rf": AQUA, "mlp": BLUE, "gru": VIOLET, "cnn": MAGENTA, "paris": ORANGE}; pm = {"ridge": "v", "hgb": "P", "rf": "^", "mlp": "o", "gru": "D", "cnn": "X", "paris": "s"}
 for n in PRED:
