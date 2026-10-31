@@ -1,4 +1,4 @@
-"""Planning tools from the finite-sample theory of the article (Theorem 3, Proposition 2)."""
+"""Planning tools from the finite-sample theory of the article (Theorem 1, Proposition 2)."""
 from __future__ import annotations
 
 import math

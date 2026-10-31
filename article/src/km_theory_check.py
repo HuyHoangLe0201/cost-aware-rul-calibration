@@ -1,8 +1,8 @@
-"""Numerical checks of Theorem 5 (Kaplan-Meier under policy-induced censoring) on a log-normal ratio rho ~ LogNormal(0, 0.35).
+"""Numerical checks of Theorem 2 (Kaplan-Meier under policy-induced censoring) on a log-normal ratio rho ~ LogNormal(0, 0.35).
  (1) the one-band form of the integration-by-parts bound behind Lemma A3,  sup_{y<=x} |Lambda_hat_n(y) - Lambda(y)| <= 2 sup_{u<=x} |M_n(u)| / R_n(x)   (M_n = N_n - int R_n dLambda), on censoring sequences that
      depend on the past (Kaplan-Meier policy, a random-walk policy, a policy that tracks the running minimum), and the size of sup|M_n|/sqrt(n log n);
  (2) part (a): frequency of ever replacing below x = q* - Delta against the Chernoff bound sum_{m>=N0} exp(-m D(tau || G(x)));
- (3) part (b): number of units with multiplier >= x+ = q* + Delta (Theorem 5(b): O(log n)).
+ (3) part (c): number of units with multiplier >= x+ = q* + Delta (Theorem 2(c): O(log n)).
 Lemmas A3-A4 and the recovery from adversarial pools are checked in lockin_check.py.
 usage: python km_theory_check.py"""
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                 rho, q, Y, d = run_policy(300, rng, "km", tau, N0)
                 hits += bool(np.any(q[N0:] < x))
             print(f"   N0={N0:>3} Delta={Delta:.2f} (G(x)={Gx:.3f}): empirical {hits / reps:.3f}   bound {min(bound, 1.0):.3f}")
-    print("(3) part (b): number of units with multiplier >= x+ = q* + 0.15 (single long runs)")
+    print("(3) part (c): number of units with multiplier >= x+ = q* + 0.15 (single long runs)")
     for n in (500, 1000, 2000):
         cnt = []
         for _ in range(6):

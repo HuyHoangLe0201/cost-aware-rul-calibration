@@ -1,4 +1,4 @@
-"""Numerical checks of Theorem 5 of the article: Kaplan-Meier under policy-induced censoring (log-normal ratio)."""
+"""Numerical checks of Theorem 2 of the article: Kaplan-Meier under policy-induced censoring (log-normal ratio)."""
 import math
 
 import numpy as np
@@ -24,7 +24,7 @@ QSTAR = Ginv(TAU)
 
 
 def run_policy(n, rng, kind, n0=20, explore=None):
-    """Closed loop; q_s depends on the past only.  kind: 'km' (the policy of Theorem 5), 'runmean' (a different predictable rule)."""
+    """Closed loop; q_s depends on the past only.  kind: 'km' (the policy of Theorem 2), 'runmean' (a different predictable rule)."""
     rho = rng.lognormal(MU, SIG, n)
     q = np.full(n, np.inf)
     Y = np.empty(n)
@@ -77,7 +77,7 @@ def test_pathwise_bound_holds_for_predictable_censoring(kind):
 
 
 def test_no_lock_in_below_x_with_high_probability():
-    """Theorem 5(a): P(ever q_{n+1} < x) <= sum_{m>=N0} exp(-m D(tau || G(x)))."""
+    """Theorem 2(a): P(ever q_{n+1} < x) <= sum_{m>=N0} exp(-m D(tau || G(x)))."""
     rng = np.random.default_rng(2)
     n0, x = 50, QSTAR - 0.20
     Gx = G(x)
@@ -89,7 +89,7 @@ def test_no_lock_in_below_x_with_high_probability():
 
 
 def run_from_pool(n, rng, n0, init, K=None):
-    """Closed loop of the policy of Theorem 5 from a given initial pool; also counts the labels created with fewer than K units at risk (Lemma A4)."""
+    """Closed loop of the policy of Theorem 2 from a given initial pool; also counts the labels created with fewer than K units at risk (Lemma A4)."""
     rho = rng.lognormal(MU, SIG, n)
     rho[: len(init)] = init
     q = np.full(n, np.inf)
@@ -107,7 +107,7 @@ def run_from_pool(n, rng, n0, init, K=None):
 
 
 def test_recovers_from_an_adversarial_pool():
-    """Theorem 5(b): from five identical labels far below q* the multiplier leaves the neighbourhood of 0.5 and settles near q*."""
+    """Theorem 2(b): from five identical labels far below q* the multiplier leaves the neighbourhood of 0.5 and settles near q*."""
     rng = np.random.default_rng(4)
     late = []
     for _ in range(12):

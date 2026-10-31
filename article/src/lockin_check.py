@@ -1,4 +1,4 @@
-"""Numerical checks of Theorem 5 for the Kaplan-Meier policy as run (no guard), log-normal ratio rho ~ LogNormal(0, 0.35), tau* = 1/11, q* = 0.627.
+"""Numerical checks of Theorem 2 for the Kaplan-Meier policy as run (no guard), log-normal ratio rho ~ LogNormal(0, 0.35), tau* = 1/11, q* = 0.627.
  (1) accuracy of the Nelson-Aalen estimate at levels that rest on at least c log n units at risk (Lemma A3);
  (2) adversarial initial pools (five identical labels at 0.50): last step with a multiplier below q* - 0.10;
  (3) Lemma A4: the number of labels created at rank below K, i.e. exact labels rho_j with Y_(K)(j-1) < rho_j <= min(q_j, x) (x = q* - 0.10), against its bound K / (1 - G(x));
@@ -21,7 +21,7 @@ def Ginv(p):
 QS = Ginv(TAU); X = QS - 0.10; PX = 1 - G(X)
 
 def run(n, rng, n0, init=None, Ks=()):
-    """Closed loop of the policy of Theorem 5; returns the multipliers and, for each K in Ks, the number of labels created at rank below K."""
+    """Closed loop of the policy of Theorem 2; returns the multipliers and, for each K in Ks, the number of labels created at rank below K."""
     rho = rng.lognormal(MU, SIG, n)
     if init is not None: rho[:len(init)] = init
     q = np.full(n, np.inf); Y = rho.copy(); d = np.ones(n, bool); low = {K: 0 for K in Ks}

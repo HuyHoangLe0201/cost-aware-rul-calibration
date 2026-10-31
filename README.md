@@ -7,7 +7,7 @@ You have a predictor of the **remaining useful life (RUL)** and an alarm that fi
 * the best replacement date is `d = p * q`, where `p` is the point prediction at the alarm and `q` is the **tau\*-quantile of the ratio true RUL / predicted RUL**, with `tau* = c_over / (c_under + c_over)` fixed by the costs alone;
 * `q` is estimated with a **conformal order statistic**: finite-sample, distribution-free, and the expected excess cost shrinks like `C / n` with a constant you can compute (`rulcost.theory`);
 * units replaced before failing only reveal that their RUL exceeded the replacement date: such **right-censored labels** are handled with a Kaplan-Meier estimate instead of being dropped or recorded as failures, both of which bias `q` towards early replacement;
-* the closed loop cannot lock itself into early replacement: from any initial pool, almost surely, all but a vanishing fraction of the Kaplan-Meier multipliers approach the optimal one (Theorem 5 of the article);
+* the closed loop cannot lock itself into early replacement: from any initial pool, almost surely, all but a vanishing fraction of the Kaplan-Meier multipliers approach the optimal one (Theorem 2 of the article);
 * it works with **any** RUL predictor: you only need the point prediction at the alarm and the outcome.
 
 The method and its theory are described in the accompanying article (see *Citation*); `article/` reproduces its experiments.
@@ -86,10 +86,10 @@ excess cost ~ 0.4545 / n; n >= 46 completed units for an expected excess cost <=
 
 Options that matter:
 
-* `window=None` (cumulative, default) is best when the fleet is stable; a window `w` helps when the ratio drifts, with the best `w` scaling as `s^(-2/3)` for a drift `s` per unit (Proposition 7 of the article; an upper-bound rule, tune it on your data).
+* `window=None` (cumulative, default) is best when the fleet is stable; a window `w` helps when the ratio drifts, with the best `w` scaling as `s^(-2/3)` for a drift `s` per unit (Proposition 5 of the article; an upper-bound rule, tune it on your data).
 * `method="auto"` uses the conformal quantile while all labels are exact and Kaplan-Meier once a censored label is present. `"naive"` and `"drop"` exist only to reproduce the biased alternatives.
 * With fewer than `min_pool=5` labels (or when the quantile is not identified by censored data) the multiplier is `fallback=1`: replace at the point prediction.
-* `group=` keeps separate pools. It pays when a covariate known at the alarm shifts the ratio (Proposition 6); with many groups each pool is small.
+* `group=` keeps separate pools. It pays when a covariate known at the alarm shifts the ratio (Proposition 4); with many groups each pool is small.
 
 ## When does it apply?
 

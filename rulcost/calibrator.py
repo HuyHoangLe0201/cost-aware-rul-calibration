@@ -21,7 +21,7 @@ class CostAwareCalibrator:
         Cost per unit time of running past failure and of wasting useful life; only their ratio matters.
     window
         ``None`` (default): use every label so far (cumulative calibration, the proposed policy).  An integer ``w``: use the last
-        ``w`` labels only (rolling calibration, for drifting fleets; Proposition 7 of the article suggests ``w`` ~ s**(-2/3) for a drift of s per unit).
+        ``w`` labels only (rolling calibration, for drifting fleets; Proposition 5 of the article suggests ``w`` ~ s**(-2/3) for a drift of s per unit).
     method
         ``"auto"`` (default): conformal quantile while all labels are exact, Kaplan-Meier as soon as a censored label is present.
         ``"conformal"``, ``"kaplan-meier"``, ``"gaussian"`` select a rule explicitly.  ``"naive"`` (record a censored label as exact)
@@ -37,7 +37,7 @@ class CostAwareCalibrator:
 
     Strata
     ------
-    ``group`` keeps a separate pool of labels per group (stratified calibration, Proposition 6: worthwhile when a covariate known at
+    ``group`` keeps a separate pool of labels per group (stratified calibration, Proposition 4: worthwhile when a covariate known at
     the alarm shifts the distribution of the ratio).
     """
 

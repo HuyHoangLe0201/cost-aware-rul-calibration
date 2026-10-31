@@ -13,7 +13,7 @@ def test_closed_loop_bias_directions_and_km_recovery():
     p, r = fleet(0)
     res = rc.simulate_closed_loop(p, r, 10.0, 1.0, n_orders=20, normalizer=60.0)
     target = rc.target_coverage(10.0)
-    # Proposition 4: dropping or recording as exact biases the multiplier down, i.e. coverage above the target (early replacement)
+    # Proposition 3: dropping or recording as exact biases the multiplier down, i.e. coverage above the target (early replacement)
     assert res["drop"]["coverage"] > res["naive"]["coverage"] > res["oracle"]["coverage"]
     assert res["drop"]["cost"] > res["oracle"]["cost"]
     # Kaplan-Meier recovers the exact-label benchmark
