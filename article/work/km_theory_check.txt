@@ -14,6 +14,6 @@ tau = 0.0909, q* = 0.6267
    N0=100 Delta=0.15 (G(x)=0.017): empirical 0.000   bound 0.004
    N0=100 Delta=0.20 (G(x)=0.007): empirical 0.000   bound 0.000
 (3) part (b): number of units with multiplier >= x+ = q* + 0.15 (single long runs)
-   n= 500: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 56
-   n=1000: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 83
-   n=2000: counts [0, 0, 0, 0, 0, 0], mean 0.0, sqrt(n log n) = 123
+   n= 500: counts [0, 0, 0, 0, 0, 0], mean 0.0, log n = 6.2
+   n=1000: counts [0, 0, 0, 0, 0, 0], mean 0.0, log n = 6.9
+   n=2000: counts [0, 0, 0, 0, 0, 0], mean 0.0, log n = 7.6

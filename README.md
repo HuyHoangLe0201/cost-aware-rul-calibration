@@ -7,6 +7,7 @@ You have a predictor of the **remaining useful life (RUL)** and an alarm that fi
 * the best replacement date is `d = p * q`, where `p` is the point prediction at the alarm and `q` is the **tau\*-quantile of the ratio true RUL / predicted RUL**, with `tau* = c_over / (c_under + c_over)` fixed by the costs alone;
 * `q` is estimated with a **conformal order statistic**: finite-sample, distribution-free, and the expected excess cost shrinks like `C / n` with a constant you can compute (`rulcost.theory`);
 * units replaced before failing only reveal that their RUL exceeded the replacement date: such **right-censored labels** are handled with a Kaplan-Meier estimate instead of being dropped or recorded as failures, both of which bias `q` towards early replacement;
+* the closed loop cannot lock itself into early replacement: an optional **risk-set guard** (`risk_guard="loglog"`) makes all but a vanishing fraction of the multipliers converge to the optimal one, almost surely and from any initial pool (Theorem 6 of the article), and it is inactive in the article's experiments;
 * it works with **any** RUL predictor: you only need the point prediction at the alarm and the outcome.
 
 The method and its theory are described in the accompanying article (see *Citation*); `article/` reproduces its experiments.
@@ -88,6 +89,7 @@ Options that matter:
 * `window=None` (cumulative, default) is best when the fleet is stable; a window `w` helps when the ratio drifts, with the best `w` scaling as `s^(-2/3)` for a drift `s` per unit (Proposition 7 of the article; an upper-bound rule, tune it on your data).
 * `method="auto"` uses the conformal quantile while all labels are exact and Kaplan-Meier once a censored label is present. `"naive"` and `"drop"` exist only to reproduce the biased alternatives.
 * With fewer than `min_pool=5` labels (or when the quantile is not identified by censored data) the multiplier is `fallback=1`: replace at the point prediction.
+* `risk_guard=None` (default) is the Kaplan-Meier rule of the article as run in its experiments. `risk_guard="loglog"` (or `"log2"`, or an integer) additionally refuses a Kaplan-Meier quantile that rests on fewer than ceil(log n * log log n) units still at risk and replaces at the point prediction instead; this is the policy of Theorem 6 (no lock-in from any initial pool, almost surely). `rulcost.risk_floor(n, guard)` gives the floor.
 * `group=` keeps separate pools. It pays when a covariate known at the alarm shifts the ratio (Proposition 6); with many groups each pool is small.
 
 ## When does it apply?

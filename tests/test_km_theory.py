@@ -88,9 +88,43 @@ def test_no_lock_in_below_x_with_high_probability():
     assert hits / reps <= bound + 3 * math.sqrt(bound * (1 - bound) / reps) + 0.02
 
 
-def test_vanishing_exploration_gives_convergence():
-    """Corollary 6: with exploration probability n^(-1/3) the multiplier converges to q*."""
-    rng = np.random.default_rng(3)
-    rho, q, Y, d, expl = run_policy(1500, rng, "km", n0=20, explore=lambda n: n ** (-1 / 3))
-    late = q[1000:][~expl[1000:]]
-    assert abs(np.mean(late) - QSTAR) < 0.06
+def run_guarded(n, rng, n0, guard, init):
+    """Closed loop with the risk-set guard of Theorem 6 from an adversarial initial pool."""
+    rho = rng.lognormal(MU, SIG, n)
+    rho[: len(init)] = init
+    q = np.full(n, np.inf)
+    Y = rho.copy()
+    d = np.ones(n, bool)
+    for s in range(n0, n):
+        q[s] = rc.kaplan_meier_quantile(Y[:s], d[:s], TAU, 5, 1.0, rc.risk_floor(s, guard))
+        Y[s] = min(rho[s], q[s])
+        d[s] = rho[s] <= q[s]
+    return q
+
+
+def test_risk_set_guard_recovers_from_an_adversarial_pool():
+    """Theorem 6: from five identical labels far below q* the guarded multiplier leaves the neighbourhood of 0.5 and settles near q*."""
+    rng = np.random.default_rng(4)
+    late = []
+    for _ in range(12):
+        q = run_guarded(700, rng, 5, "loglog", np.full(5, 0.50))
+        assert not np.any(q[450:] < QSTAR - 0.10)
+        late.append(np.mean(q[500:]))
+    assert abs(np.mean(late) - QSTAR) < 0.04
+
+
+def test_estimate_is_accurate_where_many_units_remain_at_risk():
+    """Lemma A3: the Nelson-Aalen error at levels with at least 10 log n units at risk is small on closed-loop data."""
+    rng = np.random.default_rng(6)
+    for _ in range(4):
+        rho, q, Y, d, _ = run_policy(400, rng, "km")
+        pts = np.sort(Y[d & (Y <= Ginv(0.6))])
+        cum = err = 0.0
+        for t in pts:
+            r = np.sum(Y >= t)
+            if r < 10 * math.log(400):
+                break
+            err = max(err, abs(cum - Lam(t)))
+            cum += 1.0 / r
+            err = max(err, abs(cum - Lam(t)))
+        assert err < 0.2

@@ -101,7 +101,7 @@ def evaluate_policies(predicted_rul, true_rul, c_under: float, c_over: float = 1
 
 
 def simulate_closed_loop(predicted_rul, true_rul, c_under: float, c_over: float = 1.0, *, n_init: int = 20, n_orders: int = 60, seed: int = 5,
-                         normalizer: Optional[float] = None, methods: Sequence[str] = ("oracle", "naive", "drop", "kaplan-meier")) -> Dict[str, Dict[str, float]]:
+                         normalizer: Optional[float] = None, methods: Sequence[str] = ("oracle", "naive", "drop", "kaplan-meier"), risk_guard=None) -> Dict[str, Dict[str, float]]:
     """Closed-loop calibration when preventive replacement censors the labels (Table 3 of the article).
 
     A unit replaced at ``d = p * q`` before it fails reveals only that its RUL exceeds ``d``.  ``oracle`` keeps the exact label anyway (the
@@ -119,7 +119,7 @@ def simulate_closed_loop(predicted_rul, true_rul, c_under: float, c_over: float 
         cal_method = {"oracle": "conformal"}.get(m, m)
         costs, covs = [], []
         for order in orders:
-            cal = CostAwareCalibrator(c_under, c_over, method=cal_method)
+            cal = CostAwareCalibrator(c_under, c_over, method=cal_method, risk_guard=risk_guard)
             for e in order[:n_init]:
                 cal.update(p[e], r[e])
             c_list, v_list = [], []

@@ -15,7 +15,7 @@ from statistics import NormalDist
 
 import numpy as np
 
-__all__ = ["critical_level", "target_coverage", "asymmetric_cost", "conformal_quantile", "gaussian_quantile", "kaplan_meier_quantile"]
+__all__ = ["critical_level", "target_coverage", "asymmetric_cost", "conformal_quantile", "gaussian_quantile", "kaplan_meier_quantile", "risk_floor"]
 
 
 def critical_level(c_under: float, c_over: float = 1.0) -> float:
@@ -62,12 +62,32 @@ def gaussian_quantile(ratios, tau: float, min_pool: int = 5, fallback: float = 1
     return float(np.exp(lv.mean() + lv.std() * NormalDist().inv_cdf(tau)))
 
 
-def kaplan_meier_quantile(values, exact, tau: float, min_pool: int = 5, fallback: float = 1.0) -> float:
+def risk_floor(n: int, guard="loglog") -> int:
+    """Minimum number of units still at risk that a Kaplan-Meier quantile must rest on, for a pool of ``n`` labels.
+
+    ``"loglog"``: ceil(log n * log log n); ``"log2"``: ceil(log(n)**2).  Theorem 6 of the article holds for any floor that is
+    larger than every multiple of log n from some n on and smaller than n/4, and these two are examples (the first is the milder one).
+    ``None`` or ``0``: no floor (the unguarded rule of Theorem 5); an integer ``k``: a fixed floor ``k``.
+    """
+    if guard is None:
+        return 0
+    L = math.log(max(n, 3))
+    if guard == "loglog":
+        return max(1, int(math.ceil(L * math.log(max(L, 1.0001)))))
+    if guard == "log2":
+        return int(math.ceil(L ** 2))
+    return int(guard)
+
+
+def kaplan_meier_quantile(values, exact, tau: float, min_pool: int = 5, fallback: float = 1.0, min_risk: int = 0) -> float:
     """tau-quantile of rho from right-censored labels (Kaplan-Meier), at the same finite-sample level as :func:`conformal_quantile`.
 
     ``values[i]`` is the observed ratio ``R / p`` when ``exact[i]`` is true, and a *lower bound* of it (the ratio ``d / p`` at which the
     unit was replaced preventively) when ``exact[i]`` is false.  If the quantile is not identified by the data (it lies beyond the
     support covered by the censoring times) the ``fallback`` multiplier is returned.
+
+    ``min_risk`` is the risk-set guard of Theorem 6: a quantile that rests on fewer than ``min_risk`` units still at risk (units whose
+    observed value is at least the quantile) is not trusted and ``fallback`` is returned instead.  ``0`` (default) switches the guard off.
     """
     v = np.asarray(values, dtype=float)
     d = np.asarray(exact, dtype=float)
@@ -80,4 +100,9 @@ def kaplan_meier_quantile(values, exact, tau: float, min_pool: int = 5, fallback
     cdf = 1.0 - surv
     t = min(tau * (n + 1) / n, 1.0)
     hit = np.where(cdf >= t)[0]
-    return float(vs[hit[0]]) if hit.size else float(fallback)
+    if not hit.size:
+        return float(fallback)
+    q = float(vs[hit[0]])
+    if min_risk and n - int(np.searchsorted(vs, q, side="left")) < min_risk:
+        return float(fallback)
+    return q
