@@ -1,0 +1,5 @@
+FD002: 260 engines, P0=60, N0=20, perms=60
+cu/co= 2 target cover 0.67 | oracle: cost 0.29 cov 0.66 | naive: cost 0.29 cov 0.71 | drop: cost 0.34 cov 0.87 | km: cost 0.29 cov 0.65 | km+e0.1: cost 0.32 cov 0.65 | km+e0.2: cost 0.36 cov 0.65 | naive+e0.1: cost 0.29 cov 0.71 | drop+e0.1: cost 0.34 cov 0.85 | 
+cu/co= 5 target cover 0.83 | oracle: cost 0.36 cov 0.82 | naive: cost 0.36 cov 0.86 | drop: cost 0.40 cov 0.95 | km: cost 0.36 cov 0.82 | km+e0.1: cost 0.47 cov 0.82 | km+e0.2: cost 0.59 cov 0.82 | naive+e0.1: cost 0.37 cov 0.86 | drop+e0.1: cost 0.46 cov 0.93 | 
+cu/co=10 target cover 0.91 | oracle: cost 0.40 cov 0.90 | naive: cost 0.41 cov 0.93 | drop: cost 0.43 cov 0.97 | km: cost 0.40 cov 0.90 | km+e0.1: cost 0.66 cov 0.90 | km+e0.2: cost 0.91 cov 0.90 | naive+e0.1: cost 0.44 cov 0.93 | drop+e0.1: cost 0.60 cov 0.96 | 
+cu/co=20 target cover 0.95 | oracle: cost 0.43 cov 0.94 | naive: cost 0.44 cov 0.97 | drop: cost 0.46 cov 0.98 | km: cost 0.43 cov 0.94 | km+e0.1: cost 0.98 cov 0.94 | km+e0.2: cost 1.51 cov 0.94 | naive+e0.1: cost 0.52 cov 0.97 | drop+e0.1: cost 0.86 cov 0.98 | 

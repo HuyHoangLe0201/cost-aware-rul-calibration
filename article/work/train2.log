@@ -1,0 +1,18 @@
+done 388 s
+Bearing1_1: median|log(p/r)| @20-80%  data 2.05  hybrid 2.01  m=2.07
+Bearing1_2: median|log(p/r)| @20-80%  data 0.59  hybrid 0.61  m=2.07
+Bearing1_3: median|log(p/r)| @20-80%  data 0.29  hybrid 0.12  m=2.07
+Bearing1_4: median|log(p/r)| @20-80%  data 1.92  hybrid 1.49  m=2.07
+Bearing1_5: median|log(p/r)| @20-80%  data 2.45  hybrid 2.54  m=2.07
+Bearing1_6: median|log(p/r)| @20-80%  data 0.59  hybrid 0.85  m=2.07
+Bearing1_7: median|log(p/r)| @20-80%  data 1.48  hybrid 1.54  m=2.07
+Bearing2_1: median|log(p/r)| @20-80%  data 1.30  hybrid 1.13  m=2.07
+Bearing2_2: median|log(p/r)| @20-80%  data 0.57  hybrid 0.46  m=2.07
+Bearing2_3: median|log(p/r)| @20-80%  data 1.59  hybrid 1.18  m=2.07
+Bearing2_4: median|log(p/r)| @20-80%  data 1.53  hybrid 1.60  m=2.06
+Bearing2_5: median|log(p/r)| @20-80%  data 4.26  hybrid 3.76  m=2.07
+Bearing2_6: median|log(p/r)| @20-80%  data 1.52  hybrid 1.38  m=2.07
+Bearing2_7: median|log(p/r)| @20-80%  data 2.02  hybrid 2.18  m=2.07
+Bearing3_1: median|log(p/r)| @20-80%  data 2.29  hybrid 1.86  m=2.07
+Bearing3_2: median|log(p/r)| @20-80%  data 0.96  hybrid 0.68  m=2.07
+Bearing3_3: median|log(p/r)| @20-80%  data 0.56  hybrid 0.54  m=2.07

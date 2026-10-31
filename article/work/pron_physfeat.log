@@ -1,0 +1,4 @@
+done 436 s
+base : median over bearings of median|log(p/r)| @20-80% = 1.49   mean 1.50
+phys : median over bearings of median|log(p/r)| @20-80% = 0.72   mean 0.99
+both : median over bearings of median|log(p/r)| @20-80% = 1.08   mean 1.39

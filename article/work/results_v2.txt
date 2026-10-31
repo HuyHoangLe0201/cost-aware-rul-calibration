@@ -1,0 +1,37 @@
+file oof2_preds.npz
+
+--- P0=100 data: alarmed 15/17, median|log(p/r)| at alarm 2.27
+  cu/co= 2 (target cover 0.67) cost: point=6.65 fixed90=6.91 tau_static=8.43 tau_cum=7.71 tau_roll=8.07 | cov: fixed90=0.87 tau_static=0.62 tau_cum=0.64 tau_roll=0.62 | fixed90-tau_cum -0.80 [-1.91,+0.24]
+  cu/co= 5 (target cover 0.83) cost: point=7.20 fixed90=7.11 tau_static=7.84 tau_cum=7.36 tau_roll=7.90 | cov: fixed90=0.87 tau_static=0.81 tau_cum=0.79 tau_roll=0.76 | fixed90-tau_cum -0.25 [-0.54,+0.00]
+  cu/co=10 (target cover 0.91) cost: point=8.11 fixed90=7.47 tau_static=9.23 tau_cum=7.33 tau_roll=7.47 | cov: fixed90=0.86 tau_static=0.81 tau_cum=0.86 tau_roll=0.86 | fixed90-tau_cum +0.13 [+0.05,+0.22]
+  cu/co=20 (target cover 0.95) cost: point=9.95 fixed90=8.05 tau_static=11.58 tau_cum=7.77 tau_roll=8.05 | cov: fixed90=0.87 tau_static=0.81 tau_cum=0.89 tau_roll=0.87 | fixed90-tau_cum +0.29 [+0.06,+0.55]
+
+--- P0=100 hybrid: alarmed 15/17, median|log(p/r)| at alarm 2.03
+  cu/co= 2 (target cover 0.67) cost: point=6.37 fixed90=6.65 tau_static=8.02 tau_cum=7.19 tau_roll=7.52 | cov: fixed90=0.87 tau_static=0.62 tau_cum=0.63 tau_roll=0.62 | fixed90-tau_cum -0.54 [-1.38,+0.22]
+  cu/co= 5 (target cover 0.83) cost: point=6.93 fixed90=6.80 tau_static=7.26 tau_cum=6.98 tau_roll=7.37 | cov: fixed90=0.87 tau_static=0.81 tau_cum=0.79 tau_roll=0.76 | fixed90-tau_cum -0.18 [-0.43,+0.01]
+  cu/co=10 (target cover 0.91) cost: point=7.88 fixed90=7.08 tau_static=8.65 tau_cum=7.00 tau_roll=7.08 | cov: fixed90=0.86 tau_static=0.80 tau_cum=0.86 tau_roll=0.86 | fixed90-tau_cum +0.08 [+0.03,+0.14]
+  cu/co=20 (target cover 0.95) cost: point=9.77 fixed90=7.43 tau_static=9.59 tau_cum=7.19 tau_roll=7.43 | cov: fixed90=0.87 tau_static=0.82 tau_cum=0.90 tau_roll=0.87 | fixed90-tau_cum +0.25 [+0.04,+0.52]
+
+--- P0=200 data: alarmed 16/17, median|log(p/r)| at alarm 1.80
+  cu/co= 2 (target cover 0.67) cost: point=3.57 fixed90=3.88 tau_static=4.17 tau_cum=3.96 tau_roll=4.06 | cov: fixed90=0.87 tau_static=0.66 tau_cum=0.65 tau_roll=0.65 | fixed90-tau_cum -0.08 [-0.71,+0.48]
+  cu/co= 5 (target cover 0.83) cost: point=4.06 fixed90=4.00 tau_static=4.36 tau_cum=4.15 tau_roll=4.28 | cov: fixed90=0.87 tau_static=0.82 tau_cum=0.79 tau_roll=0.77 | fixed90-tau_cum -0.16 [-0.38,+0.04]
+  cu/co=10 (target cover 0.91) cost: point=4.88 fixed90=4.16 tau_static=4.78 tau_cum=4.12 tau_roll=4.16 | cov: fixed90=0.87 tau_static=0.82 tau_cum=0.86 tau_roll=0.87 | fixed90-tau_cum +0.04 [+0.01,+0.10]
+  cu/co=20 (target cover 0.95) cost: point=6.53 fixed90=4.49 tau_static=5.67 tau_cum=4.31 tau_roll=4.49 | cov: fixed90=0.88 tau_static=0.83 tau_cum=0.90 tau_roll=0.88 | fixed90-tau_cum +0.18 [+0.03,+0.35]
+
+--- P0=200 hybrid: alarmed 16/17, median|log(p/r)| at alarm 2.04
+  cu/co= 2 (target cover 0.67) cost: point=3.94 fixed90=4.17 tau_static=4.88 tau_cum=4.76 tau_roll=4.78 | cov: fixed90=0.87 tau_static=0.64 tau_cum=0.63 tau_roll=0.63 | fixed90-tau_cum -0.59 [-1.83,+0.56]
+  cu/co= 5 (target cover 0.83) cost: point=4.61 fixed90=4.35 tau_static=4.92 tau_cum=4.72 tau_roll=5.14 | cov: fixed90=0.87 tau_static=0.81 tau_cum=0.78 tau_roll=0.76 | fixed90-tau_cum -0.37 [-0.76,-0.03]
+  cu/co=10 (target cover 0.91) cost: point=5.72 fixed90=4.60 tau_static=5.41 tau_cum=4.48 tau_roll=4.60 | cov: fixed90=0.87 tau_static=0.83 tau_cum=0.86 tau_roll=0.87 | fixed90-tau_cum +0.12 [+0.03,+0.21]
+  cu/co=20 (target cover 0.95) cost: point=7.95 fixed90=5.24 tau_static=7.17 tau_cum=4.75 tau_roll=5.24 | cov: fixed90=0.87 tau_static=0.83 tau_cum=0.90 tau_roll=0.87 | fixed90-tau_cum +0.48 [+0.14,+0.87]
+
+--- P0=400 data: alarmed 16/17, median|log(p/r)| at alarm 1.48
+  cu/co= 2 (target cover 0.67) cost: point=2.05 fixed90=2.29 tau_static=2.47 tau_cum=2.36 tau_roll=2.43 | cov: fixed90=0.87 tau_static=0.65 tau_cum=0.63 tau_roll=0.64 | fixed90-tau_cum -0.07 [-0.61,+0.40]
+  cu/co= 5 (target cover 0.83) cost: point=2.64 fixed90=2.38 tau_static=2.54 tau_cum=2.52 tau_roll=2.68 | cov: fixed90=0.88 tau_static=0.82 tau_cum=0.79 tau_roll=0.77 | fixed90-tau_cum -0.14 [-0.35,+0.04]
+  cu/co=10 (target cover 0.91) cost: point=3.63 fixed90=2.52 tau_static=2.90 tau_cum=2.48 tau_roll=2.52 | cov: fixed90=0.88 tau_static=0.83 tau_cum=0.87 tau_roll=0.88 | fixed90-tau_cum +0.03 [+0.00,+0.07]
+  cu/co=20 (target cover 0.95) cost: point=5.60 fixed90=2.84 tau_static=3.98 tau_cum=2.69 tau_roll=2.84 | cov: fixed90=0.87 tau_static=0.82 tau_cum=0.90 tau_roll=0.87 | fixed90-tau_cum +0.16 [+0.01,+0.34]
+
+--- P0=400 hybrid: alarmed 16/17, median|log(p/r)| at alarm 1.46
+  cu/co= 2 (target cover 0.67) cost: point=2.15 fixed90=2.54 tau_static=2.52 tau_cum=2.48 tau_roll=2.45 | cov: fixed90=0.87 tau_static=0.65 tau_cum=0.64 tau_roll=0.64 | fixed90-tau_cum +0.06 [-0.67,+0.72]
+  cu/co= 5 (target cover 0.83) cost: point=2.58 fixed90=2.67 tau_static=2.85 tau_cum=2.89 tau_roll=3.01 | cov: fixed90=0.87 tau_static=0.83 tau_cum=0.79 tau_roll=0.76 | fixed90-tau_cum -0.22 [-0.54,+0.06]
+  cu/co=10 (target cover 0.91) cost: point=3.28 fixed90=2.94 tau_static=3.57 tau_cum=2.87 tau_roll=2.94 | cov: fixed90=0.87 tau_static=0.81 tau_cum=0.86 tau_roll=0.87 | fixed90-tau_cum +0.07 [+0.01,+0.13]
+  cu/co=20 (target cover 0.95) cost: point=4.68 fixed90=3.28 tau_static=4.25 tau_cum=2.95 tau_roll=3.28 | cov: fixed90=0.88 tau_static=0.84 tau_cum=0.91 tau_roll=0.88 | fixed90-tau_cum +0.32 [+0.05,+0.63]

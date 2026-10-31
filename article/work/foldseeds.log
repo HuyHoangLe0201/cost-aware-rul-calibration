@@ -1,0 +1,56 @@
+FD001 data RMSE(clipped RUL, all cycles) = 16.1
+FD001 hybrid RMSE(clipped RUL, all cycles) = 16.1
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 47 s
+FD003 data RMSE(clipped RUL, all cycles) = 13.5
+FD003 hybrid RMSE(clipped RUL, all cycles) = 13.5
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 36 s
+FD002 data RMSE(clipped RUL, all cycles) = 17.2
+FD002 hybrid RMSE(clipped RUL, all cycles) = 17.2
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 76 s
+FD004 data RMSE(clipped RUL, all cycles) = 16.5
+FD004 hybrid RMSE(clipped RUL, all cycles) = 16.5
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 91 s
+FD001 data RMSE(clipped RUL, all cycles) = 16.1
+FD001 hybrid RMSE(clipped RUL, all cycles) = 16.1
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 33 s
+FD003 data RMSE(clipped RUL, all cycles) = 13.5
+FD003 hybrid RMSE(clipped RUL, all cycles) = 13.5
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 34 s
+FD002 data RMSE(clipped RUL, all cycles) = 17.3
+FD002 hybrid RMSE(clipped RUL, all cycles) = 17.3
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 79 s
+FD004 data RMSE(clipped RUL, all cycles) = 16.6
+FD004 hybrid RMSE(clipped RUL, all cycles) = 16.6
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/tmp/venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+learned m mean nan (init 2.05) time 91 s

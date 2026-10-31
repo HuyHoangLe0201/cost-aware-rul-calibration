@@ -1,0 +1,4 @@
+FD001 CNN RMSE(clipped RUL, all cycles) = 15.2 time 62 s
+FD004 CNN RMSE(clipped RUL, all cycles) = 15.9 time 271 s
+FD002 CNN RMSE(clipped RUL, all cycles) = 17.2 time 164 s
+FD003 CNN RMSE(clipped RUL, all cycles) = 14.8 time 64 s

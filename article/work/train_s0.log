@@ -1,0 +1,18 @@
+done 69.40541052818298 s
+Bearing1_1 MAE(rel) data 0.76 hybrid 0.65 | p_learned 1.01
+Bearing1_2 MAE(rel) data 1.75 hybrid 2.45 | p_learned 0.99
+Bearing1_3 MAE(rel) data 0.58 hybrid 0.57 | p_learned 1.00
+Bearing1_4 MAE(rel) data 0.90 hybrid 0.69 | p_learned 1.01
+Bearing1_5 MAE(rel) data 0.55 hybrid 0.53 | p_learned 1.01
+Bearing1_6 MAE(rel) data 0.65 hybrid 0.65 | p_learned 1.01
+Bearing1_7 MAE(rel) data 0.87 hybrid 0.64 | p_learned 1.02
+Bearing2_1 MAE(rel) data 0.61 hybrid 0.82 | p_learned 1.01
+Bearing2_2 MAE(rel) data 0.95 hybrid 0.87 | p_learned 1.00
+Bearing2_3 MAE(rel) data 0.92 hybrid 0.83 | p_learned 1.01
+Bearing2_4 MAE(rel) data 4.45 hybrid 5.02 | p_learned 1.00
+Bearing2_5 MAE(rel) data 1.70 hybrid 1.53 | p_learned 1.00
+Bearing2_6 MAE(rel) data 6.32 hybrid 6.32 | p_learned 1.00
+Bearing2_7 MAE(rel) data 16.69 hybrid 14.71 | p_learned 0.99
+Bearing3_1 MAE(rel) data 5.44 hybrid 5.26 | p_learned 0.99
+Bearing3_2 MAE(rel) data 0.85 hybrid 1.03 | p_learned 1.01
+Bearing3_3 MAE(rel) data 3.80 hybrid 4.63 | p_learned 1.00

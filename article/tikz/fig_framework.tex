@@ -1,0 +1,123 @@
+% TikZ framework figure at true size: body font (Computer Modern), 10 pt, no scaling. Natural width 18.9 cm; included at width=\textwidth (15.3 cm), i.e. scale 0.81, so the text is 8 pt.
+\begin{tikzpicture}[
+  x=1.25cm,
+  font=\normalsize,
+  >={Stealth[length=2.4mm,width=1.9mm]},
+  stage/.style={rounded corners=5pt, draw=#1!50!black, fill=#1!6, line width=0.7pt},
+  card/.style={rounded corners=3pt, draw=#1!65!black, fill=white, line width=0.7pt},
+  strongcard/.style={rounded corners=3pt, draw=#1!70!black, fill=#1!10, line width=1.2pt},
+  chip/.style={rounded corners=2pt, draw=#1!60!black, fill=#1!12, inner sep=2pt, minimum height=0.52cm, align=center, line width=0.5pt},
+  flow/.style={->, line width=1.0pt, draw=black!70},
+  lab/.style={inner sep=1.5pt, fill=white, fill opacity=0.9, text opacity=1},
+  tit/.style={anchor=north west, inner sep=2pt}
+]
+\definecolor{cblue}{HTML}{2A78D6}\definecolor{corange}{HTML}{EB6834}\definecolor{caqua}{HTML}{1BAF7A}\definecolor{cgrey}{HTML}{8A8984}\definecolor{cviolet}{HTML}{6250D6}\definecolor{cred}{HTML}{C0392B}
+\colorlet{blue}{cblue}\colorlet{orange}{corange}\colorlet{aqua}{caqua}\colorlet{grey}{cgrey}\colorlet{violet}{cviolet}\colorlet{red}{cred}
+
+% ======================= A. prediction and alarm =======================
+\draw[stage=blue] (0,0) rectangle (15.1,-4.35);
+\node[tit] at (0.1,-0.08) {\textbf{A\; Prediction and alarm}};
+\draw[card=blue] (0.25,-0.8) rectangle (4.8,-4.15);  \draw[card=blue] (5.3,-0.8) rectangle (9.8,-4.15);  \draw[card=blue] (10.3,-0.8) rectangle (14.85,-4.15);
+% A1 sensor streams
+\node[anchor=north west] at (0.3,-0.82) {\textbf{Sensor streams}};
+\begin{scope}[shift={(0.65,-3.85)}]
+  \draw[->, black!60] (0,0) -- (3.9,0) node[right, inner sep=1.5pt, text=black] {$t$}; \draw[->, black!60] (0,0) -- (0,2.05);
+  \draw[line width=0.9pt, blue]   plot[domain=0:3.8,samples=60] (\x, {0.35+0.11*\x+0.06*sin(\x*260)});
+  \draw[line width=0.9pt, aqua]   plot[domain=0:3.8,samples=60] (\x, {0.85+0.22*\x*\x/3.8+0.07*sin(\x*190+40)});
+  \draw[line width=0.9pt, orange] plot[domain=0:3.8,samples=60] (\x, {1.45-0.08*\x+0.07*sin(\x*310)});
+  \node[anchor=east, inner sep=1pt] at (3.9,1.95) {unit $i$};
+\end{scope}
+% A2 predictors
+\node[anchor=north west] at (5.35,-0.82) {\textbf{RUL predictors}};
+\node[chip=blue] at (6.05,-1.7)  {Ridge};       \node[chip=blue] at (7.55,-1.7)  {Hist-GB};     \node[chip=blue] at (9.05,-1.7) {RF};
+\node[chip=blue] at (6.05,-2.35) {MLP};         \node[chip=blue] at (7.55,-2.35) {GRU};         \node[chip=blue] at (9.05,-2.35) {CNN};
+\node[chip=orange] at (6.05,-3.0) {Paris};  \node[chip=orange] at (7.55,-3.0) {Wear};   \node[chip=orange] at (9.05,-3.0) {Count};
+\node[anchor=north, text width=5.25cm, align=center, inner sep=0pt] at (7.55,-3.38) {orange: physics-based};
+% A3 alarm
+\node[anchor=north west] at (10.35,-0.82) {\textbf{Alarm at $P_0$}};
+\begin{scope}[shift={(10.75,-3.85)}]
+  \draw[->, black!60] (0,0) -- (3.8,0) node[right, inner sep=1.5pt, text=black] {$t$}; \draw[->, black!60] (0,0) -- (0,2.05);
+  \draw[line width=1.0pt, blue] plot[domain=0:3.6,samples=70] (\x, {1.85*(1-\x/4.2)^1.4+0.05*sin(\x*420)});
+  \draw[dashed, orange, line width=0.9pt] (0,0.65) -- (3.7,0.65);
+  \draw[dotted, black!70] (2.25,0.65) -- (2.25,0);
+  \fill[blue] (2.25,0.65) circle (2.2pt);
+  \node[anchor=east, inner sep=1pt, text=orange!80!black] at (-0.02,0.65) {$p$};
+  \node[anchor=south west, inner sep=1pt] at (2.3,0.8) {alarm};
+\end{scope}
+\draw[flow] (4.8,-2.4) -- (5.3,-2.4); \draw[flow] (9.8,-2.4) -- (10.3,-2.4);
+
+% ======================= B. decision =======================
+\draw[stage=orange] (0,-4.75) rectangle (15.1,-9.55);
+\node[tit] at (0.1,-4.83) {\textbf{B\; Decision at the alarm}};
+\draw[card=orange] (0.25,-5.5) rectangle (4.8,-9.35);  \draw[card=orange] (5.3,-5.5) rectangle (9.8,-9.35);  \draw[card=orange] (10.3,-5.5) rectangle (14.85,-9.35);
+% B1 cost model
+\node[anchor=north west] at (0.3,-5.52) {\textbf{Cost model}};
+\node[anchor=north west, align=left, text width=5.38cm] at (0.35,-5.95) {$c=c_u\,(d-r)^+ + c_o\,(r-d)^+$\\[2pt] $\tau^*=\dfrac{c_o}{c_o+c_u}$,\; $q^*=G^{-1}(\tau^*)$};
+\begin{scope}[shift={(1.0,-8.75)}]
+  \draw[->, black!60] (-0.5,0) -- (3.6,0) node[anchor=south east, inner sep=2.5pt, text=black] {$d-r$}; \draw[->, black!60] (1.45,0) -- (1.45,1.35);
+  \draw[line width=1.4pt, orange!80!black] (-0.45,0.55) -- (1.45,0); \draw[line width=1.4pt, red!75!black] (1.45,0) -- (2.75,1.2);
+  \node[anchor=south, inner sep=1pt, text=orange!70!black] at (0.1,0.5) {$c_o$}; \node[anchor=east, inner sep=1pt, text=red!70!black] at (2.0,0.95) {$c_u$};
+  \node[anchor=north, inner sep=1pt] at (0.3,-0.02) {waste};  \node[anchor=north, inner sep=1pt] at (2.55,-0.02) {overrun};
+\end{scope}
+% B3 rules for q
+\node[anchor=north west] at (5.35,-5.52) {\textbf{Rules for $q$}};
+\node[chip=orange, text width=5.12cm]  at (7.55,-6.3)  {point: $q=1$};
+\node[chip=orange, text width=5.12cm]  at (7.55,-6.85) {safety: $q\in\{.5,.7,.85\}$};
+\node[chip=orange, text width=5.12cm]  at (7.55,-7.4)  {fixed 90\% quantile};
+\node[chip=violet, text width=5.12cm]  at (7.55,-7.95) {Gauss $\tau^*$-quantile};
+\node[chip=grey, text width=5.12cm]    at (7.55,-8.5)  {static, rolling $\hat q_{\tau^*}$};
+\node[strongcard=blue, minimum height=0.55cm, text width=5.12cm, align=center, draw=blue!70!black, fill=blue!12, inner sep=2pt] at (7.55,-9.05) {\textbf{ours}: cumulative $\hat q_{\tau^*}$};
+% B2 timeline
+\node[anchor=north west] at (10.35,-5.52) {\textbf{Replace at $d=p\,\hat q$}};
+\begin{scope}[shift={(10.6,0)}]
+  % early replacement: waste
+  \node[anchor=west, inner sep=1pt] at (0,-6.35) {early};
+  \draw[line width=2.2pt, black!25] (0.9,-6.35) -- (3.9,-6.35);
+  \fill[orange!45] (2.45,-6.23) rectangle (3.55,-6.47);
+  \fill[blue] (2.45,-6.35) circle (2.6pt);  \node[anchor=south, inner sep=1pt] at (2.45,-6.2) {$d$};
+  \node[cross out, draw=black, line width=1.1pt, minimum size=5pt, inner sep=0pt] at (3.55,-6.35) {};  \node[anchor=south, inner sep=1pt] at (3.55,-6.2) {$r$};
+  \node[anchor=north, inner sep=1pt, text=orange!70!black] at (3.0,-6.6) {waste $c_o$};
+  % late replacement: overrun
+  \node[anchor=west, inner sep=1pt] at (0,-7.85) {late};
+  \draw[line width=2.2pt, black!25] (0.9,-7.85) -- (3.9,-7.85);
+  \fill[red!35] (2.2,-7.73) rectangle (3.4,-7.97);
+  \node[cross out, draw=black, line width=1.1pt, minimum size=5pt, inner sep=0pt] at (2.2,-7.85) {};  \node[anchor=south, inner sep=1pt] at (2.2,-7.7) {$r$};
+  \fill[blue] (3.4,-7.85) circle (2.6pt);  \node[anchor=south, inner sep=1pt] at (3.4,-7.7) {$d$};
+  \node[anchor=north, inner sep=1pt, text=red!70!black] at (2.8,-8.1) {overrun $c_u$};
+  \draw[->, black!55] (0.9,-8.85) -- (3.9,-8.85) node[anchor=south east, inner sep=2.5pt, text=black] {$t$}; \fill[black!70] (0.9,-8.85) circle (1.8pt);  \node[anchor=west, inner sep=1pt] at (1.0,-9.1) {alarm at $t_a$};
+\end{scope}
+\draw[flow] (4.8,-7.4) -- (5.3,-7.4); \draw[flow] (9.8,-7.4) -- (10.3,-7.4);
+\draw[flow] (12.55,-4.15) -- (12.55,-5.5) node[inner sep=1pt, pos=0.3, right=1pt] {$p$};
+
+% ======================= C. calibration loop =======================
+\draw[stage=aqua] (0,-9.95) rectangle (15.1,-14.55);
+\node[tit] at (0.1,-10.03) {\textbf{C\; Calibration loop}};
+\draw[card=aqua] (0.25,-10.7) rectangle (4.8,-14.35);  \draw[card=aqua] (5.3,-10.7) rectangle (9.8,-14.35);  \draw[card=orange] (10.3,-10.7) rectangle (14.85,-14.35);
+% C1 censoring-aware estimator (Kaplan-Meier steps)
+\node[anchor=north west] at (0.3,-10.72) {\textbf{Censoring-aware}};
+\begin{scope}[shift={(0.75,-12.15)}]
+  \draw[->, black!60] (0,0) -- (3.6,0) node[right, inner sep=1.5pt, text=black] {$\rho$}; \draw[->, black!60] (0,0) -- (0,0.85);
+  \draw[line width=1.0pt, aqua!80!black] (0,0.8) -- (0.5,0.8) -- (0.5,0.68) -- (1.05,0.68) -- (1.05,0.53) -- (1.6,0.53) -- (1.6,0.38) -- (2.1,0.38) -- (2.1,0.27) -- (2.8,0.27) -- (2.8,0.13) -- (3.5,0.13);
+  \foreach \x in {1.35,2.45,3.15} \draw[black!70, line width=0.8pt] (\x,0.2) -- ++(0,-0.12);
+\end{scope}
+\node[anchor=north west, align=left, text width=5.25cm] at (0.4,-12.3) {Kaplan--Meier on $(\rho,\delta)$. Dropping censored labels, or recording them as exact, biases $\hat q$ low (Prop.~4).};
+% C2 pool
+\node[anchor=north west] at (5.35,-10.72) {\textbf{Calibration pool}};
+\begin{scope}[shift={(5.7,-13.55)}]
+  \draw[->, black!60] (0,0) -- (3.8,0) node[right, inner sep=1.5pt, text=black] {$\rho$}; \draw[->, black!60] (0,0) -- (0,1.95);
+  \fill[blue!35] (0.45,0) -- plot[domain=0.45:1.38,samples=40] (\x, {2.55*exp(-(ln(\x/1.9)+0.0)^2/(2*0.17))/(\x*1.6)}) -- (1.38,0) -- cycle;
+  \draw[line width=1.1pt, black!70] plot[domain=0.45:3.7,samples=80] (\x, {2.55*exp(-(ln(\x/1.9)+0.0)^2/(2*0.17))/(\x*1.6)});
+  \draw[blue!80!black, line width=1.4pt] (1.38,0) -- (1.38,{2.55*exp(-(ln(1.38/1.9))^2/(2*0.17))/(1.38*1.6)+0.1});
+  \node[anchor=south, inner sep=1pt, text=blue!80!black] at (1.1,0.95) {$\tau^*$};
+  \node[anchor=west, inner sep=1pt, text=blue!80!black] at (1.45,1.75) {$\hat q_{\tau^*}$};
+\end{scope}
+\node[anchor=north, text width=5.25cm, align=center] at (7.55,-13.62) {ratios of completed units};
+% C3 outcome
+\node[anchor=north west] at (10.35,-10.72) {\textbf{Outcome of the unit}};
+\node[anchor=north west, align=left, text width=5.38cm] at (10.45,-11.35) {fails before $d$:\\ \hspace*{1em}exact $\rho=r/p$\\[3pt] replaced at $d$:\\ \hspace*{1em}censored, $\rho>\hat q$\\[3pt] label appended to the pool};
+\draw[flow] (12.55,-9.35) -- (12.55,-10.7) node[inner sep=1pt, pos=0.3, right=1pt] {runs to $d$};
+\draw[flow] (10.3,-12.5) -- (9.8,-12.5) node[lab, midway, above=2pt] {};
+\draw[flow] (4.8,-12.5) -- (5.3,-12.5);
+\draw[flow] (7.55,-10.7) -- (7.55,-9.35) node[inner sep=1pt, pos=0.7, right=1pt] {$\hat q_{\tau^*}$};
+
+\end{tikzpicture}

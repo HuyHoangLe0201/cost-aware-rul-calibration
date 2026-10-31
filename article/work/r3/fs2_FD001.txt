@@ -1,0 +1,24 @@
+
+=== FD001 P0=30 stream=random model=data: alarmed 100/100, median|log(p/r)| 0.15
+ cu/co= 2 cover(target 0.6667): fixed90=0.881 tau_static=0.673 tau_cum=0.663 tau_roll=0.658 | cost: point=0.272 fixed90=0.260 tau_static=0.212 tau_cum=0.207 tau_roll=0.208 | fixed90-tau_cum +0.05[+0.03,+0.08] | roll-cum +0.00[+0.00,+0.00]
+ cu/co= 5 cover(target 0.8333): fixed90=0.881 tau_static=0.822 tau_cum=0.828 tau_roll=0.828 | cost: point=0.574 fixed90=0.290 tau_static=0.285 tau_cum=0.276 tau_roll=0.280 | fixed90-tau_cum +0.01[-0.00,+0.03] | roll-cum +0.00[+0.00,+0.01]
+ cu/co=10 cover(target 0.9091): fixed90=0.881 tau_static=0.904 tau_cum=0.898 tau_roll=0.899 | cost: point=1.078 fixed90=0.341 tau_static=0.340 tau_cum=0.333 tau_roll=0.335 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum +0.00[+0.00,+0.01]
+ cu/co=20 cover(target 0.9524): fixed90=0.881 tau_static=0.951 tau_cum=0.942 tau_roll=0.947 | cost: point=2.085 fixed90=0.442 tau_static=0.380 tau_cum=0.365 tau_roll=0.368 | fixed90-tau_cum +0.08[+0.00,+0.16] | roll-cum +0.00[-0.00,+0.01]
+
+=== FD001 P0=30 stream=drift model=data: alarmed 100/100, median|log(p/r)| 0.15
+ cu/co= 2 cover(target 0.6667): fixed90=0.951 tau_static=0.954 tau_cum=0.836 tau_roll=0.769 | cost: point=0.272 fixed90=0.252 tau_static=0.271 tau_cum=0.207 tau_roll=0.201 | fixed90-tau_cum +0.05[+0.03,+0.06] | roll-cum -0.01[-0.01,-0.00]
+ cu/co= 5 cover(target 0.8333): fixed90=0.951 tau_static=0.983 tau_cum=0.967 tau_roll=0.916 | cost: point=0.574 fixed90=0.262 tau_static=0.320 tau_cum=0.271 tau_roll=0.251 | fixed90-tau_cum -0.01[-0.02,-0.00] | roll-cum -0.02[-0.03,-0.01]
+ cu/co=10 cover(target 0.9091): fixed90=0.951 tau_static=0.991 tau_cum=0.980 tau_roll=0.963 | cost: point=1.078 fixed90=0.279 tau_static=0.347 tau_cum=0.318 tau_roll=0.283 | fixed90-tau_cum -0.04[-0.06,-0.01] | roll-cum -0.03[-0.05,-0.01]
+ cu/co=20 cover(target 0.9524): fixed90=0.951 tau_static=0.996 tau_cum=0.992 tau_roll=0.980 | cost: point=2.085 fixed90=0.311 tau_static=0.407 tau_cum=0.351 tau_roll=0.328 | fixed90-tau_cum -0.04[-0.08,+0.01] | roll-cum -0.02[-0.04,+0.00]
+
+=== FD001 P0=60 stream=random model=data: alarmed 100/100, median|log(p/r)| 0.18
+ cu/co= 2 cover(target 0.6667): fixed90=0.882 tau_static=0.670 tau_cum=0.662 tau_roll=0.659 | cost: point=0.306 fixed90=0.284 tau_static=0.245 tau_cum=0.241 tau_roll=0.241 | fixed90-tau_cum +0.04[+0.01,+0.07] | roll-cum -0.00[-0.00,+0.00]
+ cu/co= 5 cover(target 0.8333): fixed90=0.882 tau_static=0.816 tau_cum=0.829 tau_roll=0.831 | cost: point=0.638 fixed90=0.306 tau_static=0.310 tau_cum=0.298 tau_roll=0.301 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum +0.00[+0.00,+0.00]
+ cu/co=10 cover(target 0.9091): fixed90=0.882 tau_static=0.908 tau_cum=0.901 tau_roll=0.902 | cost: point=1.190 fixed90=0.344 tau_static=0.347 tau_cum=0.338 tau_roll=0.341 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum +0.00[+0.00,+0.00]
+ cu/co=20 cover(target 0.9524): fixed90=0.882 tau_static=0.959 tau_cum=0.945 tau_roll=0.949 | cost: point=2.295 fixed90=0.420 tau_static=0.381 tau_cum=0.369 tau_roll=0.370 | fixed90-tau_cum +0.05[-0.00,+0.11] | roll-cum +0.00[-0.00,+0.00]
+
+=== FD001 P0=60 stream=drift model=data: alarmed 100/100, median|log(p/r)| 0.18
+ cu/co= 2 cover(target 0.6667): fixed90=0.958 tau_static=0.930 tau_cum=0.871 tau_roll=0.830 | cost: point=0.306 fixed90=0.274 tau_static=0.281 tau_cum=0.237 tau_roll=0.211 | fixed90-tau_cum +0.04[+0.02,+0.05] | roll-cum -0.03[-0.03,-0.02]
+ cu/co= 5 cover(target 0.8333): fixed90=0.958 tau_static=0.965 tau_cum=0.960 tau_roll=0.937 | cost: point=0.638 fixed90=0.282 tau_static=0.317 tau_cum=0.291 tau_roll=0.264 | fixed90-tau_cum -0.01[-0.02,-0.00] | roll-cum -0.03[-0.04,-0.02]
+ cu/co=10 cover(target 0.9091): fixed90=0.958 tau_static=0.987 tau_cum=0.977 tau_roll=0.967 | cost: point=1.190 fixed90=0.295 tau_static=0.357 tau_cum=0.331 tau_roll=0.302 | fixed90-tau_cum -0.04[-0.05,-0.03] | roll-cum -0.03[-0.04,-0.02]
+ cu/co=20 cover(target 0.9524): fixed90=0.958 tau_static=0.993 tau_cum=0.991 tau_roll=0.988 | cost: point=2.295 fixed90=0.320 tau_static=0.397 tau_cum=0.361 tau_roll=0.338 | fixed90-tau_cum -0.04[-0.06,-0.01] | roll-cum -0.02[-0.03,-0.02]

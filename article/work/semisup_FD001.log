@@ -1,0 +1,5 @@
+FD001 semi-supervised physics (RMSE of clipped RUL on 20 held-out engines; mean over 5 folds x 2 reps); time 71 s
+n_lab= 5: RMSE data 24.24 kin_lab 25.52 kin_unlab 22.65 | gain data-kin_unlab +1.58 [+0.21,+3.04] | gain kin_lab-kin_unlab +2.87 [+1.59,+4.20] | median|log err| data 0.320 kin_unlab 0.312
+n_lab=10: RMSE data 19.42 kin_lab 19.66 kin_unlab 18.81 | gain data-kin_unlab +0.61 [-0.55,+1.85] | gain kin_lab-kin_unlab +0.85 [+0.04,+1.75] | median|log err| data 0.236 kin_unlab 0.252
+n_lab=20: RMSE data 17.61 kin_lab 17.81 kin_unlab 16.66 | gain data-kin_unlab +0.95 [+0.02,+1.82] | gain kin_lab-kin_unlab +1.15 [+0.67,+1.61] | median|log err| data 0.222 kin_unlab 0.230
+n_lab=40: RMSE data 16.58 kin_lab 17.58 kin_unlab 17.26 | gain data-kin_unlab -0.67 [-1.45,+0.20] | gain kin_lab-kin_unlab +0.32 [-0.14,+0.75] | median|log err| data 0.195 kin_unlab 0.205

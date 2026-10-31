@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rulcost"
+version = "0.1.0"
+description = "Cost-aware calibration of remaining-useful-life predictions for replacement decisions (conformal quantile, censoring-aware)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Huy Hoang Le" }, { name = "Kim-Anh Nguyen" }]
+keywords = ["prognostics", "remaining useful life", "conformal prediction", "maintenance", "censoring"]
+dependencies = ["numpy>=1.23"]
+
+[project.optional-dependencies]
+dev = ["pytest", "scipy"]
+
+[project.scripts]
+rulcost = "rulcost.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rulcost*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

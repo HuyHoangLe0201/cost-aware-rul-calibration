@@ -1,0 +1,68 @@
+
+=== FD001 P0=30 stream=random model=data: alarmed 100/100, median|log(p/r)| 0.21
+ cu/co= 2 cover(target 0.67): fixed90=0.88 tau_static=0.67 tau_cum=0.66 tau_roll=0.66 | cost: point=0.30 fixed90=0.30 tau_static=0.26 tau_cum=0.25 tau_roll=0.26 | fixed90-tau_cum +0.04[+0.02,+0.07] | roll-cum +0.00[+0.00,+0.00]
+ cu/co= 5 cover(target 0.83): fixed90=0.88 tau_static=0.81 tau_cum=0.82 tau_roll=0.83 | cost: point=0.63 fixed90=0.34 tau_static=0.33 tau_cum=0.32 tau_roll=0.32 | fixed90-tau_cum +0.02[-0.00,+0.03] | roll-cum +0.00[-0.00,+0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.88 tau_static=0.90 tau_cum=0.90 tau_roll=0.90 | cost: point=1.17 fixed90=0.40 tau_static=0.41 tau_cum=0.40 tau_roll=0.40 | fixed90-tau_cum +0.00[-0.01,+0.02] | roll-cum +0.00[-0.00,+0.01]
+ cu/co=20 cover(target 0.95): fixed90=0.88 tau_static=0.95 tau_cum=0.94 tau_roll=0.95 | cost: point=2.25 fixed90=0.53 tau_static=0.49 tau_cum=0.47 tau_roll=0.47 | fixed90-tau_cum +0.06[-0.02,+0.16] | roll-cum +0.00[-0.01,+0.01]
+
+=== FD001 P0=30 stream=random model=hybrid: alarmed 100/100, median|log(p/r)| 0.23
+ cu/co= 2 cover(target 0.67): fixed90=0.88 tau_static=0.66 tau_cum=0.66 tau_roll=0.65 | cost: point=0.38 fixed90=0.31 tau_static=0.27 tau_cum=0.26 tau_roll=0.26 | fixed90-tau_cum +0.05[+0.02,+0.09] | roll-cum +0.00[+0.00,+0.00]
+ cu/co= 5 cover(target 0.83): fixed90=0.88 tau_static=0.81 tau_cum=0.82 tau_roll=0.83 | cost: point=0.86 fixed90=0.34 tau_static=0.34 tau_cum=0.33 tau_roll=0.33 | fixed90-tau_cum +0.01[-0.00,+0.03] | roll-cum +0.00[+0.00,+0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.88 tau_static=0.91 tau_cum=0.90 tau_roll=0.90 | cost: point=1.67 fixed90=0.38 tau_static=0.38 tau_cum=0.38 tau_roll=0.38 | fixed90-tau_cum +0.00[-0.01,+0.02] | roll-cum -0.00[-0.00,+0.00]
+ cu/co=20 cover(target 0.95): fixed90=0.88 tau_static=0.95 tau_cum=0.94 tau_roll=0.95 | cost: point=3.28 fixed90=0.47 tau_static=0.42 tau_cum=0.40 tau_roll=0.40 | fixed90-tau_cum +0.07[+0.01,+0.14] | roll-cum +0.00[+0.00,+0.01]
+--- paired hybrid-data (tau_cum cost; negative favours hybrid) FD001 P0=30 random
+ cu/co= 2: +0.004 [-0.020,+0.029]
+ cu/co= 5: +0.005 [-0.031,+0.040]
+ cu/co=10: -0.023 [-0.076,+0.024]
+ cu/co=20: -0.072 [-0.135,-0.016]
+
+=== FD001 P0=30 stream=drift model=data: alarmed 100/100, median|log(p/r)| 0.21
+ cu/co= 2 cover(target 0.67): fixed90=0.92 tau_static=0.87 tau_cum=0.79 tau_roll=0.73 | cost: point=0.30 fixed90=0.32 tau_static=0.27 tau_cum=0.25 tau_roll=0.25 | fixed90-tau_cum +0.06[+0.04,+0.08] | roll-cum +0.00[-0.01,+0.01]
+ cu/co= 5 cover(target 0.83): fixed90=0.92 tau_static=0.95 tau_cum=0.91 tau_roll=0.88 | cost: point=0.63 fixed90=0.34 tau_static=0.36 tau_cum=0.33 tau_roll=0.32 | fixed90-tau_cum +0.01[-0.00,+0.03] | roll-cum -0.00[-0.01,+0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.92 tau_static=0.98 tau_cum=0.96 tau_roll=0.94 | cost: point=1.17 fixed90=0.38 tau_static=0.44 tau_cum=0.39 tau_roll=0.38 | fixed90-tau_cum -0.01[-0.03,+0.01] | roll-cum -0.01[-0.03,+0.01]
+ cu/co=20 cover(target 0.95): fixed90=0.92 tau_static=0.99 tau_cum=0.98 tau_roll=0.97 | cost: point=2.25 fixed90=0.46 tau_static=0.50 tau_cum=0.45 tau_roll=0.45 | fixed90-tau_cum +0.01[-0.06,+0.10] | roll-cum -0.00[-0.02,+0.03]
+
+=== FD001 P0=30 stream=drift model=hybrid: alarmed 100/100, median|log(p/r)| 0.23
+ cu/co= 2 cover(target 0.67): fixed90=0.92 tau_static=0.84 tau_cum=0.77 tau_roll=0.72 | cost: point=0.38 fixed90=0.32 tau_static=0.28 tau_cum=0.26 tau_roll=0.26 | fixed90-tau_cum +0.06[+0.03,+0.08] | roll-cum -0.00[-0.01,+0.01]
+ cu/co= 5 cover(target 0.83): fixed90=0.92 tau_static=0.93 tau_cum=0.89 tau_roll=0.88 | cost: point=0.86 fixed90=0.33 tau_static=0.35 tau_cum=0.33 tau_roll=0.33 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum -0.00[-0.01,+0.01]
+ cu/co=10 cover(target 0.91): fixed90=0.92 tau_static=0.96 tau_cum=0.95 tau_roll=0.93 | cost: point=1.67 fixed90=0.36 tau_static=0.37 tau_cum=0.36 tau_roll=0.36 | fixed90-tau_cum -0.00[-0.02,+0.02] | roll-cum -0.00[-0.02,+0.02]
+ cu/co=20 cover(target 0.95): fixed90=0.92 tau_static=0.99 tau_cum=0.96 tau_roll=0.96 | cost: point=3.28 fixed90=0.42 tau_static=0.44 tau_cum=0.39 tau_roll=0.40 | fixed90-tau_cum +0.03[-0.02,+0.10] | roll-cum +0.01[-0.00,+0.02]
+--- paired hybrid-data (tau_cum cost; negative favours hybrid) FD001 P0=30 drift
+ cu/co= 2: +0.009 [-0.014,+0.032]
+ cu/co= 5: +0.002 [-0.028,+0.032]
+ cu/co=10: -0.030 [-0.068,+0.007]
+ cu/co=20: -0.065 [-0.105,-0.029]
+
+=== FD001 P0=60 stream=random model=data: alarmed 100/100, median|log(p/r)| 0.21
+ cu/co= 2 cover(target 0.67): fixed90=0.88 tau_static=0.67 tau_cum=0.66 tau_roll=0.66 | cost: point=0.36 fixed90=0.33 tau_static=0.27 tau_cum=0.27 tau_roll=0.27 | fixed90-tau_cum +0.07[+0.03,+0.10] | roll-cum +0.00[+0.00,+0.00]
+ cu/co= 5 cover(target 0.83): fixed90=0.88 tau_static=0.82 tau_cum=0.83 tau_roll=0.83 | cost: point=0.78 fixed90=0.36 tau_static=0.36 tau_cum=0.35 tau_roll=0.35 | fixed90-tau_cum +0.01[-0.01,+0.03] | roll-cum +0.00[+0.00,+0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.88 tau_static=0.91 tau_cum=0.91 tau_roll=0.91 | cost: point=1.47 fixed90=0.41 tau_static=0.41 tau_cum=0.40 tau_roll=0.41 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum +0.00[-0.00,+0.00]
+ cu/co=20 cover(target 0.95): fixed90=0.88 tau_static=0.96 tau_cum=0.94 tau_roll=0.95 | cost: point=2.87 fixed90=0.50 tau_static=0.45 tau_cum=0.43 tau_roll=0.44 | fixed90-tau_cum +0.07[-0.00,+0.14] | roll-cum +0.00[+0.00,+0.01]
+
+=== FD001 P0=60 stream=random model=hybrid: alarmed 100/100, median|log(p/r)| 0.30
+ cu/co= 2 cover(target 0.67): fixed90=0.88 tau_static=0.68 tau_cum=0.67 tau_roll=0.66 | cost: point=0.48 fixed90=0.34 tau_static=0.29 tau_cum=0.28 tau_roll=0.28 | fixed90-tau_cum +0.06[+0.02,+0.09] | roll-cum +0.00[+0.00,+0.00]
+ cu/co= 5 cover(target 0.83): fixed90=0.88 tau_static=0.82 tau_cum=0.83 tau_roll=0.83 | cost: point=1.11 fixed90=0.36 tau_static=0.36 tau_cum=0.35 tau_roll=0.35 | fixed90-tau_cum +0.01[-0.01,+0.02] | roll-cum +0.00[+0.00,+0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.88 tau_static=0.92 tau_cum=0.91 tau_roll=0.90 | cost: point=2.16 fixed90=0.39 tau_static=0.39 tau_cum=0.38 tau_roll=0.38 | fixed90-tau_cum +0.01[-0.00,+0.03] | roll-cum +0.00[+0.00,+0.01]
+ cu/co=20 cover(target 0.95): fixed90=0.88 tau_static=0.96 tau_cum=0.95 tau_roll=0.95 | cost: point=4.26 fixed90=0.46 tau_static=0.42 tau_cum=0.40 tau_roll=0.41 | fixed90-tau_cum +0.06[+0.01,+0.11] | roll-cum +0.01[+0.00,+0.01]
+--- paired hybrid-data (tau_cum cost; negative favours hybrid) FD001 P0=60 random
+ cu/co= 2: +0.016 [-0.020,+0.051]
+ cu/co= 5: +0.002 [-0.040,+0.043]
+ cu/co=10: -0.022 [-0.067,+0.023]
+ cu/co=20: -0.030 [-0.077,+0.016]
+
+=== FD001 P0=60 stream=drift model=data: alarmed 100/100, median|log(p/r)| 0.21
+ cu/co= 2 cover(target 0.67): fixed90=0.93 tau_static=0.89 tau_cum=0.84 tau_roll=0.78 | cost: point=0.36 fixed90=0.33 tau_static=0.31 tau_cum=0.26 tau_roll=0.25 | fixed90-tau_cum +0.07[+0.04,+0.09] | roll-cum -0.02[-0.03,-0.01]
+ cu/co= 5 cover(target 0.83): fixed90=0.93 tau_static=0.94 tau_cum=0.92 tau_roll=0.89 | cost: point=0.78 fixed90=0.35 tau_static=0.38 tau_cum=0.35 tau_roll=0.33 | fixed90-tau_cum -0.00[-0.02,+0.01] | roll-cum -0.02[-0.04,-0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.93 tau_static=0.98 tau_cum=0.96 tau_roll=0.94 | cost: point=1.47 fixed90=0.37 tau_static=0.42 tau_cum=0.39 tau_roll=0.38 | fixed90-tau_cum -0.02[-0.05,+0.02] | roll-cum -0.02[-0.04,+0.01]
+ cu/co=20 cover(target 0.95): fixed90=0.93 tau_static=0.99 tau_cum=0.99 tau_roll=0.97 | cost: point=2.87 fixed90=0.43 tau_static=0.46 tau_cum=0.42 tau_roll=0.42 | fixed90-tau_cum +0.00[-0.06,+0.08] | roll-cum -0.00[-0.02,+0.02]
+
+=== FD001 P0=60 stream=drift model=hybrid: alarmed 100/100, median|log(p/r)| 0.30
+ cu/co= 2 cover(target 0.67): fixed90=0.92 tau_static=0.88 tau_cum=0.85 tau_roll=0.78 | cost: point=0.48 fixed90=0.33 tau_static=0.31 tau_cum=0.28 tau_roll=0.26 | fixed90-tau_cum +0.05[+0.03,+0.07] | roll-cum -0.02[-0.03,-0.01]
+ cu/co= 5 cover(target 0.83): fixed90=0.92 tau_static=0.92 tau_cum=0.91 tau_roll=0.88 | cost: point=1.11 fixed90=0.34 tau_static=0.36 tau_cum=0.35 tau_roll=0.33 | fixed90-tau_cum -0.00[-0.01,+0.01] | roll-cum -0.02[-0.03,-0.00]
+ cu/co=10 cover(target 0.91): fixed90=0.92 tau_static=0.97 tau_cum=0.95 tau_roll=0.94 | cost: point=2.16 fixed90=0.37 tau_static=0.40 tau_cum=0.38 tau_roll=0.37 | fixed90-tau_cum -0.01[-0.03,+0.02] | roll-cum -0.00[-0.02,+0.02]
+ cu/co=20 cover(target 0.95): fixed90=0.92 tau_static=0.99 tau_cum=0.99 tau_roll=0.97 | cost: point=4.26 fixed90=0.41 tau_static=0.43 tau_cum=0.40 tau_roll=0.40 | fixed90-tau_cum +0.01[-0.04,+0.07] | roll-cum +0.00[-0.01,+0.02]
+--- paired hybrid-data (tau_cum cost; negative favours hybrid) FD001 P0=60 drift
+ cu/co= 2: +0.016 [-0.016,+0.047]
+ cu/co= 5: +0.001 [-0.034,+0.035]
+ cu/co=10: -0.017 [-0.053,+0.018]
+ cu/co=20: -0.019 [-0.054,+0.015]
