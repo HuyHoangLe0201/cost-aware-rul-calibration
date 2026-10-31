@@ -1,0 +1,8 @@
+FD001 c_u/c_o= 2: mean 0.232, SD over orders 0.010, SE of the mean over 150 orders 0.0008
+FD001 c_u/c_o=20: mean 0.365, SD over orders 0.018, SE of the mean over 150 orders 0.0015
+FD002 c_u/c_o= 2: mean 0.287, SD over orders 0.004, SE of the mean over 150 orders 0.0004
+FD002 c_u/c_o=20: mean 0.429, SD over orders 0.007, SE of the mean over 150 orders 0.0006
+FD003 c_u/c_o= 2: mean 0.229, SD over orders 0.009, SE of the mean over 150 orders 0.0007
+FD003 c_u/c_o=20: mean 0.375, SD over orders 0.020, SE of the mean over 150 orders 0.0016
+FD004 c_u/c_o= 2: mean 0.291, SD over orders 0.007, SE of the mean over 150 orders 0.0005
+FD004 c_u/c_o=20: mean 0.434, SD over orders 0.009, SE of the mean over 150 orders 0.0007

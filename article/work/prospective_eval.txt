@@ -1,0 +1,56 @@
+FD001 split 0: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 17.5
+FD001 split 1: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 16.4
+FD001 split 2: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 17.5
+FD001 split 3: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 16.3
+FD001 split 4: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 17.5
+=== FD001: mean over 5 splits, evaluation fleet of 50 alarmed units on average
+ c_u/c_o= 2 (target coverage 0.67):  point 0.302/0.38 | fixed90 0.295/0.88 | gauss 0.243/0.65 | static 0.248/0.67 | cum 0.244/0.65 | roll 0.244/0.65
+        closed loop: oracle 0.244/0.64 | naive 0.244/0.69 | drop 0.249/0.74 | kaplan-meier 0.245/0.64
+ c_u/c_o= 5 (target coverage 0.83):  point 0.628/0.38 | fixed90 0.323/0.88 | gauss 0.311/0.83 | static 0.320/0.80 | cum 0.313/0.81 | roll 0.313/0.82
+        closed loop: oracle 0.314/0.81 | naive 0.315/0.84 | drop 0.322/0.87 | kaplan-meier 0.315/0.81
+ c_u/c_o=10 (target coverage 0.91):  point 1.171/0.38 | fixed90 0.368/0.88 | gauss 0.359/0.90 | static 0.363/0.90 | cum 0.364/0.89 | roll 0.363/0.89
+        closed loop: oracle 0.364/0.89 | naive 0.356/0.91 | drop 0.354/0.93 | kaplan-meier 0.364/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.257/0.38 | fixed90 0.458/0.88 | gauss 0.399/0.94 | static 0.424/0.95 | cum 0.392/0.93 | roll 0.391/0.94
+        closed loop: oracle 0.393/0.93 | naive 0.417/0.95 | drop 0.417/0.95 | kaplan-meier 0.398/0.93
+FD003 split 0: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 13.7
+FD003 split 1: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 14.6
+FD003 split 2: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 13.7
+FD003 split 3: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 14.5
+FD003 split 4: train 50 / evaluation 50 engines, 50 alarmed, held-out RMSE 14.2
+=== FD003: mean over 5 splits, evaluation fleet of 50 alarmed units on average
+ c_u/c_o= 2 (target coverage 0.67):  point 0.325/0.34 | fixed90 0.278/0.88 | gauss 0.240/0.64 | static 0.245/0.68 | cum 0.244/0.67 | roll 0.244/0.66
+        closed loop: oracle 0.248/0.66 | naive 0.246/0.70 | drop 0.249/0.75 | kaplan-meier 0.248/0.65
+ c_u/c_o= 5 (target coverage 0.83):  point 0.712/0.34 | fixed90 0.302/0.88 | gauss 0.292/0.83 | static 0.298/0.81 | cum 0.293/0.82 | roll 0.293/0.82
+        closed loop: oracle 0.296/0.83 | naive 0.299/0.85 | drop 0.308/0.88 | kaplan-meier 0.296/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.355/0.34 | fixed90 0.342/0.88 | gauss 0.332/0.91 | static 0.344/0.91 | cum 0.342/0.90 | roll 0.341/0.90
+        closed loop: oracle 0.346/0.90 | naive 0.344/0.92 | drop 0.344/0.93 | kaplan-meier 0.345/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.642/0.34 | fixed90 0.422/0.88 | gauss 0.364/0.95 | static 0.384/0.95 | cum 0.374/0.94 | roll 0.370/0.94
+        closed loop: oracle 0.378/0.94 | naive 0.378/0.96 | drop 0.378/0.96 | kaplan-meier 0.379/0.93
+FD002 split 0: train 130 / evaluation 130 engines, 130 alarmed, held-out RMSE 17.3
+FD002 split 1: train 130 / evaluation 130 engines, 130 alarmed, held-out RMSE 17.5
+FD002 split 2: train 130 / evaluation 130 engines, 130 alarmed, held-out RMSE 17.8
+FD002 split 3: train 130 / evaluation 130 engines, 130 alarmed, held-out RMSE 17.4
+FD002 split 4: train 130 / evaluation 130 engines, 130 alarmed, held-out RMSE 17.1
+=== FD002: mean over 5 splits, evaluation fleet of 130 alarmed units on average
+ c_u/c_o= 2 (target coverage 0.67):  point 0.367/0.37 | fixed90 0.325/0.88 | gauss 0.277/0.64 | static 0.284/0.66 | cum 0.278/0.66 | roll 0.279/0.66
+        closed loop: oracle 0.277/0.66 | naive 0.279/0.71 | drop 0.306/0.83 | kaplan-meier 0.277/0.65
+ c_u/c_o= 5 (target coverage 0.83):  point 0.772/0.37 | fixed90 0.354/0.88 | gauss 0.344/0.83 | static 0.357/0.80 | cum 0.346/0.82 | roll 0.349/0.83
+        closed loop: oracle 0.346/0.82 | naive 0.350/0.86 | drop 0.375/0.92 | kaplan-meier 0.346/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.447/0.37 | fixed90 0.400/0.88 | gauss 0.389/0.91 | static 0.405/0.90 | cum 0.392/0.90 | roll 0.396/0.90
+        closed loop: oracle 0.390/0.90 | naive 0.397/0.93 | drop 0.415/0.96 | kaplan-meier 0.392/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.798/0.37 | fixed90 0.494/0.88 | gauss 0.429/0.95 | static 0.457/0.95 | cum 0.440/0.94 | roll 0.444/0.95
+        closed loop: oracle 0.438/0.94 | naive 0.444/0.97 | drop 0.448/0.97 | kaplan-meier 0.440/0.94
+FD004 split 0: train 124 / evaluation 125 engines, 125 alarmed, held-out RMSE 16.9
+FD004 split 1: train 124 / evaluation 125 engines, 125 alarmed, held-out RMSE 17.9
+FD004 split 2: train 124 / evaluation 125 engines, 125 alarmed, held-out RMSE 17.1
+FD004 split 3: train 124 / evaluation 125 engines, 125 alarmed, held-out RMSE 16.3
+FD004 split 4: train 124 / evaluation 125 engines, 125 alarmed, held-out RMSE 16.8
+=== FD004: mean over 5 splits, evaluation fleet of 125 alarmed units on average
+ c_u/c_o= 2 (target coverage 0.67):  point 0.404/0.32 | fixed90 0.345/0.88 | gauss 0.292/0.66 | static 0.298/0.66 | cum 0.292/0.66 | roll 0.294/0.66
+        closed loop: oracle 0.292/0.67 | naive 0.297/0.72 | drop 0.327/0.83 | kaplan-meier 0.293/0.66
+ c_u/c_o= 5 (target coverage 0.83):  point 0.840/0.32 | fixed90 0.372/0.88 | gauss 0.363/0.84 | static 0.374/0.80 | cum 0.367/0.82 | roll 0.369/0.83
+        closed loop: oracle 0.367/0.83 | naive 0.370/0.87 | drop 0.395/0.93 | kaplan-meier 0.367/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.567/0.32 | fixed90 0.419/0.88 | gauss 0.409/0.92 | static 0.424/0.91 | cum 0.410/0.90 | roll 0.415/0.90
+        closed loop: oracle 0.410/0.90 | naive 0.420/0.94 | drop 0.437/0.96 | kaplan-meier 0.411/0.90
+ c_u/c_o=20 (target coverage 0.95):  point 3.022/0.32 | fixed90 0.511/0.88 | gauss 0.451/0.96 | static 0.478/0.95 | cum 0.459/0.94 | roll 0.462/0.95
+        closed loop: oracle 0.458/0.95 | naive 0.467/0.97 | drop 0.471/0.97 | kaplan-meier 0.460/0.94

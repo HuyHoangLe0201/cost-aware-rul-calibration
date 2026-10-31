@@ -7,6 +7,7 @@
 #   figures      all matplotlib figures -> figs/                                     <1 min, needs suite + r3
 #   train-cmapss re-train the C-MAPSS predictors (out-of-fold)                        hours, needs C-MAPSS
 #   countdown    countdown-constraint experiment (Table 7, Fig. 9) and its two variants  ~5 min per fleet, needs C-MAPSS
+#   robustness   checks added after review: independence of p and rho, biased initial pool, fixed predictor on a disjoint fleet, regimes   needs C-MAPSS
 #   pronostia    PRONOSTIA features, predictors and the null control                  hours, needs PRONOSTIA
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -42,8 +43,14 @@ case "${1:-}" in
   countdown)      # needs CMAPSS_DIR; the variants are the ones cited in Sec. 6 (threefold weight, later truncation)
              for ds in FD001 FD003; do $PY src/semisup_physics.py $ds > "$WORK/semisup_$ds.log"; done
              LAM=3 TAG=_lam3 $PY src/semisup_physics.py FD001 > "$WORK/semisup_FD001_lam3.log"
+             for ds in FD001 FD003; do CUTAGE=40,160 TAG=_age $PY src/semisup_physics.py $ds > "$WORK/semisup_${ds}_age.log"; done   # cut-off age independent of the life
              TLO=0.5 THI=0.95 TAG=_late $PY src/semisup_physics.py FD001 > "$WORK/semisup_FD001_late.log"
              for ds in FD001 FD003; do $PY src/semisup_oof.py $ds; done ;;
+  robustness)     # needs CMAPSS_DIR for regime_reliability and prospective_eval (training); the other scripts use the shipped predictions
+             $PY src/sensitivity_a0.py > "$WORK/sensitivity_a0.txt"; $PY src/adversarial_init.py > "$WORK/adversarial_init.txt"
+             $PY src/order_variability.py > "$WORK/order_variability.txt"; $PY src/regime_reliability.py > "$WORK/regime_reliability.txt"
+             $PY src/paired_common_alarms.py > "$WORK/paired_common_alarms.txt"
+             for ds in FD001 FD003 FD002 FD004; do $PY src/prospective_eval.py $ds; done > "$WORK/prospective_eval.txt" ;;
   pronostia)      # needs PRONOSTIA_DIR
              $PY src/extract_features2.py; $PY src/extract_faultfreq.py; $PY src/extract_envspec.py
              $PY src/pron_physfeat.py; $PY src/pron_control.py ;;

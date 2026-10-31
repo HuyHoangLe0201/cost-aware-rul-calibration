@@ -175,13 +175,13 @@ for j, f in enumerate(("FD001", "FD003")):
     ax.fill_between(range(4), rm[f]["kin_unlab"], rm[f]["data"], where=[a > b for a, b in zip(rm[f]["kin_unlab"], rm[f]["data"])], color=ORANGE, alpha=0.18, lw=0)
     ax.set_xticks(range(4)); ax.set_xticklabels([str(v) for v in nl]); ax.set_xlabel("labelled engines $n_{\\mathrm{lab}}$"); panel(ax, f"({'ab'[j]}) {f}"); ax.grid(True, axis="y")
     if j == 0: ax.set_ylabel("held-out RMSE (cycles)")
-ax = fig.add_subplot(gs[0, 2]); ax.axhspan(0, 0.2, color="#f6e7e0", lw=0, zorder=0); ax.axhspan(-0.2, 0, color="#e1eefb", lw=0, zorder=0)
-d = {"FD001": ([5, 10, 20], [-.002, .049, .002], [-.061, .009, -.040], [.054, .091, .043]), "FD003": ([10, 20], [.056, .043], [.013, .009], [.103, .078])}   # results_fleet_ss*_FD00x.txt, c_u/c_o=5
+ax = fig.add_subplot(gs[0, 2]); ax.axhspan(0, 0.25, color="#f6e7e0", lw=0, zorder=0); ax.axhspan(-0.2, 0, color="#e1eefb", lw=0, zorder=0)
+d = {"FD001": ([5, 10, 20], [-.002, .049, .002], [-.061, .009, -.040], [.054, .091, .043]), "FD003": ([5, 10, 20], [-.068, .056, .043], [-.179, .013, .009], [.019, .103, .078])}   # paired_common_alarms.txt (engines alarmed by both models), c_u/c_o=5
 for i, (k, (x, m, lo, hi)) in enumerate(d.items()):
     c = BLUE if i == 0 else ORANGE; xx = np.array([{5: 0, 10: 1, 20: 2}[v] for v in x]) + (-0.08 if i == 0 else 0.08); m, lo, hi = map(np.array, (m, lo, hi))
     ax.errorbar(xx, m, yerr=[m - lo, hi - m], color=c, marker="o" if i == 0 else "s", ms=5, lw=1.4, capsize=3, capthick=1.0, mec="white", mew=0.6, zorder=3, label=k)
-ax.axhline(0, color="#52514e", lw=0.8); ax.set_xticks([0, 1, 2]); ax.set_xticklabels(["5", "10", "20"]); ax.set_xlim(-0.4, 2.4); ax.set_ylim(-0.085, 0.13); ax.set_xlabel("labelled engines $n_{\\mathrm{lab}}$"); ax.set_ylabel("extra cost / $P_0$"); panel(ax, "(c) decision cost"); ax.grid(True, axis="y")
-ax.text(2.38, 0.122, "worse", ha="right", va="top", color="#a14a2a"); ax.text(2.38, -0.078, "better", ha="right", va="bottom", color="#2a5d9a"); ax.legend(loc="center left", bbox_to_anchor=(0.0, 0.78), handlelength=1.4, borderaxespad=0.2)
+ax.axhline(0, color="#52514e", lw=0.8); ax.set_xticks([0, 1, 2]); ax.set_xticklabels(["5", "10", "20"]); ax.set_xlim(-0.4, 2.4); ax.set_ylim(-0.2, 0.19); ax.set_xlabel("labelled engines $n_{\\mathrm{lab}}$"); ax.set_ylabel("extra cost / $P_0$"); panel(ax, "(c) decision cost"); ax.grid(True, axis="y")
+ax.text(2.38, 0.185, "worse", ha="right", va="top", color="#a14a2a"); ax.text(2.38, -0.195, "better", ha="right", va="bottom", color="#2a5d9a"); ax.legend(loc="upper left", bbox_to_anchor=(0.0, 1.0), ncol=2, handlelength=1.4, columnspacing=0.8, borderaxespad=0.3)
 fig.legend(handles=[Line2D([], [], color=GREY, lw=1.4, ls="--", marker="v", ms=5, label="data only"), Line2D([], [], color=ORANGE, lw=1.4, ls="-.", marker="s", ms=5, label="constraint, labelled only"), Line2D([], [], color=BLUE, lw=2.0, marker="o", ms=5, label="constraint, + unlabelled")], loc="outside upper center", ncol=3, handlelength=2.0, columnspacing=1.5)
 save(fig, "fig_label_scarcity")
 print("ok")

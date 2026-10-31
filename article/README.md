@@ -41,6 +41,7 @@ export CMAPSS_DIR=/path/to/dir/with/train_FD001.txt
 export PRONOSTIA_DIR=/path/to/phm-ieee-2012-data-challenge-dataset   # contains Learning_set/ and Full_Test_Set/
 ./reproduce.sh train-cmapss
 ./reproduce.sh countdown
+./reproduce.sh robustness
 ./reproduce.sh pronostia
 ```
 
@@ -66,7 +67,11 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Tables 3, 4 (censoring, Kaplan-Meier) | `src/censor_eval.py`, `src/censor_ci.py` | `results_censor_*.txt`, `results_censor_ci.txt` |
 | Sec. 5.3 and Fig. 8 (theory checks) | `src/verify_theory.py`, `src/check_const.py` | printed output; `fig8_stats.json` |
 | Table 6 (seven physics mechanisms) | `src/explore_physics.py`, `src/explore_timescale.py`, `src/physics_eval.py`, `src/semisup_physics.py`, `src/semisup_oof.py`, `src/ssm_physics.py`, `src/pron_physfeat.py`, `src/pron_control.py` | `semisup_*.log`, `results_fleet_ss*.txt`, `ssm_sens_FD001.log`, `pron_control.log`, `results_pron_*.txt` |
-| Table 7 and Fig. 9 (countdown constraint) | `src/semisup_physics.py`, `src/semisup_oof.py`, `src/fleet_eval.py` | `semisup_FD00*.log` (default, `_lam3` threefold weight, `_late` later truncation), `results_fleet_ss*.txt` |
+| Sec. 5.4 stress test (biased initial pool) | `src/adversarial_init.py` | `adversarial_init.txt` |
+| Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
+| Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
+| Fig. 9c (paired on engines alarmed by both models); Monte Carlo error over stream orders | `src/paired_common_alarms.py`, `src/order_variability.py` | `paired_common_alarms.txt`, `order_variability.txt` |
+| Table 7 and Fig. 9 (countdown constraint) | `src/semisup_physics.py`, `src/semisup_oof.py`, `src/fleet_eval.py` | `semisup_FD00*.log` (default, `_lam3` threefold weight, `_late` later truncation, `_age` cut-off age independent of the life), `results_fleet_ss*.txt` |
 | PRONOSTIA pilot | `src/extract_features*.py`, `src/extract_faultfreq.py`, `src/extract_envspec.py`, `src/train_oof*.py`, `src/decision_eval*.py` | `features*.npz`, `envspec.npz`, `oof_pron_*.npz` |
 
 Notes on files whose origin is not a single script: `fold_repeat.json` and `fold_repeat3.json` summarise the repeated fold partitions (`r3/s0_*`, `r3/fs1_*`, `r3/fs2_*`) and were aggregated by hand; some numbers in `src/make_figures.py` are copied from named logs, as stated in its header.
@@ -78,7 +83,9 @@ The package was assembled from the working directory of the study and then run f
 * `./reproduce.sh theory`, `censoring`, `suite`, `figures` and `decisions` (run end to end from the shipped `work/`) reproduce **all** shipped results byte for byte or exactly: the 7 censoring result files (including the variants with N0 = 5 and 10 and the bootstrap intervals), the 29 `suite/*.pkl` files, the 17 `r3/*.txt` files and the 8 matplotlib figures of the article (PNG, Figs. 2-9). `verify_theory.py` and `check_const.py` give the slope (-0.57) and the constants (0.216 at c_u/c_o = 2) quoted in the article.
 * Re-training from the raw data was checked on **FD001** and on the PRONOSTIA features: the MLP and Paris-law hybrid (`cmapss_train.py`), also for the second fold partition (`FOLDSEED=1`), and the wear-law state-space model (`ssm_physics.py FD001 3 1.5`) agree with the shipped predictions to 1e-6 (float32 rounding); ridge, Hist-GB, random forest, GRU (`cmapss_baselines.py`), the 1D-CNN (`cmapss_cnn.py`) and the semi-supervised countdown model (`semisup_oof.py FD001`) agree exactly; the PRONOSTIA features (`extract_features2.py`, `extract_faultfreq.py`) agree exactly; the countdown-constraint experiment on FD001 (`semisup_physics.py`, default and the two variants `LAM=3 TAG=_lam3` and `TLO=0.5 THI=0.95 TAG=_late` cited in Sec. 6) reproduces the logged numbers (only the header line of the default log differs, because the print format was later extended).
 
-Not re-run for this check: FD002-FD004 re-training, the other fold partitions, and the PRONOSTIA predictors and null control (`train_oof*.py`, `pron_physfeat.py`, `pron_control.py`); their results are shipped as computed. Results may differ in the last digits with other library versions or CPU architectures.
+* The robustness checks of Sections 5.4, 5.7 and 5.8 and the pairing of Fig. 9c (`sensitivity_a0.py`, `adversarial_init.py`, `order_variability.py`, `regime_reliability.py`, `paired_common_alarms.py`, and `prospective_eval.py` on FD001, which retrains the predictor) reproduce the stored outputs exactly.
+
+Not re-run for this check: FD002-FD004 re-training, the other fold partitions, `prospective_eval.py` on FD002-FD004, and the PRONOSTIA predictors and null control (`train_oof*.py`, `pron_physfeat.py`, `pron_control.py`); their results are shipped as computed. Results may differ in the last digits with other library versions or CPU architectures.
 
 ## License
 

@@ -10,3 +10,4 @@ FIGS = os.environ.get("RUL_FIGS", os.path.join(REPO, "figs"))
 CMAPSS_ROOT = os.environ.get("CMAPSS_DIR", os.path.join(REPO, "data", "cmapss")).rstrip("/") + "/"
 PRON_ROOT = os.environ.get("PRONOSTIA_DIR", os.path.join(REPO, "data", "pronostia"))
 os.makedirs(WORK, exist_ok=True); os.makedirs(FIGS, exist_ok=True)
+import sys; sys.path.insert(0, os.path.dirname(REPO))        # lets the scripts import the rulcost package of this repository

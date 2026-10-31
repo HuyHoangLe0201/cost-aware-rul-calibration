@@ -17,6 +17,7 @@ torch.set_num_threads(1)
 import os
 D, CLIP, EPOCHS = 10, 125, 250
 LAM = float(os.environ.get("LAM", 1.0)); TLO = float(os.environ.get("TLO", 0.3)); THI = float(os.environ.get("THI", 0.7)); TAG = os.environ.get("TAG", "")
+CUTAGE = tuple(float(x) for x in os.environ["CUTAGE"].split(",")) if os.environ.get("CUTAGE") else None   # truncate unlabelled engines at an AGE drawn independently of their life
 ids = C.ids; data = C.data
 
 class Net(nn.Module):
@@ -37,7 +38,7 @@ def task(a):
     XL = norm(Xl); yL = torch.tensor(np.log(np.minimum(np.concatenate([data[e][1] for e in lab]), CLIP)), dtype=torch.float32)
     iL = pairs([len(data[e][1]) for e in lab]); mL = torch.tensor(np.concatenate([data[e][1][:len(data[e][1]) - D] for e in lab]) <= CLIP - D, dtype=torch.float32)
     # unlabeled, truncated engines
-    ut = [(e, max(D + 5, int(rng.uniform(TLO, THI) * len(data[e][1])))) for e in unl]
+    ut = [(e, max(D + 5, int(rng.uniform(TLO, THI) * len(data[e][1])))) for e in unl] if not CUTAGE else [(e, max(D + 5, min(int(rng.uniform(*CUTAGE)), len(data[e][1]) - 1))) for e in unl]
     XU = norm(np.vstack([data[e][0][:n] for e, n in ut])) if ut else None; iU = pairs([n for _, n in ut]) if ut else None
     net = Net(XL.shape[1]); opt = torch.optim.Adam(net.parameters(), 3e-3, weight_decay=1e-4)
     for ep in range(EPOCHS):
@@ -70,7 +71,7 @@ if __name__ == "__main__":
     np.save(f"{WORK}/semisup_{DS}{TAG}.npy", R, allow_pickle=True)
     def boot(x, B=4000):
         r = np.random.default_rng(0); idx = r.integers(0, len(x), (B, len(x))); s = x[idx].mean(1); return x.mean(), *np.percentile(s, [2.5, 97.5])
-    print(f"{DS}{TAG} (LAM={LAM}, trunc U({TLO},{THI})) semi-supervised physics (RMSE of clipped RUL on 20 held-out engines; mean over 5 folds x 2 reps); time {round(time.time()-t0)} s")
+    print(f"{DS}{TAG} (LAM={LAM}, trunc " + (f"age U{CUTAGE}" if CUTAGE else f"U({TLO},{THI})") + f") semi-supervised physics (RMSE of clipped RUL on 20 held-out engines; mean over 5 folds x 2 reps); time {round(time.time()-t0)} s")
     for n in (5, 10, 20, 40):
         keys = [(f, rep) for f in range(5) for rep in range(2)]
         g = lambda v, j: np.array([R[(v, f, rep, n)][j] for f, rep in keys])

@@ -1,0 +1,5 @@
+FD003_age (LAM=1.0, trunc age U(40.0, 160.0)) semi-supervised physics (RMSE of clipped RUL on 20 held-out engines; mean over 5 folds x 2 reps); time 76 s
+n_lab= 5: RMSE data 26.52 kin_lab 27.25 kin_unlab 19.84 | gain data-kin_unlab +6.68 [+1.31,+13.42] | gain kin_lab-kin_unlab +7.41 [+1.56,+15.71] | median|log err| data 0.368 kin_unlab 0.308
+n_lab=10: RMSE data 24.34 kin_lab 24.83 kin_unlab 20.80 | gain data-kin_unlab +3.55 [-0.10,+8.96] | gain kin_lab-kin_unlab +4.04 [+0.43,+10.15] | median|log err| data 0.294 kin_unlab 0.278
+n_lab=20: RMSE data 16.13 kin_lab 16.79 kin_unlab 16.01 | gain data-kin_unlab +0.12 [-0.78,+1.05] | gain kin_lab-kin_unlab +0.78 [+0.22,+1.29] | median|log err| data 0.200 kin_unlab 0.200
+n_lab=40: RMSE data 14.63 kin_lab 16.17 kin_unlab 15.46 | gain data-kin_unlab -0.82 [-1.58,-0.01] | gain kin_lab-kin_unlab +0.71 [+0.08,+1.49] | median|log err| data 0.192 kin_unlab 0.196

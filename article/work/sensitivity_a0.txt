@@ -1,0 +1,52 @@
+=== FD001
+  article protocol (P0 = 60): n=100, p quantiles 0/5/50/95/100% = [46.3, 53.2, 57.9, 59.9, 60.0], Spearman(p, rho) = -0.01
+     c_u/c_o= 2: q ordinary 0.825, q p-weighted 0.825; p-weighted cost of ordinary vs weighted: 0.2378 vs 0.2378 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.748, q p-weighted 0.748; p-weighted cost of ordinary vs weighted: 0.3004 vs 0.3004 (+0.00%)
+     c_u/c_o=10: q ordinary 0.671, q p-weighted 0.671; p-weighted cost of ordinary vs weighted: 0.3396 vs 0.3396 (+0.00%)
+     c_u/c_o=20: q ordinary 0.634, q p-weighted 0.634; p-weighted cost of ordinary vs weighted: 0.3665 vs 0.3665 (+0.00%)
+  heterogeneous thresholds U(30, 90): n=100, p quantiles 0/5/50/95/100% = [26.3, 29.4, 55.4, 84.3, 89.5], Spearman(p, rho) = +0.07
+     c_u/c_o= 2: q ordinary 0.807, q p-weighted 0.807; p-weighted cost of ordinary vs weighted: 0.2561 vs 0.2561 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.735, q p-weighted 0.737; p-weighted cost of ordinary vs weighted: 0.3014 vs 0.3014 (+0.02%)
+     c_u/c_o=10: q ordinary 0.695, q p-weighted 0.695; p-weighted cost of ordinary vs weighted: 0.3322 vs 0.3322 (+0.00%)
+     c_u/c_o=20: q ordinary 0.640, q p-weighted 0.681; p-weighted cost of ordinary vs weighted: 0.3718 vs 0.3662 (+1.55%)
+     stream, heterogeneous, c_u/c_o= 2: total cost / total p: ordinary 0.2569, p-weighted 0.2572 (-0.14%)
+     stream, heterogeneous, c_u/c_o=20: total cost / total p: ordinary 0.3868, p-weighted 0.3810 (+1.52%)
+=== FD002
+  article protocol (P0 = 60): n=260, p quantiles 0/5/50/95/100% = [47.4, 51.8, 57.9, 59.9, 60.0], Spearman(p, rho) = +0.01
+     c_u/c_o= 2: q ordinary 0.800, q p-weighted 0.800; p-weighted cost of ordinary vs weighted: 0.2983 vs 0.2983 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.684, q p-weighted 0.684; p-weighted cost of ordinary vs weighted: 0.3687 vs 0.3687 (+0.00%)
+     c_u/c_o=10: q ordinary 0.620, q p-weighted 0.620; p-weighted cost of ordinary vs weighted: 0.4126 vs 0.4126 (+0.00%)
+     c_u/c_o=20: q ordinary 0.570, q p-weighted 0.570; p-weighted cost of ordinary vs weighted: 0.4418 vs 0.4418 (+0.00%)
+  heterogeneous thresholds U(30, 90): n=260, p quantiles 0/5/50/95/100% = [26.4, 30.8, 59.0, 84.3, 89.0], Spearman(p, rho) = +0.06
+     c_u/c_o= 2: q ordinary 0.807, q p-weighted 0.813; p-weighted cost of ordinary vs weighted: 0.3305 vs 0.3303 (+0.04%)
+     c_u/c_o= 5: q ordinary 0.690, q p-weighted 0.690; p-weighted cost of ordinary vs weighted: 0.4060 vs 0.4060 (+0.00%)
+     c_u/c_o=10: q ordinary 0.632, q p-weighted 0.631; p-weighted cost of ordinary vs weighted: 0.4523 vs 0.4523 (+0.00%)
+     c_u/c_o=20: q ordinary 0.582, q p-weighted 0.580; p-weighted cost of ordinary vs weighted: 0.4880 vs 0.4879 (+0.01%)
+     stream, heterogeneous, c_u/c_o= 2: total cost / total p: ordinary 0.3323, p-weighted 0.3328 (-0.15%)
+     stream, heterogeneous, c_u/c_o=20: total cost / total p: ordinary 0.4967, p-weighted 0.4987 (-0.41%)
+=== FD003
+  article protocol (P0 = 60): n=100, p quantiles 0/5/50/95/100% = [47.8, 53.0, 58.3, 59.9, 60.0], Spearman(p, rho) = -0.01
+     c_u/c_o= 2: q ordinary 0.846, q p-weighted 0.846; p-weighted cost of ordinary vs weighted: 0.2338 vs 0.2338 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.737, q p-weighted 0.737; p-weighted cost of ordinary vs weighted: 0.3043 vs 0.3043 (+0.00%)
+     c_u/c_o=10: q ordinary 0.663, q p-weighted 0.660; p-weighted cost of ordinary vs weighted: 0.3439 vs 0.3439 (+0.01%)
+     c_u/c_o=20: q ordinary 0.622, q p-weighted 0.622; p-weighted cost of ordinary vs weighted: 0.3740 vs 0.3740 (+0.00%)
+  heterogeneous thresholds U(30, 90): n=100, p quantiles 0/5/50/95/100% = [27.3, 30.0, 55.6, 84.8, 89.2], Spearman(p, rho) = -0.13
+     c_u/c_o= 2: q ordinary 0.881, q p-weighted 0.867; p-weighted cost of ordinary vs weighted: 0.2606 vs 0.2603 (+0.12%)
+     c_u/c_o= 5: q ordinary 0.768, q p-weighted 0.748; p-weighted cost of ordinary vs weighted: 0.3274 vs 0.3267 (+0.21%)
+     c_u/c_o=10: q ordinary 0.714, q p-weighted 0.695; p-weighted cost of ordinary vs weighted: 0.3642 vs 0.3607 (+0.97%)
+     c_u/c_o=20: q ordinary 0.669, q p-weighted 0.669; p-weighted cost of ordinary vs weighted: 0.3953 vs 0.3953 (+0.00%)
+     stream, heterogeneous, c_u/c_o= 2: total cost / total p: ordinary 0.2686, p-weighted 0.2686 (+0.01%)
+     stream, heterogeneous, c_u/c_o=20: total cost / total p: ordinary 0.4227, p-weighted 0.4194 (+0.78%)
+=== FD004
+  article protocol (P0 = 60): n=249, p quantiles 0/5/50/95/100% = [46.8, 51.2, 57.9, 59.8, 60.0], Spearman(p, rho) = -0.06
+     c_u/c_o= 2: q ordinary 0.786, q p-weighted 0.784; p-weighted cost of ordinary vs weighted: 0.3025 vs 0.3025 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.680, q p-weighted 0.680; p-weighted cost of ordinary vs weighted: 0.3695 vs 0.3695 (+0.00%)
+     c_u/c_o=10: q ordinary 0.617, q p-weighted 0.617; p-weighted cost of ordinary vs weighted: 0.4128 vs 0.4128 (+0.00%)
+     c_u/c_o=20: q ordinary 0.575, q p-weighted 0.575; p-weighted cost of ordinary vs weighted: 0.4472 vs 0.4472 (+0.00%)
+  heterogeneous thresholds U(30, 90): n=249, p quantiles 0/5/50/95/100% = [24.3, 30.7, 58.3, 84.2, 88.4], Spearman(p, rho) = -0.04
+     c_u/c_o= 2: q ordinary 0.811, q p-weighted 0.810; p-weighted cost of ordinary vs weighted: 0.3435 vs 0.3435 (+0.00%)
+     c_u/c_o= 5: q ordinary 0.669, q p-weighted 0.668; p-weighted cost of ordinary vs weighted: 0.4207 vs 0.4207 (+0.00%)
+     c_u/c_o=10: q ordinary 0.610, q p-weighted 0.603; p-weighted cost of ordinary vs weighted: 0.4615 vs 0.4610 (+0.11%)
+     c_u/c_o=20: q ordinary 0.580, q p-weighted 0.580; p-weighted cost of ordinary vs weighted: 0.4958 vs 0.4958 (+0.00%)
+     stream, heterogeneous, c_u/c_o= 2: total cost / total p: ordinary 0.3480, p-weighted 0.3480 (-0.01%)
+     stream, heterogeneous, c_u/c_o=20: total cost / total p: ordinary 0.5047, p-weighted 0.5056 (-0.18%)
