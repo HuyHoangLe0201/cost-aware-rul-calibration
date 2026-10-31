@@ -88,29 +88,41 @@ def test_no_lock_in_below_x_with_high_probability():
     assert hits / reps <= bound + 3 * math.sqrt(bound * (1 - bound) / reps) + 0.02
 
 
-def run_guarded(n, rng, n0, guard, init):
-    """Closed loop with the risk-set guard of Theorem 6 from an adversarial initial pool."""
+def run_from_pool(n, rng, n0, init, K=None):
+    """Closed loop of the policy of Theorem 5 from a given initial pool; also counts the labels created with fewer than K units at risk (Lemma A4)."""
     rho = rng.lognormal(MU, SIG, n)
     rho[: len(init)] = init
     q = np.full(n, np.inf)
     Y = rho.copy()
     d = np.ones(n, bool)
+    low = 0
+    x = QSTAR - 0.10
     for s in range(n0, n):
-        q[s] = rc.kaplan_meier_quantile(Y[:s], d[:s], TAU, 5, 1.0, rc.risk_floor(s, guard))
+        q[s] = rc.kaplan_meier_quantile(Y[:s], d[:s], TAU)
         Y[s] = min(rho[s], q[s])
         d[s] = rho[s] <= q[s]
-    return q
+        if K and d[s] and s >= K and np.sort(Y[:s])[::-1][K - 1] < rho[s] <= min(q[s], x):
+            low += 1
+    return q, low
 
 
-def test_risk_set_guard_recovers_from_an_adversarial_pool():
-    """Theorem 6: from five identical labels far below q* the guarded multiplier leaves the neighbourhood of 0.5 and settles near q*."""
+def test_recovers_from_an_adversarial_pool():
+    """Theorem 5(b): from five identical labels far below q* the multiplier leaves the neighbourhood of 0.5 and settles near q*."""
     rng = np.random.default_rng(4)
     late = []
     for _ in range(12):
-        q = run_guarded(700, rng, 5, "loglog", np.full(5, 0.50))
+        q, _ = run_from_pool(700, rng, 5, np.full(5, 0.50))
         assert not np.any(q[450:] < QSTAR - 0.10)
         late.append(np.mean(q[500:]))
     assert abs(np.mean(late) - QSTAR) < 0.04
+
+
+def test_few_labels_are_created_at_a_low_rank():
+    """Lemma A4: E #{labels created with fewer than K units at risk} <= K / (1 - G(x))."""
+    rng = np.random.default_rng(5)
+    K = 10
+    counts = [run_from_pool(400, rng, 5, np.full(5, 0.50), K)[1] for _ in range(20)]
+    assert np.mean(counts) <= K / (1 - G(QSTAR - 0.10))
 
 
 def test_estimate_is_accurate_where_many_units_remain_at_risk():

@@ -50,7 +50,7 @@ case "${1:-}" in
              $PY src/sensitivity_a0.py > "$WORK/sensitivity_a0.txt"; $PY src/adversarial_init.py > "$WORK/adversarial_init.txt"
              $PY src/order_variability.py > "$WORK/order_variability.txt"; $PY src/regime_reliability.py > "$WORK/regime_reliability.txt"
              $PY src/paired_common_alarms.py > "$WORK/paired_common_alarms.txt"
-             $PY src/km_theory_check.py > "$WORK/km_theory_check.txt"; $PY src/km_vs_naive_longrun.py > "$WORK/km_vs_naive_longrun.txt"; $PY src/guard_check.py > "$WORK/guard_check.txt"   # Theorems 5 and 6
+             $PY src/km_theory_check.py > "$WORK/km_theory_check.txt"; $PY src/km_vs_naive_longrun.py > "$WORK/km_vs_naive_longrun.txt"; $PY src/lockin_check.py > "$WORK/lockin_check.txt"   # Theorem 5
              for ds in FD001 FD003 FD002 FD004; do $PY src/prospective_eval.py $ds; done > "$WORK/prospective_eval.txt" ;;
   pronostia)      # needs PRONOSTIA_DIR
              $PY src/extract_features2.py; $PY src/extract_faultfreq.py; $PY src/extract_envspec.py

@@ -5,7 +5,7 @@ from typing import Hashable, Iterable, Optional
 
 import numpy as np
 
-from .core import conformal_quantile, critical_level, gaussian_quantile, kaplan_meier_quantile, risk_floor, target_coverage
+from .core import conformal_quantile, critical_level, gaussian_quantile, kaplan_meier_quantile, target_coverage
 
 __all__ = ["CostAwareCalibrator"]
 
@@ -28,11 +28,6 @@ class CostAwareCalibrator:
         and ``"drop"`` (discard censored labels) exist for benchmarking only: both bias the multiplier towards early replacement.
     min_pool, fallback
         With fewer than ``min_pool`` labels (or if the quantile is not identified) the multiplier is ``fallback`` (default 1).
-    risk_guard
-        ``None`` (default): the Kaplan-Meier rule of the article as run in its experiments.  ``"loglog"`` (or ``"log2"``): a Kaplan-Meier quantile that rests on fewer than
-        ceil(log n * log log n) (ceil(log(n)**2)) units still at risk is not trusted and the multiplier is ``fallback``; with such a floor the closed-loop
-        calibration cannot lock into early replacement from any initial pool, almost surely (Theorem 6 of the article).  An integer ``k`` fixes the floor.
-        The guard acts only when censored labels are present.
 
     Labels
     ------
@@ -47,7 +42,7 @@ class CostAwareCalibrator:
     """
 
     def __init__(self, c_under: float, c_over: float = 1.0, *, window: Optional[int] = None, method: str = "auto",
-                 min_pool: int = 5, fallback: float = 1.0, risk_guard=None):
+                 min_pool: int = 5, fallback: float = 1.0):
         if method not in _METHODS:
             raise ValueError(f"method must be one of {_METHODS}")
         if window is not None and window < 1:
@@ -55,7 +50,6 @@ class CostAwareCalibrator:
         self.c_under, self.c_over = float(c_under), float(c_over)
         self.tau = critical_level(self.c_under, self.c_over)
         self.window, self.method, self.min_pool, self.fallback = window, method, int(min_pool), float(fallback)
-        self.risk_guard = risk_guard
         self._labels: dict = {}
 
     # ------------------------------------------------------------------ labels
@@ -111,7 +105,7 @@ class CostAwareCalibrator:
         if m in ("conformal", "naive", "drop"):
             return conformal_quantile(values, self.tau, self.min_pool, self.fallback)
         if m == "kaplan-meier":
-            return kaplan_meier_quantile(values, exact, self.tau, self.min_pool, self.fallback, risk_floor(values.size, self.risk_guard))
+            return kaplan_meier_quantile(values, exact, self.tau, self.min_pool, self.fallback)
         return gaussian_quantile(values, self.tau, self.min_pool, self.fallback)
 
     def replacement_lead_time(self, predicted_rul, group: Hashable = None):

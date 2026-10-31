@@ -3,7 +3,7 @@
      depend on the past (Kaplan-Meier policy, a random-walk policy, a policy that tracks the running minimum), and the size of sup|M_n|/sqrt(n log n);
  (2) part (a): frequency of ever replacing below x = q* - Delta against the Chernoff bound sum_{m>=N0} exp(-m D(tau || G(x)));
  (3) part (b): number of units with multiplier >= x+ = q* + Delta (Theorem 5(b): O(log n)).
-The guarded policy of Theorem 6 is checked in guard_check.py.
+Lemmas A3-A4 and the recovery from adversarial pools are checked in lockin_check.py.
 usage: python km_theory_check.py"""
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 from paths import WORK, FIGS, CMAPSS_ROOT, PRON_ROOT

@@ -1,0 +1,17 @@
+tau* = 0.0909, q* = 0.6267, x = q* - 0.10 = 0.5267, 1 - G(x) = 0.967
+(1) sup |Lambda_hat - Lambda| over levels with at least c*log n units at risk (N0 = 20)
+   c =  2: median 0.213, max 0.531
+   c =  5: median 0.033, max 0.120
+   c = 10: median 0.023, max 0.110
+   c = 20: median 0.021, max 0.046
+(2) five identical initial labels at 0.50 (300 runs of 600 units): last step with a multiplier below q* - 0.10
+   median 76, 99th percentile 246, max 316; runs with a step beyond 300: 0.003
+(3) labels created at rank below K (5 identical initial labels at 0.50, 600 units, 200 runs): mean and maximum, against K / (1 - G(x))
+   K =  5: mean 0.07, max 1, bound 5.2
+   K = 10: mean 0.23, max 2, bound 10.3
+   K = 20: mean 0.61, max 4, bound 20.7
+   K = 40: mean 1.28, max 5, bound 41.4
+(4) steps above q* + 0.10 (single runs, N0 = 20)
+   n =  500:  37 steps; log n = 6.2; mean of the last 200 multipliers 0.633
+   n = 1000:  29 steps; log n = 6.9; mean of the last 200 multipliers 0.637
+   n = 2000:  20 steps; log n = 7.6; mean of the last 200 multipliers 0.636

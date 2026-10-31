@@ -68,13 +68,3 @@ def test_kaplan_meier_unidentified_quantile_falls_back():
     v = np.linspace(0.5, 1.5, 20)
     assert rc.kaplan_meier_quantile(v, np.zeros(20), 0.3) == 1.0
 
-
-def test_risk_floor_values_and_guard():
-    import rulcost as rc
-    assert rc.risk_floor(100, None) == 0 and rc.risk_floor(100, 7) == 7
-    assert rc.risk_floor(1000, "loglog") == 14 and rc.risk_floor(1000, "log2") == 48
-    v = np.arange(1.0, 9.0)
-    e = np.ones(8)
-    assert rc.kaplan_meier_quantile(v, e, 0.9) == 8.0
-    assert rc.kaplan_meier_quantile(v, e, 0.9, min_risk=3) == 1.0          # the quantile rests on one unit at risk: not trusted
-    assert rc.kaplan_meier_quantile(v, e, 0.5, min_risk=3) == rc.kaplan_meier_quantile(v, e, 0.5)
