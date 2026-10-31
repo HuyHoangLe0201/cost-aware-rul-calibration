@@ -1,7 +1,7 @@
 """Numerical checks of Theorem 2 for the Kaplan-Meier policy as run (no guard), log-normal ratio rho ~ LogNormal(0, 0.35), tau* = 1/11, q* = 0.627.
- (1) accuracy of the Nelson-Aalen estimate at levels that rest on at least c log n units at risk (Lemma A3);
+ (1) accuracy of the Nelson-Aalen estimate at levels that rest on at least c log n units at risk (Lemma 3);
  (2) adversarial initial pools (five identical labels at 0.50): last step with a multiplier below q* - 0.10;
- (3) Lemma A4: the number of labels created at rank below K, i.e. exact labels rho_j with Y_(K)(j-1) < rho_j <= min(q_j, x) (x = q* - 0.10), against its bound K / (1 - G(x));
+ (3) Lemma 4: the number of labels created at rank below K, i.e. exact labels rho_j with Y_(K)(j-1) < rho_j <= min(q_j, x) (x = q* - 0.10), against its bound K / (1 - G(x));
  (4) number of steps above q* + 0.10 against log n.
 usage: python lockin_check.py"""
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))

@@ -89,7 +89,7 @@ def test_no_lock_in_below_x_with_high_probability():
 
 
 def run_from_pool(n, rng, n0, init, K=None):
-    """Closed loop of the policy of Theorem 2 from a given initial pool; also counts the labels created with fewer than K units at risk (Lemma A4)."""
+    """Closed loop of the policy of Theorem 2 from a given initial pool; also counts the labels created with fewer than K units at risk (Lemma 4)."""
     rho = rng.lognormal(MU, SIG, n)
     rho[: len(init)] = init
     q = np.full(n, np.inf)
@@ -118,7 +118,7 @@ def test_recovers_from_an_adversarial_pool():
 
 
 def test_few_labels_are_created_at_a_low_rank():
-    """Lemma A4: E #{labels created with fewer than K units at risk} <= K / (1 - G(x))."""
+    """Lemma 4: E #{labels created with fewer than K units at risk} <= K / (1 - G(x))."""
     rng = np.random.default_rng(5)
     K = 10
     counts = [run_from_pool(400, rng, 5, np.full(5, 0.50), K)[1] for _ in range(20)]
@@ -126,7 +126,7 @@ def test_few_labels_are_created_at_a_low_rank():
 
 
 def test_estimate_is_accurate_where_many_units_remain_at_risk():
-    """Lemma A3: the Nelson-Aalen error at levels with at least 10 log n units at risk is small on closed-loop data."""
+    """Lemma 3: the Nelson-Aalen error at levels with at least 10 log n units at risk is small on closed-loop data."""
     rng = np.random.default_rng(6)
     for _ in range(4):
         rho, q, Y, d, _ = run_policy(400, rng, "km")
