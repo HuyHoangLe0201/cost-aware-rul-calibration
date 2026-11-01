@@ -6,7 +6,7 @@
 #   censoring    closed-loop censoring experiment -> work/results_censor*.txt        minutes, no raw data
 #   figures      all matplotlib figures -> figs/                                     <1 min, needs suite + r3
 #   train-cmapss re-train the C-MAPSS predictors (out-of-fold)                        hours, needs C-MAPSS
-#   countdown    countdown-constraint experiment (Table 7, Fig. 9) and its two variants  ~5 min per fleet, needs C-MAPSS
+#   countdown    countdown-constraint experiment (Table 8, Fig. 9) and its two variants  ~5 min per fleet, needs C-MAPSS
 #   robustness   checks added after review: independence of p and rho, biased initial pool, fixed predictor on a disjoint fleet, regimes   needs C-MAPSS
 #   pronostia    PRONOSTIA features, predictors and the null control                  hours, needs PRONOSTIA
 set -euo pipefail
@@ -51,6 +51,7 @@ case "${1:-}" in
              $PY src/order_variability.py > "$WORK/order_variability.txt"; $PY src/regime_reliability.py > "$WORK/regime_reliability.txt"
              $PY src/paired_common_alarms.py > "$WORK/paired_common_alarms.txt"
              $PY src/km_theory_check.py > "$WORK/km_theory_check.txt"; $PY src/km_vs_naive_longrun.py > "$WORK/km_vs_naive_longrun.txt"; $PY src/lockin_check.py > "$WORK/lockin_check.txt"   # Theorem 5
+             $PY src/misspecification_check.py > "$WORK/misspecification_check.txt"; $PY src/early_phase.py > "$WORK/early_phase.txt"; $PY src/alarm_coverage_check.py > "$WORK/alarm_coverage_check.txt"
              for ds in FD001 FD003 FD002 FD004; do $PY src/prospective_eval.py $ds; done > "$WORK/prospective_eval.txt" ;;
   pronostia)      # needs PRONOSTIA_DIR
              $PY src/extract_features2.py; $PY src/extract_faultfreq.py; $PY src/extract_envspec.py

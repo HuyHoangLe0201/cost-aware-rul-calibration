@@ -66,13 +66,16 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Predictors (MLP, Paris-law hybrid, ridge, Hist-GB, random forest, GRU, 1D-CNN) | `src/cmapss_train.py`, `src/cmapss_baselines.py`, `src/cmapss_cnn.py` | `oof_cmapss_*.npz`, `*.log` |
 | Tables 3, 4 (censoring, Kaplan-Meier) | `src/censor_eval.py`, `src/censor_ci.py` | `results_censor_*.txt`, `results_censor_ci.txt` |
 | Sec. 5.3 and Fig. 8 (theory checks) | `src/verify_theory.py`, `src/check_const.py` | printed output; `fig8_stats.json` |
-| Table 6 (seven physics mechanisms) | `src/explore_physics.py`, `src/explore_timescale.py`, `src/physics_eval.py`, `src/semisup_physics.py`, `src/semisup_oof.py`, `src/ssm_physics.py`, `src/pron_physfeat.py`, `src/pron_control.py` | `semisup_*.log`, `results_fleet_ss*.txt`, `ssm_sens_FD001.log`, `pron_control.log`, `results_pron_*.txt` |
+| Table 7 (seven physics mechanisms) | `src/explore_physics.py`, `src/explore_timescale.py`, `src/physics_eval.py`, `src/semisup_physics.py`, `src/semisup_oof.py`, `src/ssm_physics.py`, `src/pron_physfeat.py`, `src/pron_control.py` | `semisup_*.log`, `results_fleet_ss*.txt`, `ssm_sens_FD001.log`, `pron_control.log`, `results_pron_*.txt` |
 | Theorem 2 (Sec. 3, App. A) and its numerical checks (Sec. 5.4) | `src/km_theory_check.py`, `src/km_vs_naive_longrun.py`, `src/lockin_check.py`; the library tests `tests/test_km_theory.py` | `km_theory_check.txt`, `km_vs_naive_longrun.txt` |
 | Sec. 5.4 stress test (biased initial pool) | `src/adversarial_init.py` | `adversarial_init.txt` |
+| Sec. 5.4 small initial pools (cost of the first decisions, $N_0=5$ to 40) | `src/early_phase.py` | `early_phase.txt` |
+| Sec. 5.9 and Table 6 (ratio distributions that are not log-normal) | `src/misspecification_check.py` | `misspecification_check.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
 | Fig. 9c (paired on engines alarmed by both models); Monte Carlo error over stream orders | `src/paired_common_alarms.py`, `src/order_variability.py` | `paired_common_alarms.txt`, `order_variability.txt` |
-| Table 7 and Fig. 9 (countdown constraint) | `src/semisup_physics.py`, `src/semisup_oof.py`, `src/fleet_eval.py` | `semisup_FD00*.log` (default, `_lam3` threefold weight, `_late` later truncation, `_age` cut-off age independent of the life), `results_fleet_ss*.txt` |
+| Sec. 6 (alarm sets of the two models; whole-fleet sensitivity to the cost of a missed alarm) | `src/alarm_coverage_check.py` | `alarm_coverage_check.txt` |
+| Table 8 and Fig. 9 (countdown constraint) | `src/semisup_physics.py`, `src/semisup_oof.py`, `src/fleet_eval.py` | `semisup_FD00*.log` (default, `_lam3` threefold weight, `_late` later truncation, `_age` cut-off age independent of the life), `results_fleet_ss*.txt` |
 | PRONOSTIA pilot | `src/extract_features*.py`, `src/extract_faultfreq.py`, `src/extract_envspec.py`, `src/train_oof*.py`, `src/decision_eval*.py` | `features*.npz`, `envspec.npz`, `oof_pron_*.npz` |
 
 Notes on files whose origin is not a single script: `fold_repeat.json` and `fold_repeat3.json` summarise the repeated fold partitions (`r3/s0_*`, `r3/fs1_*`, `r3/fs2_*`) and were aggregated by hand; some numbers in `src/make_figures.py` are copied from named logs, as stated in its header.
