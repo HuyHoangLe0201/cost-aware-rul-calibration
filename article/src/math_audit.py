@@ -127,3 +127,29 @@ for run in range(40):
 print(f"   Lemma 2(i): smallest C1 with J^+ <= (2/p_x)(R^+ + C1 * 5 log n) needed over all checks: {max(c1_needed, 0):.3f} (negative values mean the inequality held with C1 = 0)")
 print(f"   Lemma 3: largest |G_hat - G| at levels with R_n >= 5 log n: {err[5]:.3f}; >= 20 log n: {err[20]:.3f}")
 print(f"   Lemma 4: mean count {np.mean(lemma4[5]):.2f} (K=5, bound {5 / px:.1f}), {np.mean(lemma4[20]):.2f} (K=20, bound {20 / px:.1f})")
+
+print("10. Proposition 5: coverage error against eps_w = sqrt(log(2w/delta)/(2w)) + 3/w + s(w+1)/2 (delta = 0.1), drifting log-normal location")
+tau = 1 / 11
+for rate in (0.0, 0.0005, 0.002):                                      # location drift per step
+    # Kolmogorov distance between consecutive log-normal distributions: sup_x |Phi((ln x - mu)/sig) - Phi((ln x - mu - rate)/sig)| = 2 Phi(rate / (2 sig)) - 1
+    s_ = 2 * 0.5 * (1 + math.erf(rate / (2 * SIG) / math.sqrt(2))) - 1
+    for w in (50, 200):
+        eps = math.sqrt(math.log(2 * w / 0.1) / (2 * w)) + 3 / w + s_ * (w + 1) / 2; bad = 0; reps = 4000; t0 = 500
+        k = min(max(int(math.ceil((w + 1) * tau)), 1), w)
+        for _ in range(reps):
+            mus = rate * (t0 - np.arange(w, 0, -1)); X = np.sort(rng.lognormal(mus, SIG)); qh = X[k - 1]
+            cov_err = abs(0.5 * (1 + math.erf((math.log(qh) - rate * t0) / (SIG * math.sqrt(2)))) - tau); bad += cov_err > eps
+        print(f"   drift {rate:.4f} (s = {s_:.5f}), w = {w:3d}: eps_w = {eps:.4f}; share of windows with error above eps_w: {bad / reps:.4f} (must be <= 0.10)")
+
+print("11. Structure of the proof of Theorem 2(e) along adversarial runs (N0 = 5 labels at 0.40, tau* = 1/11, x = q* - 0.10, 300 runs of 800 units)")
+tau = 1 / 11; qs = Ginv(tau); x = qs - 0.10; px = 1 - float(G(x)); maxR = 0; maxJ = 0; maxuse = 0; nearly = 0
+for run in range(300):
+    N = 800; N0 = 5; rho = rng.lognormal(0, SIG, N); Y = np.empty(N); d = np.zeros(N, bool); q = np.full(N, np.inf); uses = {}
+    for s in range(N):
+        if s < N0: Y[s], d[s] = 0.40, True; continue
+        q[s] = kaplan_meier_quantile(Y[:s], d[:s], tau); Y[s], d[s] = min(rho[s], q[s]), rho[s] <= q[s]
+        if q[s] < x and s >= 30:
+            n = s; Rn = np.sum(Y[:n] >= q[s]); Jn = np.sum(q[:n] >= x); maxR = max(maxR, Rn / math.log(n)); maxJ = max(maxJ, Jn / math.log(n)); uses[q[s]] = uses.get(q[s], 0) + 1
+    if uses: maxuse = max(maxuse, max(uses.values()) / math.log(N))
+print(f"   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = {maxR:.2f} and max J_n(x) / log n = {maxJ:.2f} (bounded by constants C and C')")
+print(f"   Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: {maxuse:.2f}")

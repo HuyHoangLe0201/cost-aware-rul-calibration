@@ -41,3 +41,13 @@
    Lemma 2(i): smallest C1 with J^+ <= (2/p_x)(R^+ + C1 * 5 log n) needed over all checks: 0.000 (negative values mean the inequality held with C1 = 0)
    Lemma 3: largest |G_hat - G| at levels with R_n >= 5 log n: 0.044; >= 20 log n: 0.041
    Lemma 4: mean count 0.00 (K=5, bound 5.4), 0.10 (K=20, bound 21.5)
+10. Proposition 5: coverage error against eps_w = sqrt(log(2w/delta)/(2w)) + 3/w + s(w+1)/2 (delta = 0.1), drifting log-normal location
+   drift 0.0000 (s = 0.00000), w =  50: eps_w = 0.3228; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+   drift 0.0000 (s = 0.00000), w = 200: eps_w = 0.1590; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+   drift 0.0005 (s = 0.00057), w =  50: eps_w = 0.3374; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+   drift 0.0005 (s = 0.00057), w = 200: eps_w = 0.2163; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+   drift 0.0020 (s = 0.00228), w =  50: eps_w = 0.3810; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+   drift 0.0020 (s = 0.00228), w = 200: eps_w = 0.3881; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
+11. Structure of the proof of Theorem 2(e) along adversarial runs (N0 = 5 labels at 0.40, tau* = 1/11, x = q* - 0.10, 300 runs of 800 units)
+   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 30.89 and max J_n(x) / log n = 33.61 (bounded by constants C and C')
+   Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: 13.61

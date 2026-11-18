@@ -1,0 +1,3 @@
+N0 =  5, initial labels all 0.40: P(early step at some n >= N) for N = 25, 50, 100, 200, 400: 1.000  1.000  0.409  0.042  0.000 | median last early step 83, max 307
+N0 =  5, initial labels all 0.20: P(early step at some n >= N) for N = 25, 50, 100, 200, 400: 1.000  1.000  0.493  0.047  0.000 | median last early step 83, max 336
+N0 = 20, initial labels all 0.40: P(early step at some n >= N) for N = 25, 50, 100, 200, 400: 1.000  1.000  1.000  1.000  0.303 | median last early step 350, max 729
