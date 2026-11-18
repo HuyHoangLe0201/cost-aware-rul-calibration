@@ -1,0 +1,43 @@
+1. Proposition 1
+   cu/co= 2 q/q*=0.40: direct 0.34974  signed integral 0.34974  (non-negative: True)
+   cu/co= 2 q/q*=0.90: direct 0.01320  signed integral 0.01320  (non-negative: True)
+   cu/co= 2 q/q*=1.20: direct 0.05310  signed integral 0.05310  (non-negative: True)
+   cu/co= 2 q/q*=2.00: direct 0.99884  signed integral 0.99884  (non-negative: True)
+   cu/co=20 q/q*=0.40: direct 0.26309  signed integral 0.26309  (non-negative: True)
+   cu/co=20 q/q*=0.90: direct 0.01456  signed integral 0.01456  (non-negative: True)
+   cu/co=20 q/q*=1.20: direct 0.08312  signed integral 0.08312  (non-negative: True)
+   cu/co=20 q/q*=2.00: direct 3.12647  signed integral 3.12647  (non-negative: True)
+2. Proposition 2 (sandwich), cu/co = 10
+   q/q*=0.80: lower 0.01426 <= excess 0.05207 <= upper 0.17271: True
+   q/q*=0.95: lower 0.00297 <= excess 0.00384 <= upper 0.00474: True
+   q/q*=1.10: lower 0.01305 <= excess 0.01757 <= upper 0.02611: True
+   q/q*=1.30: lower 0.10456 <= excess 0.18039 <= upper 0.41258: True
+3. Theorem 1 (log-normal 0.35): Monte Carlo against the stated bound (best admissible eta) and the asymptotic constant
+   cu/co= 2 n=  50: MC excess 0.00538  bound 0.15878 (ratio    29.5)  holds: True   n*excess 0.269 vs asymptotic 0.276
+   cu/co= 2 n= 100: MC excess 0.00274  bound 0.01744 (ratio     6.4)  holds: True   n*excess 0.274 vs asymptotic 0.276
+   cu/co= 2 n= 400: MC excess 0.00067  bound 0.00110 (ratio     1.6)  holds: True   n*excess 0.267 vs asymptotic 0.276
+   cu/co= 2 n=1000: MC excess 0.00028  bound 0.00034 (ratio     1.2)  holds: True   n*excess 0.277 vs asymptotic 0.276
+   cu/co= 5 n=  50: MC excess 0.00839  bound 3.94690 (ratio   470.4)  holds: True   n*excess 0.420 vs asymptotic 0.416
+   cu/co= 5 n= 100: MC excess 0.00411  bound 0.91504 (ratio   222.5)  holds: True   n*excess 0.411 vs asymptotic 0.416
+   cu/co= 5 n= 400: MC excess 0.00103  bound 0.00885 (ratio     8.6)  holds: True   n*excess 0.413 vs asymptotic 0.416
+   cu/co= 5 n=1000: MC excess 0.00042  bound 0.00118 (ratio     2.8)  holds: True   n*excess 0.418 vs asymptotic 0.416
+   cu/co=10 n=  50: MC excess 0.01226  bound 14.75174 (ratio  1203.5)  holds: True   n*excess 0.613 vs asymptotic 0.609
+   cu/co=10 n= 100: MC excess 0.00657  bound 7.03293 (ratio  1070.7)  holds: True   n*excess 0.657 vs asymptotic 0.609
+   cu/co=10 n= 400: MC excess 0.00154  bound 0.16276 (ratio   105.7)  holds: True   n*excess 0.616 vs asymptotic 0.609
+   cu/co=10 n=1000: MC excess 0.00061  bound 0.00598 (ratio     9.8)  holds: True   n*excess 0.609 vs asymptotic 0.609
+   cu/co=20 n=  50: MC excess 0.01987  bound 39.38997 (ratio  1982.5)  holds: True   n*excess 0.993 vs asymptotic 0.937
+   cu/co=20 n= 100: MC excess 0.00920  bound 26.59075 (ratio  2890.0)  holds: True   n*excess 0.920 vs asymptotic 0.937
+   cu/co=20 n= 400: MC excess 0.00240  bound 3.13496 (ratio  1305.6)  holds: True   n*excess 0.960 vs asymptotic 0.937
+   cu/co=20 n=1000: MC excess 0.00095  bound 0.10476 (ratio   110.5)  holds: True   n*excess 0.948 vs asymptotic 0.937
+4. Proposition 3: tau*-quantile after naive treatment (cu/co = 10, q_bar = 1.3 q*)
+   q* = 0.6267; dropped censored: quantile of G/G(q_bar) at tau* = 0.5047 (<= q*: True); censored value recorded as exact: quantile = 0.6267 (<= q*: True by construction)
+5. Proposition 4: two strata (log-normal mu = -0.25 and +0.25, sigma 0.2), cu/co = 10; n = 200, 1000
+   n= 200: V = 0.1371; threshold 0.00216; stratified excess 0.00422; pooled excess 0.13932; stratifying pays: True (rule V > threshold: True)
+   n=1000: V = 0.1371; threshold 0.00043; stratified excess 0.00087; pooled excess 0.13754; stratifying pays: True (rule V > threshold: True)
+   n=5000: V = 0.1371; threshold 0.00009; stratified excess 0.00018; pooled excess 0.13721; stratifying pays: True (rule V > threshold: True)
+6. Lemma 1: conditional variance of xi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2
+   largest ratio variance / bound over 60 random (u, v, q): 0.477  (must be <= 1)
+7-9. Lemmas 2(i), 3, 4 along closed-loop runs (tau* = 1/11, N0 = 20, n up to 3000, 40 runs)
+   Lemma 2(i): smallest C1 with J^+ <= (2/p_x)(R^+ + C1 * 5 log n) needed over all checks: 0.000 (negative values mean the inequality held with C1 = 0)
+   Lemma 3: largest |G_hat - G| at levels with R_n >= 5 log n: 0.044; >= 20 log n: 0.041
+   Lemma 4: mean count 0.00 (K=5, bound 5.4), 0.10 (K=20, bound 21.5)

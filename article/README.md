@@ -77,6 +77,7 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 4.3 (alarm statistics of the 28 predictor-fleet combinations) | `src/alarm_statistics.py` | `alarm_statistics.txt` |
 | Sec. 4.2 (accuracy on the official test sets) | `src/testset_eval.py` | `testset_all.txt` |
 | Sec. 5.8 (fixed GRU and random forest on a disjoint fleet) | `src/prospective_models.py` | `prospective_models.txt` |
+| Appendix A (numerical audit of Propositions 1-4, Theorem 1 and Lemmas 1-4) | `src/math_audit.py` | `math_audit.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
 | Fig. 9c (paired on engines alarmed by both models); Monte Carlo error over stream orders | `src/paired_common_alarms.py`, `src/order_variability.py` | `paired_common_alarms.txt`, `order_variability.txt` |
