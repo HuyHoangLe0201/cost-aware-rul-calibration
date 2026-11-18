@@ -52,6 +52,7 @@ case "${1:-}" in
              $PY src/paired_common_alarms.py > "$WORK/paired_common_alarms.txt"
              $PY src/km_theory_check.py > "$WORK/km_theory_check.txt"; $PY src/km_vs_naive_longrun.py > "$WORK/km_vs_naive_longrun.txt"; $PY src/lockin_check.py > "$WORK/lockin_check.txt"   # Theorem 5
              $PY src/misspecification_check.py > "$WORK/misspecification_check.txt"; $PY src/early_phase.py > "$WORK/early_phase.txt"; $PY src/alarm_coverage_check.py > "$WORK/alarm_coverage_check.txt"
+             $PY src/early_stream_exact.py > "$WORK/early_stream_exact.txt"; $PY src/fallback_check.py > "$WORK/fallback_check.txt"; $PY src/fixed_penalty_check.py > "$WORK/fixed_penalty_check.txt"; $PY src/alarm_statistics.py > "$WORK/alarm_statistics.txt"
              for ds in FD001 FD003 FD002 FD004; do $PY src/prospective_eval.py $ds; done > "$WORK/prospective_eval.txt" ;;
   pronostia)      # needs PRONOSTIA_DIR
              $PY src/extract_features2.py; $PY src/extract_faultfreq.py; $PY src/extract_envspec.py

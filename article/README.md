@@ -71,6 +71,12 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 5.4 stress test (biased initial pool) | `src/adversarial_init.py` | `adversarial_init.txt` |
 | Sec. 5.4 small initial pools (cost of the first decisions, $N_0=5$ to 40) | `src/early_phase.py` | `early_phase.txt` |
 | Sec. 5.9 and Table 6 (ratio distributions that are not log-normal) | `src/misspecification_check.py` | `misspecification_check.txt` |
+| Remark 4 (exact start-up coverage and cost of the conformal quantile) | `src/early_stream_exact.py` | `early_stream_exact.txt` |
+| Sec. 5.4 fallback multiplier, censored history, under-predicted fleets | `src/fallback_check.py` | `fallback_check.txt` |
+| Sec. 5.10 (fixed failure penalty) | `src/fixed_penalty_check.py` | `fixed_penalty_check.txt` |
+| Sec. 4.3 (alarm statistics of the 28 predictor-fleet combinations) | `src/alarm_statistics.py` | `alarm_statistics.txt` |
+| Sec. 4.2 (accuracy on the official test sets) | `src/testset_eval.py` | `testset_all.txt` |
+| Sec. 5.8 (fixed GRU and random forest on a disjoint fleet) | `src/prospective_models.py` | `prospective_models.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
 | Fig. 9c (paired on engines alarmed by both models); Monte Carlo error over stream orders | `src/paired_common_alarms.py`, `src/order_variability.py` | `paired_common_alarms.txt`, `order_variability.txt` |

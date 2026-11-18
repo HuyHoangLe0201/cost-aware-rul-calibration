@@ -1,0 +1,20 @@
+Population level (MLP): best multiplier q_f under the penalty f, the quantile q*, their coverages 1 - G(q), and the excess cost of q* over q_f (units of P0; % of the best cost)
+c_u/c_o= 5 f=0.0: q_f 0.714  q* 0.717  coverage at q_f 0.829  at q* 0.831 (target 0.833)  excess of q* 0.000 (0.0%)   [mean of 4 fleets]
+c_u/c_o= 5 f=0.5: q_f 0.643  q* 0.717  coverage at q_f 0.922  at q* 0.831 (target 0.833)  excess of q* 0.032 (8.7%)   [mean of 4 fleets]
+c_u/c_o= 5 f=1.0: q_f 0.585  q* 0.717  coverage at q_f 0.974  at q* 0.831 (target 0.833)  excess of q* 0.100 (25.5%)   [mean of 4 fleets]
+c_u/c_o= 5 f=2.0: q_f 0.578  q* 0.717  coverage at q_f 0.979  at q* 0.831 (target 0.833)  excess of q* 0.254 (61.3%)   [mean of 4 fleets]
+c_u/c_o=20 f=0.0: q_f 0.600  q* 0.607  coverage at q_f 0.953  at q* 0.950 (target 0.952)  excess of q* 0.000 (0.1%)   [mean of 4 fleets]
+c_u/c_o=20 f=0.5: q_f 0.585  q* 0.607  coverage at q_f 0.974  at q* 0.950 (target 0.952)  excess of q* 0.012 (3.1%)   [mean of 4 fleets]
+c_u/c_o=20 f=1.0: q_f 0.569  q* 0.607  coverage at q_f 0.982  at q* 0.950 (target 0.952)  excess of q* 0.029 (7.1%)   [mean of 4 fleets]
+c_u/c_o=20 f=2.0: q_f 0.558  q* 0.607  coverage at q_f 0.986  at q* 0.950 (target 0.952)  excess of q* 0.068 (16.0%)   [mean of 4 fleets]
+
+Sequential level (mean cost per alarm / P0 including the penalty, mean over the four fleets and 100 stream orders)
+c_u/c_o  f  | tau-oracle  f-oracle | tau-KM  f-KM
+    5   0.0 | 0.327  0.327  | 0.327  0.328
+    5   0.5 | 0.413  0.392  | 0.416  0.395
+    5   1.0 | 0.499  0.419  | 0.505  0.422
+    5   2.0 | 0.671  0.453  | 0.683  0.459
+   20   0.0 | 0.401  0.400  | 0.403  0.416
+   20   0.5 | 0.429  0.421  | 0.433  0.433
+   20   1.0 | 0.456  0.439  | 0.462  0.449
+   20   2.0 | 0.512  0.472  | 0.521  0.473

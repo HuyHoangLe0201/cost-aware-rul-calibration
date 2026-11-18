@@ -1,0 +1,16 @@
+
+A  well predicted, exact initial labels: q* = 0.627, G(1) = 0.500, tau* = 0.091
+   M = 1: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0023
+   M = 3: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0023
+
+B  well predicted, censored history (0.40): q* = 0.627, G(1) = 0.500, tau* = 0.091
+   M = 1: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.002, mean excess cost 0.0051
+   M = 3: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.001, mean excess cost 0.0204
+
+C  under-predicted (q*>1), exact initial labels: q* = 1.142, G(1) = 0.043, tau* = 0.091
+   M = 1: mean multiplier (units 1000-1500) 1.144 (sd 0.019), share at fallback 0.000, mean excess cost 0.0041
+   M = 3: mean multiplier (units 1000-1500) 1.144 (sd 0.019), share at fallback 0.000, mean excess cost 0.0041
+
+D  under-predicted (q*>1), censored history (0.40): q* = 1.142, G(1) = 0.043, tau* = 0.091
+   M = 1: mean multiplier (units 1000-1500) 1.000 (sd 0.000), share at fallback 0.994, mean excess cost 0.0402
+   M = 3: mean multiplier (units 1000-1500) 1.144 (sd 0.020), share at fallback 0.001, mean excess cost 0.0183

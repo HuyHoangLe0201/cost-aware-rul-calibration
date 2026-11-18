@@ -1,0 +1,24 @@
+FD001 MLP            RMSE  16.65   RMSE vs RUL capped at 125  15.15   score       467
+FD001 Ridge          RMSE  22.60   RMSE vs RUL capped at 125  22.05   score      5371
+FD001 Hist-GB        RMSE  14.89   RMSE vs RUL capped at 125  13.53   score       337
+FD001 Random forest  RMSE  15.88   RMSE vs RUL capped at 125  14.50   score       359
+FD001 GRU            RMSE  14.58   RMSE vs RUL capped at 125  13.47   score       399
+FD001 1D-CNN         RMSE  16.03   RMSE vs RUL capped at 125  14.90   score       405
+FD002 MLP            RMSE  28.62   RMSE vs RUL capped at 125  16.22   score     11638
+FD002 Ridge          RMSE  32.44   RMSE vs RUL capped at 125  24.08   score     58445
+FD002 Hist-GB        RMSE  27.38   RMSE vs RUL capped at 125  15.22   score     12590
+FD002 Random forest  RMSE  27.47   RMSE vs RUL capped at 125  15.21   score     11011
+FD002 GRU            RMSE  26.82   RMSE vs RUL capped at 125  13.56   score      8823
+FD002 1D-CNN         RMSE  27.87   RMSE vs RUL capped at 125  16.13   score     19519
+FD003 MLP            RMSE  15.40   RMSE vs RUL capped at 125  13.61   score       388
+FD003 Ridge          RMSE  24.05   RMSE vs RUL capped at 125  23.06   score      7676
+FD003 Hist-GB        RMSE  15.33   RMSE vs RUL capped at 125  13.64   score       416
+FD003 Random forest  RMSE  16.69   RMSE vs RUL capped at 125  15.09   score       721
+FD003 GRU            RMSE  12.66   RMSE vs RUL capped at 125  10.92   score       279
+FD003 1D-CNN         RMSE  15.49   RMSE vs RUL capped at 125  13.79   score       471
+FD004 MLP            RMSE  28.94   RMSE vs RUL capped at 125  17.09   score      7326
+FD004 Ridge          RMSE  86.08   RMSE vs RUL capped at 125  85.47   score 1171037759818146024046687139008333788315131239869710336
+FD004 Hist-GB        RMSE  27.39   RMSE vs RUL capped at 125  15.77   score      5179
+FD004 Random forest  RMSE  28.03   RMSE vs RUL capped at 125  16.21   score      5430
+FD004 GRU            RMSE  25.12   RMSE vs RUL capped at 125  13.17   score      4160
+FD004 1D-CNN         RMSE  27.77   RMSE vs RUL capped at 125  17.02   score      5404

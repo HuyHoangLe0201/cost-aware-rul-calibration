@@ -43,14 +43,14 @@ def q_km(v, d, tau):
 
 
 def run(method, cu, A, order, N0, co=1.0):
-    tau = co / (co + cu); vals = [A[e][1] / A[e][0] for e in order[:N0]]; dl = [1.0] * N0; cost, qs = [], []
+    tau = co / (co + cu); vals = [A[e][1] / A[e][0] for e in order[:N0]]; dl = [1.0] * N0; cost, qs, cov = [], [], []
     for e in order[N0:]:
         p, r = A[e]; rho = r / p; v, d_ = np.array(vals), np.array(dl)
         q = q_exact(v, tau) if method == "oracle" else q_km(v, d_, tau)
-        d = p * q; cost.append((cu * max(d - r, 0) + co * max(r - d, 0)) / P0); qs.append(q)
+        d = p * q; cost.append((cu * max(d - r, 0) + co * max(r - d, 0)) / P0); qs.append(q); cov.append(float(r >= d))
         if method == "oracle" or d >= r: vals.append(rho); dl.append(1.0)
         else: vals.append(q); dl.append(0.0)
-    return np.array(cost), np.array(qs)
+    return np.array(cost), np.array(qs), np.array(cov)
 
 
 if __name__ == "__main__":
@@ -59,15 +59,16 @@ if __name__ == "__main__":
         A = load(ds); E = sorted(A); rng0 = np.random.default_rng(7); orders = [list(rng0.permutation(E)) for _ in range(NPERM)]
         for N0 in NS:
             for cu in CUS:
-                ex = {m: [] for m in MS}; lc = {m: [] for m in MS}; rel = {m: [] for m in MS}; early = []
+                ex = {m: [] for m in MS}; lc = {m: [] for m in MS}; rel = {m: [] for m in MS}; early = []; covo = {m: [] for m in MS}; covk = {m: [] for m in MS}
                 for o in orders:
-                    co_, qo = run("oracle", cu, A, o, N0); ck, qk = run("km", cu, A, o, N0)
+                    co_, qo, vo = run("oracle", cu, A, o, N0); ck, qk, vk = run("km", cu, A, o, N0)
                     steady = co_[-100:].mean(); qlong = qo[-100:].mean()
                     for m in MS:
                         ex[m].append(ck[:m].sum() - co_[:m].sum()); lc[m].append(co_[:m].sum() - m * steady); rel[m].append(100 * (ck[:m].sum() / co_[:m].sum() - 1))
                     early.append(np.mean(qk[:50] < qlong - 0.10))
+                    for m in MS: covo[m].append(vo[:m].mean()); covk[m].append(vk[:m].mean())
                 acc.setdefault((N0, cu), []).append(({m: np.mean(ex[m]) for m in MS}, {m: np.mean(lc[m]) for m in MS}, float(np.mean(early)),
-                                                      {m: np.std(ex[m]) / np.sqrt(NPERM) for m in MS}, {m: np.mean(rel[m]) for m in MS}))
+                                                      {m: np.std(ex[m]) / np.sqrt(NPERM) for m in MS}, {m: np.mean(rel[m]) for m in MS}, {m: np.mean(covo[m]) for m in MS}, {m: np.mean(covk[m]) for m in MS}))
                 print(f"{ds} N0={N0:2d} cu/co={cu:2d}  KM-oracle first m: " + "  ".join(f"m={m}: {np.mean(ex[m]):+.3f}" for m in MS) +
                       "  | oracle learning cost: " + "  ".join(f"m={m}: {np.mean(lc[m]):+.2f}" for m in MS) + f"  | share early KM steps in first 50: {np.mean(early):.3f}", flush=True)
     print("\nMean over the two fleets (units of P0):")
@@ -75,3 +76,8 @@ if __name__ == "__main__":
     for (N0, cu), L in sorted(acc.items()):
         ex = [np.mean([x[0][m] for x in L]) for m in MS]; lc = [np.mean([x[1][m] for x in L]) for m in MS]; ea = np.mean([x[2] for x in L]); se = max(x[3][m] for x in L for m in MS); rl = [np.mean([x[4][m] for x in L]) for m in MS]
         print(f"{N0:3d} {cu:5d} | " + " / ".join(f"{v:+.3f}" for v in ex) + " | " + " / ".join(f"{v:+.1f}%" for v in rl) + " | " + " / ".join(f"{v:+.2f}" for v in lc) + f" | {ea:.3f} | {se:.3f}")
+    print("\nMean coverage (share of units that outlive the replacement date) over the first 25 / 50 / 100 decisions, two fleets; target 1 - tau*:")
+    print("N0  cu/co  target | oracle | Kaplan-Meier")
+    for (N0, cu), L in sorted(acc.items()):
+        co_ = [np.mean([x[5][m] for x in L]) for m in MS]; ck_ = [np.mean([x[6][m] for x in L]) for m in MS]
+        print(f"{N0:3d} {cu:5d}  {1 - 1 / (1 + cu):.3f} | " + " / ".join(f"{v:.3f}" for v in co_) + " | " + " / ".join(f"{v:.3f}" for v in ck_))

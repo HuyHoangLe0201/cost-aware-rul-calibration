@@ -1,0 +1,72 @@
+=== FD001 gru: mean over 5 splits, evaluation fleet of 50 alarmed units on average, held-out RMSE 13.6 (range 12.7-14.4)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.253 (sd 0.035)/0.43 | fixed90 0.272 (sd 0.042)/0.89 | gauss 0.214 (sd 0.033)/0.67 | static 0.218 (sd 0.033)/0.67 | cum 0.215 (sd 0.033)/0.66 | roll 0.216 (sd 0.033)/0.66
+        closed loop: oracle 0.214 (sd 0.032)/0.64 | naive 0.216 (sd 0.034)/0.69 | drop 0.222 (sd 0.036)/0.74 | kaplan-meier 0.214 (sd 0.032)/0.63
+ c_u/c_o= 5 (target coverage 0.83):  point 0.514 (sd 0.070)/0.43 | fixed90 0.301 (sd 0.042)/0.89 | gauss 0.283 (sd 0.042)/0.84 | static 0.292 (sd 0.046)/0.82 | cum 0.286 (sd 0.044)/0.82 | roll 0.285 (sd 0.044)/0.83
+        closed loop: oracle 0.282 (sd 0.042)/0.82 | naive 0.287 (sd 0.042)/0.85 | drop 0.300 (sd 0.039)/0.88 | kaplan-meier 0.283 (sd 0.042)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 0.949 (sd 0.132)/0.43 | fixed90 0.350 (sd 0.044)/0.89 | gauss 0.335 (sd 0.044)/0.90 | static 0.351 (sd 0.045)/0.91 | cum 0.350 (sd 0.043)/0.90 | roll 0.347 (sd 0.043)/0.90
+        closed loop: oracle 0.345 (sd 0.038)/0.90 | naive 0.342 (sd 0.038)/0.93 | drop 0.340 (sd 0.036)/0.94 | kaplan-meier 0.344 (sd 0.038)/0.90
+ c_u/c_o=20 (target coverage 0.95):  point 1.819 (sd 0.256)/0.43 | fixed90 0.447 (sd 0.055)/0.89 | gauss 0.372 (sd 0.048)/0.93 | static 0.389 (sd 0.052)/0.95 | cum 0.380 (sd 0.045)/0.94 | roll 0.377 (sd 0.044)/0.94
+        closed loop: oracle 0.374 (sd 0.040)/0.94 | naive 0.372 (sd 0.045)/0.96 | drop 0.371 (sd 0.045)/0.96 | kaplan-meier 0.377 (sd 0.040)/0.94
+=== FD002 gru: mean over 5 splits, evaluation fleet of 130 alarmed units on average, held-out RMSE 15.2 (range 15.0-15.6)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.342 (sd 0.020)/0.47 | fixed90 0.352 (sd 0.033)/0.88 | gauss 0.301 (sd 0.030)/0.64 | static 0.310 (sd 0.032)/0.66 | cum 0.302 (sd 0.031)/0.66 | roll 0.304 (sd 0.031)/0.65
+        closed loop: oracle 0.301 (sd 0.031)/0.66 | naive 0.305 (sd 0.031)/0.71 | drop 0.334 (sd 0.031)/0.83 | kaplan-meier 0.302 (sd 0.031)/0.65
+ c_u/c_o= 5 (target coverage 0.83):  point 0.656 (sd 0.057)/0.47 | fixed90 0.378 (sd 0.035)/0.88 | gauss 0.370 (sd 0.034)/0.82 | static 0.383 (sd 0.036)/0.80 | cum 0.372 (sd 0.034)/0.82 | roll 0.374 (sd 0.035)/0.83
+        closed loop: oracle 0.372 (sd 0.035)/0.82 | naive 0.375 (sd 0.035)/0.86 | drop 0.397 (sd 0.038)/0.92 | kaplan-meier 0.373 (sd 0.035)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.178 (sd 0.134)/0.47 | fixed90 0.421 (sd 0.040)/0.88 | gauss 0.410 (sd 0.040)/0.91 | static 0.425 (sd 0.039)/0.90 | cum 0.413 (sd 0.040)/0.90 | roll 0.416 (sd 0.041)/0.90
+        closed loop: oracle 0.413 (sd 0.042)/0.90 | naive 0.418 (sd 0.041)/0.93 | drop 0.431 (sd 0.043)/0.96 | kaplan-meier 0.415 (sd 0.042)/0.90
+ c_u/c_o=20 (target coverage 0.95):  point 2.222 (sd 0.291)/0.47 | fixed90 0.507 (sd 0.051)/0.88 | gauss 0.444 (sd 0.045)/0.96 | static 0.471 (sd 0.047)/0.95 | cum 0.447 (sd 0.046)/0.94 | roll 0.451 (sd 0.047)/0.95
+        closed loop: oracle 0.447 (sd 0.047)/0.95 | naive 0.452 (sd 0.048)/0.97 | drop 0.455 (sd 0.049)/0.97 | kaplan-meier 0.450 (sd 0.048)/0.94
+=== FD003 gru: mean over 5 splits, evaluation fleet of 50 alarmed units on average, held-out RMSE 12.0 (range 11.3-12.6)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.275 (sd 0.019)/0.32 | fixed90 0.245 (sd 0.008)/0.88 | gauss 0.203 (sd 0.014)/0.65 | static 0.208 (sd 0.016)/0.67 | cum 0.206 (sd 0.015)/0.66 | roll 0.206 (sd 0.015)/0.66
+        closed loop: oracle 0.209 (sd 0.017)/0.65 | naive 0.210 (sd 0.015)/0.69 | drop 0.213 (sd 0.014)/0.74 | kaplan-meier 0.209 (sd 0.017)/0.64
+ c_u/c_o= 5 (target coverage 0.83):  point 0.590 (sd 0.036)/0.32 | fixed90 0.266 (sd 0.011)/0.88 | gauss 0.259 (sd 0.011)/0.83 | static 0.265 (sd 0.012)/0.81 | cum 0.262 (sd 0.011)/0.82 | roll 0.262 (sd 0.011)/0.82
+        closed loop: oracle 0.264 (sd 0.012)/0.81 | naive 0.265 (sd 0.011)/0.85 | drop 0.269 (sd 0.012)/0.88 | kaplan-meier 0.265 (sd 0.012)/0.81
+ c_u/c_o=10 (target coverage 0.91):  point 1.115 (sd 0.069)/0.32 | fixed90 0.300 (sd 0.017)/0.88 | gauss 0.293 (sd 0.016)/0.91 | static 0.304 (sd 0.021)/0.90 | cum 0.298 (sd 0.019)/0.89 | roll 0.299 (sd 0.020)/0.89
+        closed loop: oracle 0.299 (sd 0.019)/0.90 | naive 0.304 (sd 0.024)/0.92 | drop 0.308 (sd 0.022)/0.93 | kaplan-meier 0.300 (sd 0.019)/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.164 (sd 0.136)/0.32 | fixed90 0.369 (sd 0.032)/0.88 | gauss 0.324 (sd 0.023)/0.95 | static 0.335 (sd 0.022)/0.95 | cum 0.337 (sd 0.028)/0.93 | roll 0.339 (sd 0.022)/0.94
+        closed loop: oracle 0.338 (sd 0.031)/0.94 | naive 0.334 (sd 0.022)/0.96 | drop 0.335 (sd 0.022)/0.96 | kaplan-meier 0.342 (sd 0.032)/0.93
+=== FD004 gru: mean over 5 splits, evaluation fleet of 125 alarmed units on average, held-out RMSE 14.0 (range 13.4-14.7)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.330 (sd 0.027)/0.41 | fixed90 0.325 (sd 0.033)/0.88 | gauss 0.277 (sd 0.029)/0.64 | static 0.281 (sd 0.029)/0.66 | cum 0.276 (sd 0.029)/0.66 | roll 0.278 (sd 0.029)/0.66
+        closed loop: oracle 0.276 (sd 0.029)/0.66 | naive 0.279 (sd 0.029)/0.72 | drop 0.306 (sd 0.031)/0.83 | kaplan-meier 0.276 (sd 0.030)/0.66
+ c_u/c_o= 5 (target coverage 0.83):  point 0.627 (sd 0.041)/0.41 | fixed90 0.352 (sd 0.038)/0.88 | gauss 0.344 (sd 0.037)/0.86 | static 0.353 (sd 0.040)/0.80 | cum 0.346 (sd 0.036)/0.83 | roll 0.347 (sd 0.036)/0.83
+        closed loop: oracle 0.345 (sd 0.036)/0.83 | naive 0.350 (sd 0.039)/0.87 | drop 0.373 (sd 0.045)/0.92 | kaplan-meier 0.346 (sd 0.036)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.120 (sd 0.072)/0.41 | fixed90 0.399 (sd 0.047)/0.88 | gauss 0.393 (sd 0.046)/0.94 | static 0.402 (sd 0.053)/0.91 | cum 0.390 (sd 0.049)/0.90 | roll 0.395 (sd 0.047)/0.90
+        closed loop: oracle 0.390 (sd 0.049)/0.90 | naive 0.400 (sd 0.051)/0.93 | drop 0.413 (sd 0.051)/0.96 | kaplan-meier 0.392 (sd 0.050)/0.90
+ c_u/c_o=20 (target coverage 0.95):  point 2.108 (sd 0.139)/0.41 | fixed90 0.491 (sd 0.066)/0.88 | gauss 0.439 (sd 0.052)/0.98 | static 0.457 (sd 0.064)/0.95 | cum 0.434 (sd 0.057)/0.94 | roll 0.439 (sd 0.058)/0.95
+        closed loop: oracle 0.433 (sd 0.058)/0.94 | naive 0.450 (sd 0.060)/0.97 | drop 0.455 (sd 0.060)/0.98 | kaplan-meier 0.436 (sd 0.059)/0.94
+=== FD001 rf: mean over 5 splits, evaluation fleet of 50 alarmed units on average, held-out RMSE 16.3 (range 15.6-16.9)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.396 (sd 0.054)/0.39 | fixed90 0.384 (sd 0.025)/0.88 | gauss 0.310 (sd 0.025)/0.69 | static 0.315 (sd 0.029)/0.68 | cum 0.314 (sd 0.028)/0.66 | roll 0.313 (sd 0.028)/0.66
+        closed loop: oracle 0.311 (sd 0.028)/0.66 | naive 0.315 (sd 0.029)/0.70 | drop 0.324 (sd 0.033)/0.75 | kaplan-meier 0.310 (sd 0.027)/0.66
+ c_u/c_o= 5 (target coverage 0.83):  point 0.834 (sd 0.142)/0.39 | fixed90 0.409 (sd 0.026)/0.88 | gauss 0.401 (sd 0.027)/0.81 | static 0.416 (sd 0.032)/0.81 | cum 0.412 (sd 0.031)/0.82 | roll 0.413 (sd 0.031)/0.82
+        closed loop: oracle 0.410 (sd 0.032)/0.83 | naive 0.407 (sd 0.030)/0.85 | drop 0.408 (sd 0.026)/0.87 | kaplan-meier 0.410 (sd 0.031)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.565 (sd 0.291)/0.39 | fixed90 0.451 (sd 0.027)/0.88 | gauss 0.446 (sd 0.031)/0.87 | static 0.457 (sd 0.034)/0.91 | cum 0.446 (sd 0.028)/0.89 | roll 0.447 (sd 0.027)/0.89
+        closed loop: oracle 0.443 (sd 0.027)/0.89 | naive 0.445 (sd 0.030)/0.92 | drop 0.447 (sd 0.031)/0.93 | kaplan-meier 0.445 (sd 0.027)/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 3.025 (sd 0.588)/0.39 | fixed90 0.536 (sd 0.035)/0.88 | gauss 0.473 (sd 0.032)/0.93 | static 0.484 (sd 0.036)/0.95 | cum 0.479 (sd 0.035)/0.93 | roll 0.478 (sd 0.032)/0.94
+        closed loop: oracle 0.477 (sd 0.034)/0.94 | naive 0.468 (sd 0.028)/0.96 | drop 0.468 (sd 0.028)/0.96 | kaplan-meier 0.482 (sd 0.028)/0.93
+=== FD002 rf: mean over 5 splits, evaluation fleet of 130 alarmed units on average, held-out RMSE 15.6 (range 15.2-16.0)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.386 (sd 0.015)/0.38 | fixed90 0.367 (sd 0.028)/0.88 | gauss 0.302 (sd 0.024)/0.66 | static 0.309 (sd 0.024)/0.66 | cum 0.303 (sd 0.024)/0.66 | roll 0.305 (sd 0.025)/0.66
+        closed loop: oracle 0.302 (sd 0.026)/0.66 | naive 0.307 (sd 0.025)/0.71 | drop 0.343 (sd 0.026)/0.83 | kaplan-meier 0.303 (sd 0.026)/0.65
+ c_u/c_o= 5 (target coverage 0.83):  point 0.803 (sd 0.042)/0.38 | fixed90 0.396 (sd 0.030)/0.88 | gauss 0.383 (sd 0.028)/0.82 | static 0.398 (sd 0.027)/0.80 | cum 0.388 (sd 0.029)/0.82 | roll 0.391 (sd 0.029)/0.83
+        closed loop: oracle 0.387 (sd 0.031)/0.82 | naive 0.391 (sd 0.032)/0.86 | drop 0.413 (sd 0.031)/0.92 | kaplan-meier 0.388 (sd 0.031)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.497 (sd 0.094)/0.38 | fixed90 0.444 (sd 0.031)/0.88 | gauss 0.431 (sd 0.031)/0.89 | static 0.447 (sd 0.030)/0.90 | cum 0.434 (sd 0.032)/0.90 | roll 0.438 (sd 0.030)/0.90
+        closed loop: oracle 0.434 (sd 0.034)/0.90 | naive 0.439 (sd 0.030)/0.93 | drop 0.455 (sd 0.027)/0.96 | kaplan-meier 0.435 (sd 0.034)/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.887 (sd 0.201)/0.38 | fixed90 0.540 (sd 0.035)/0.88 | gauss 0.466 (sd 0.029)/0.95 | static 0.488 (sd 0.032)/0.95 | cum 0.470 (sd 0.029)/0.94 | roll 0.476 (sd 0.029)/0.95
+        closed loop: oracle 0.470 (sd 0.031)/0.94 | naive 0.478 (sd 0.028)/0.96 | drop 0.482 (sd 0.026)/0.97 | kaplan-meier 0.472 (sd 0.031)/0.94
+=== FD003 rf: mean over 5 splits, evaluation fleet of 50 alarmed units on average, held-out RMSE 13.9 (range 12.2-15.4)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.335 (sd 0.014)/0.37 | fixed90 0.337 (sd 0.016)/0.88 | gauss 0.270 (sd 0.024)/0.68 | static 0.273 (sd 0.024)/0.67 | cum 0.270 (sd 0.025)/0.65 | roll 0.270 (sd 0.025)/0.66
+        closed loop: oracle 0.275 (sd 0.025)/0.66 | naive 0.277 (sd 0.025)/0.70 | drop 0.285 (sd 0.025)/0.75 | kaplan-meier 0.275 (sd 0.025)/0.66
+ c_u/c_o= 5 (target coverage 0.83):  point 0.679 (sd 0.044)/0.37 | fixed90 0.365 (sd 0.020)/0.88 | gauss 0.352 (sd 0.021)/0.84 | static 0.364 (sd 0.019)/0.82 | cum 0.364 (sd 0.017)/0.82 | roll 0.363 (sd 0.017)/0.82
+        closed loop: oracle 0.370 (sd 0.019)/0.82 | naive 0.370 (sd 0.016)/0.85 | drop 0.373 (sd 0.021)/0.88 | kaplan-meier 0.370 (sd 0.019)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.252 (sd 0.119)/0.37 | fixed90 0.412 (sd 0.028)/0.88 | gauss 0.403 (sd 0.024)/0.91 | static 0.415 (sd 0.029)/0.91 | cum 0.406 (sd 0.029)/0.90 | roll 0.408 (sd 0.029)/0.90
+        closed loop: oracle 0.415 (sd 0.030)/0.90 | naive 0.416 (sd 0.031)/0.92 | drop 0.419 (sd 0.031)/0.93 | kaplan-meier 0.417 (sd 0.029)/0.89
+ c_u/c_o=20 (target coverage 0.95):  point 2.398 (sd 0.273)/0.37 | fixed90 0.505 (sd 0.047)/0.88 | gauss 0.443 (sd 0.035)/0.95 | static 0.455 (sd 0.052)/0.96 | cum 0.455 (sd 0.039)/0.94 | roll 0.455 (sd 0.042)/0.94
+        closed loop: oracle 0.460 (sd 0.038)/0.93 | naive 0.457 (sd 0.050)/0.96 | drop 0.457 (sd 0.051)/0.96 | kaplan-meier 0.464 (sd 0.042)/0.93
+=== FD004 rf: mean over 5 splits, evaluation fleet of 125 alarmed units on average, held-out RMSE 15.8 (range 15.2-16.8)
+ c_u/c_o= 2 (target coverage 0.67):  point 0.418 (sd 0.017)/0.36 | fixed90 0.396 (sd 0.024)/0.88 | gauss 0.331 (sd 0.019)/0.67 | static 0.340 (sd 0.020)/0.67 | cum 0.332 (sd 0.019)/0.66 | roll 0.334 (sd 0.019)/0.66
+        closed loop: oracle 0.332 (sd 0.020)/0.66 | naive 0.337 (sd 0.020)/0.72 | drop 0.374 (sd 0.024)/0.83 | kaplan-meier 0.332 (sd 0.019)/0.66
+ c_u/c_o= 5 (target coverage 0.83):  point 0.843 (sd 0.041)/0.36 | fixed90 0.427 (sd 0.026)/0.88 | gauss 0.414 (sd 0.024)/0.83 | static 0.431 (sd 0.028)/0.81 | cum 0.419 (sd 0.025)/0.83 | roll 0.422 (sd 0.026)/0.83
+        closed loop: oracle 0.419 (sd 0.025)/0.83 | naive 0.424 (sd 0.027)/0.87 | drop 0.449 (sd 0.028)/0.92 | kaplan-meier 0.419 (sd 0.026)/0.82
+ c_u/c_o=10 (target coverage 0.91):  point 1.552 (sd 0.091)/0.36 | fixed90 0.477 (sd 0.029)/0.88 | gauss 0.462 (sd 0.025)/0.91 | static 0.483 (sd 0.032)/0.90 | cum 0.466 (sd 0.026)/0.90 | roll 0.471 (sd 0.027)/0.90
+        closed loop: oracle 0.465 (sd 0.027)/0.90 | naive 0.473 (sd 0.027)/0.93 | drop 0.484 (sd 0.028)/0.96 | kaplan-meier 0.466 (sd 0.027)/0.90
+ c_u/c_o=20 (target coverage 0.95):  point 2.969 (sd 0.193)/0.36 | fixed90 0.578 (sd 0.037)/0.88 | gauss 0.502 (sd 0.025)/0.96 | static 0.531 (sd 0.033)/0.95 | cum 0.506 (sd 0.027)/0.94 | roll 0.510 (sd 0.028)/0.95
+        closed loop: oracle 0.505 (sd 0.029)/0.95 | naive 0.518 (sd 0.026)/0.97 | drop 0.520 (sd 0.027)/0.97 | kaplan-meier 0.508 (sd 0.029)/0.94
