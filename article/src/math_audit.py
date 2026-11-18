@@ -62,9 +62,12 @@ for cu in (2, 5, 10, 20):
             best = min(best, first + kap * math.sqrt(4 * M2 / (1 - tau) + 2 * qs ** 2) * math.sqrt(pe))
         print(f"   cu/co={cu:2d} n={n:4d}: MC excess {ex:.5f}  bound {best:.5f} (ratio {best / ex:7.1f})  holds: {ex <= best}   n*excess {n * ex:.3f} vs asymptotic {const:.3f}")
 
-print("4. Proposition 3: tau*-quantile after naive treatment (cu/co = 10, q_bar = 1.3 q*)")
-tau = 1 / 11; qs = Ginv(tau); qb = 1.3 * qs; Gb = float(G(qb))
-q_drop = Ginv(tau * Gb); print(f"   q* = {qs:.4f}; dropped censored: quantile of G/G(q_bar) at tau* = {q_drop:.4f} (<= q*: {q_drop <= qs}); censored value recorded as exact: quantile = {min(qs, qb):.4f} (<= q*: True by construction)")
+print("4. Proposition 3 (corrected): pooled quantiles after the two naive treatments, cu/co = 10, multipliers q_s drawn around q*")
+tau = 1 / 11; qs = Ginv(tau)
+for name, qlaw in (("single multiplier 1.3 q*", lambda n: np.full(n, 1.3 * qs)), ("single multiplier 0.8 q*", lambda n: np.full(n, 0.8 * qs)), ("multipliers uniform in [0.7 q*, 1.3 q*]", lambda n: rng.uniform(0.7 * qs, 1.3 * qs, n)), ("multipliers all >= q* (uniform in [q*, 1.5 q*])", lambda n: rng.uniform(qs, 1.5 * qs, n))):
+    n = 400000; rho = rng.lognormal(0, SIG, n); q = qlaw(n); keep = rho <= q
+    q_drop = np.quantile(rho[keep], tau); q_rec = np.quantile(np.minimum(rho, q), tau)
+    print(f"   {name:48s}: q* = {qs:.4f}; discard: {q_drop:.4f} (< q*: {q_drop < qs - 1e-3}); record as exact: {q_rec:.4f} ({'below q*' if q_rec < qs - 1e-3 else 'equal to q*'})")
 
 print("5. Proposition 4: two strata (log-normal mu = -0.25 and +0.25, sigma 0.2), cu/co = 10; n = 200, 1000")
 cu = 10; tau = 1 / 11; kap = 11; s2 = 0.2

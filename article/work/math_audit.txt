@@ -29,18 +29,21 @@
    cu/co=20 n= 100: MC excess 0.00920  bound 26.59075 (ratio  2890.0)  holds: True   n*excess 0.920 vs asymptotic 0.937
    cu/co=20 n= 400: MC excess 0.00240  bound 3.13496 (ratio  1305.6)  holds: True   n*excess 0.960 vs asymptotic 0.937
    cu/co=20 n=1000: MC excess 0.00095  bound 0.10476 (ratio   110.5)  holds: True   n*excess 0.948 vs asymptotic 0.937
-4. Proposition 3: tau*-quantile after naive treatment (cu/co = 10, q_bar = 1.3 q*)
-   q* = 0.6267; dropped censored: quantile of G/G(q_bar) at tau* = 0.5047 (<= q*: True); censored value recorded as exact: quantile = 0.6267 (<= q*: True by construction)
+4. Proposition 3 (corrected): pooled quantiles after the two naive treatments, cu/co = 10, multipliers q_s drawn around q*
+   single multiplier 1.3 q*                        : q* = 0.6267; discard: 0.5051 (< q*: True); record as exact: 0.6262 (equal to q*)
+   single multiplier 0.8 q*                        : q* = 0.6267; discard: 0.3693 (< q*: True); record as exact: 0.5013 (below q*)
+   multipliers uniform in [0.7 q*, 1.3 q*]         : q* = 0.6267; discard: 0.4423 (< q*: True); record as exact: 0.4676 (below q*)
+   multipliers all >= q* (uniform in [q*, 1.5 q*]) : q* = 0.6267; discard: 0.4962 (< q*: True); record as exact: 0.6268 (equal to q*)
 5. Proposition 4: two strata (log-normal mu = -0.25 and +0.25, sigma 0.2), cu/co = 10; n = 200, 1000
-   n= 200: V = 0.1371; threshold 0.00216; stratified excess 0.00422; pooled excess 0.13932; stratifying pays: True (rule V > threshold: True)
-   n=1000: V = 0.1371; threshold 0.00043; stratified excess 0.00087; pooled excess 0.13754; stratifying pays: True (rule V > threshold: True)
-   n=5000: V = 0.1371; threshold 0.00009; stratified excess 0.00018; pooled excess 0.13721; stratifying pays: True (rule V > threshold: True)
+   n= 200: V = 0.1371; threshold 0.00216; stratified excess 0.00469; pooled excess 0.13930; stratifying pays: True (rule V > threshold: True)
+   n=1000: V = 0.1371; threshold 0.00043; stratified excess 0.00093; pooled excess 0.13755; stratifying pays: True (rule V > threshold: True)
+   n=5000: V = 0.1371; threshold 0.00009; stratified excess 0.00017; pooled excess 0.13721; stratifying pays: True (rule V > threshold: True)
 6. Lemma 1: conditional variance of xi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2
-   largest ratio variance / bound over 60 random (u, v, q): 0.477  (must be <= 1)
+   largest ratio variance / bound over 60 random (u, v, q): 0.478  (must be <= 1)
 7-9. Lemmas 2(i), 3, 4 along closed-loop runs (tau* = 1/11, N0 = 20, n up to 3000, 40 runs)
    Lemma 2(i): smallest C1 with J^+ <= (2/p_x)(R^+ + C1 * 5 log n) needed over all checks: 0.000 (negative values mean the inequality held with C1 = 0)
-   Lemma 3: largest |G_hat - G| at levels with R_n >= 5 log n: 0.044; >= 20 log n: 0.041
-   Lemma 4: mean count 0.00 (K=5, bound 5.4), 0.10 (K=20, bound 21.5)
+   Lemma 3: largest |G_hat - G| at levels with R_n >= 5 log n: 0.047; >= 20 log n: 0.047
+   Lemma 4: mean count 0.00 (K=5, bound 5.4), 0.03 (K=20, bound 21.5)
 10. Proposition 5: coverage error against eps_w = sqrt(log(2w/delta)/(2w)) + 3/w + s(w+1)/2 (delta = 0.1), drifting log-normal location
    drift 0.0000 (s = 0.00000), w =  50: eps_w = 0.3228; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
    drift 0.0000 (s = 0.00000), w = 200: eps_w = 0.1590; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
@@ -49,5 +52,5 @@
    drift 0.0020 (s = 0.00228), w =  50: eps_w = 0.3810; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
    drift 0.0020 (s = 0.00228), w = 200: eps_w = 0.3881; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
 11. Structure of the proof of Theorem 2(e) along adversarial runs (N0 = 5 labels at 0.40, tau* = 1/11, x = q* - 0.10, 300 runs of 800 units)
-   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 30.89 and max J_n(x) / log n = 33.61 (bounded by constants C and C')
-   Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: 13.61
+   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 26.39 and max J_n(x) / log n = 28.55 (bounded by constants C and C')
+   Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: 14.36
