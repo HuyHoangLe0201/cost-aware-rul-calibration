@@ -156,3 +156,61 @@ for run in range(300):
     if uses: maxuse = max(maxuse, max(uses.values()) / math.log(N))
 print(f"   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = {maxR:.2f} and max J_n(x) / log n = {maxJ:.2f} (bounded by constants C and C')")
 print(f"   Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: {maxuse:.2f}")
+
+print("12. Explicit constants of Lemmas 2-5 and of Theorem 2(e) for the log-normal example (sigma 0.35, cu/co = 10, x = q* - 0.10, N0 = 5)")
+SIGc = 0.35; tau = 1 / 11; N0 = 5
+from statistics import NormalDist
+qs = math.exp(SIGc * NormalDist().inv_cdf(tau)); x = qs - 0.10
+Gx = NormalDist().cdf(math.log(x) / SIGc); p = 1 - Gx; Lam = -math.log(p); b = 1 + Lam; c = max(1, Lam)
+C1 = 2 / p + 3; A = 2 * math.sqrt(2 * b * C1 / p); B0 = c + 6; th = (tau - Gx) / 2
+C0 = max(5, 1920 * A * A / th ** 2, 80 * B0 / th); n1 = max(5, math.ceil(b), math.ceil(math.exp(N0 * b / 5)))
+n2 = max(n1, math.ceil(math.exp(2 * N0 * max(1, (Lam + th / 2) / th) / C0)))
+Cp = 2 / p * (C0 + 5 * C1); C4 = 1 + 2 / p * (C0 + 3 / (4 * p)); Gp = Cp + N0 * C4 + 1 + C4 * (3.2 * C0 + 16) / p
+def okN(N):
+    L = math.log(N); Amax = (3.2 * C0 + 16) * L / p
+    return math.ceil(N / 2) >= n2 and N >= Cp and 0.5 * (N + 1) + (N0 + Amax) * C4 * L + Cp * L < N
+Nn = 3.0
+while not okN(int(Nn)): Nn *= 1.5
+lo, hi = Nn / 1.5, Nn
+for _ in range(80):
+    mid = (lo + hi) / 2
+    if okN(int(mid)): hi = mid
+    else: lo = mid
+print(f"   p = {p:.4f}, Lambda = {Lam:.4f}, b = {b:.4f}, C1 = {C1:.3f}, A = {A:.3f}, B0 = {B0:.2f}, theta = {th:.5f}")
+print(f"   C0 = {C0:.3e}, n2 = {n2}, C' = {Cp:.3e}, C4 = {C4:.3e}, Gamma' = {Gp:.3e}; threshold N1 = {hi:.3e}; failure constant 64 b^2 + 3 = {64 * b * b + 3:.1f}")
+Lam_f = lambda z: -np.log(1 - G(z)); worst_i = 0; worst_ii = 0
+for run in range(40):
+    Nn_ = 2500; rho = rng.lognormal(0, SIGc, Nn_); Y = np.empty(Nn_); d = np.zeros(Nn_, bool); qv = np.full(Nn_, np.inf)
+    for s_ in range(Nn_):
+        if s_ < N0: Y[s_], d[s_] = 0.40, True; continue
+        qv[s_] = kaplan_meier_quantile(Y[:s_], d[:s_], tau); Y[s_], d[s_] = min(rho[s_], qv[s_]), rho[s_] <= qv[s_]
+        n = s_ + 1
+        if n in (100, 300, 1000, 2500):
+            ell = 5 * math.log(n); Jp = np.sum(qv[:n] > x); Rp = np.sum(Y[:n] > x); worst_i = max(worst_i, Jp / ((2 / p) * (Rp + C1 * ell)))
+            for _ in range(40):
+                u = rng.uniform(0, x * 0.98); v = rng.uniform(u + 1e-3, x); Yv = Y[:n]; msk = Yv > u
+                Mn = np.sum((Yv > u) & (Yv <= v) & d[:n]) - (np.sum(Lam_f(np.minimum(Yv[msk], v)) - float(Lam_f(u))) if msk.any() else 0.0)
+                rhs = A * math.sqrt(ell * float(G(v) - G(u)) * (np.sum(Yv > u) + ell)) + B0 * ell; worst_ii = max(worst_ii, abs(Mn) / rhs)
+print(f"   Lemma 2 with the explicit constants, 40 closed-loop runs of 2500 units: largest LHS/RHS = {worst_i:.2f} for (i) and {worst_ii:.2f} for (ii) (must be <= 1)")
+# Lemma 4(ii) and Lemma 5 along adversarial runs
+bad4 = 0; bad5 = 0; tot5 = 0; N = 800
+for run in range(150):
+    rho = rng.lognormal(0, SIGc, N); Y = np.empty(N); d = np.zeros(N, bool); qv = np.full(N, np.inf)
+    for s in range(N):
+        if s < N0: Y[s], d[s] = 0.40, True; continue
+        qv[s] = kaplan_meier_quantile(Y[:s], d[:s], tau); Y[s], d[s] = min(rho[s], qv[s]), rho[s] <= qv[s]
+    for K in (5, 20):
+        cnt = 0; top = []
+        for j in range(N):
+            if j >= N0 and d[j]:
+                kth = top[K - 1] if len(top) >= K else 0.0
+                if kth < rho[j] <= min(qv[j], x): cnt += 1
+            top.append(Y[j]); top = sorted(top, reverse=True)[:K]
+        bad4 += cnt > (3.2 * K + 9.6 * math.log(N)) / p + 3 * math.log(N)
+    # Lemma 5: uses of each label below x at steps > n0 = 30: S_u > p u / 2 - 3/(4 p) log N
+    n0 = 30; uses = {}
+    for s in range(n0, N):
+        if qv[s] < x:
+            u = uses.setdefault(qv[s], [0, 0]); u[0] += 1; u[1] += (rho[s] > qv[s])
+            tot5 += 1; bad5 += (u[1] <= p * u[0] / 2 - 3 / (4 * p) * math.log(N))
+print(f"   Lemma 4(ii): {bad4} violations in {150 * 2} (run, K) pairs; Lemma 5: {bad5} violations among {tot5} uses")

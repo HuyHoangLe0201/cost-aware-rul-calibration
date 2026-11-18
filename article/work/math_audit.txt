@@ -54,3 +54,8 @@
 11. Structure of the proof of Theorem 2(e) along adversarial runs (N0 = 5 labels at 0.40, tau* = 1/11, x = q* - 0.10, 300 runs of 800 units)
    Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 26.39 and max J_n(x) / log n = 28.55 (bounded by constants C and C')
    Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: 14.36
+12. Explicit constants of Lemmas 2-5 and of Theorem 2(e) for the log-normal example (sigma 0.35, cu/co = 10, x = q* - 0.10, N0 = 5)
+   p = 0.9665, Lambda = 0.0341, b = 1.0341, C1 = 5.069, A = 6.587, B0 = 7.00, theta = 0.02871
+   C0 = 1.011e+08, n2 = 5, C' = 2.091e+08, C4 = 2.091e+08, Gamma' = 6.996e+16; threshold N1 = 3.116e+20; failure constant 64 b^2 + 3 = 71.4
+   Lemma 2 with the explicit constants, 40 closed-loop runs of 2500 units: largest LHS/RHS = 0.47 for (i) and 0.04 for (ii) (must be <= 1)
+   Lemma 4(ii): 0 violations in 300 (run, K) pairs; Lemma 5: 0 violations among 7723 uses
