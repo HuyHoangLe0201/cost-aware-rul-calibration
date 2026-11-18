@@ -1,8 +1,8 @@
 """Numerical audit of the statements proved in Appendix A (a second, independent check besides the line-by-line reading of the proofs).
  1. Proposition 1: excess cost by direct expectation against the integral form, for q below and above q*.
- 2. Proposition 2: the quadratic sandwich.
- 3. Theorem 1: Monte Carlo expected excess of the conformal quantile against the stated bound, over admissible eta, and against the asymptotic constant.
- 4. Proposition 3: quantiles of the two naive treatments against q*.
+ 2. Proposition 2: the exact form kappa int_tau^u (q - Q(v)) dv and the sharpened sandwich kappa Delta^2/(2 g_max) <= excess <= kappa Delta^2/(2 g_min).
+ 3. Theorem 1: Monte Carlo expected excess of the conformal quantile against the stated bound, over admissible eta, and against the asymptotic constant; the exact form kappa int |v - tau| T_n(v) dQ(v).
+ 4. Proposition 3: quantiles of the two naive treatments against q*; part (c), the cap of every later multiplier by the initial conformal quantile and the exact lock-in probability.
  5. Proposition 4: the stratification threshold against Monte Carlo for two strata.
  6. Lemma 1: conditional variance of the increment xi_s(u, v) against b (G(v) - G(u)) 1{q > u}, for random (u, v, q).
  7. Lemma 2(i): J_n^+(x) <= (2 / p_x) (R_n^+(x) + C1 * 5 log n) along closed-loop runs; smallest C1 that works.
@@ -13,7 +13,7 @@ import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abs
 from paths import WORK, FIGS, CMAPSS_ROOT, PRON_ROOT
 import math
 import numpy as np
-from rulcost import kaplan_meier_quantile
+from rulcost import kaplan_meier_quantile, conformal_quantile
 
 rng = np.random.default_rng(2026)
 erf = np.vectorize(math.erf)
@@ -39,12 +39,17 @@ for cu in (2, 20):
         direct = Phi(q, cu) - Phi(qs, cu); xs = np.linspace(qs, q, 20001); integ = kap * np.trapezoid(G(xs) - tau, xs)
         print(f"   cu/co={cu:2d} q/q*={q / qs:4.2f}: direct {direct:.5f}  signed integral {integ:.5f}  (non-negative: {direct >= -1e-9})")
 
-print("2. Proposition 2 (sandwich), cu/co = 10")
+print("2. Proposition 2 (sharpened sandwich kappa Delta^2/(2 g_max) <= excess <= kappa Delta^2/(2 g_min)), cu/co = 10")
 cu = 10; tau = 1 / 11; kap = 11; qs = Ginv(tau)
 for q in (0.8 * qs, 0.95 * qs, 1.1 * qs, 1.3 * qs):
     lo_hi = np.linspace(min(q, qs), max(q, qs), 2001); gmin, gmax = dens(lo_hi).min(), dens(lo_hi).max(); D = abs(float(G(q)) - tau)
     ex = Phi(q, cu) - Phi(qs, cu)
-    print(f"   q/q*={q / qs:4.2f}: lower {kap * gmin * D ** 2 / (2 * gmax ** 2):.5f} <= excess {ex:.5f} <= upper {kap * gmax * D ** 2 / (2 * gmin ** 2):.5f}: {kap * gmin * D ** 2 / (2 * gmax ** 2) - 1e-12 <= ex <= kap * gmax * D ** 2 / (2 * gmin ** 2) + 1e-12}")
+    print(f"   q/q*={q / qs:4.2f}: lower {kap * D ** 2 / (2 * gmax):.5f} <= excess {ex:.5f} <= upper {kap * D ** 2 / (2 * gmin):.5f}: {kap * D ** 2 / (2 * gmax) - 1e-12 <= ex <= kap * D ** 2 / (2 * gmin) + 1e-12}")
+
+print("   Proposition 2(a): excess = kappa int_tau^u (q - Q(v)) dv (oriented), cu/co = 10")
+for q in (0.6 * qs, 0.9 * qs, 1.2 * qs, 1.6 * qs):
+    u = float(G(q)); vs = np.linspace(tau, u, 40001); Qv = np.interp(vs, GG, GRID); integ = kap * np.trapezoid(q - Qv, vs)
+    print(f"   q/q*={q / qs:4.2f}: oriented integral {integ:.6f}  direct {Phi(q, cu) - Phi(qs, cu):.6f}")
 
 print("3. Theorem 1 (log-normal 0.35): Monte Carlo against the stated bound (best admissible eta) and the asymptotic constant")
 def Dkl(a, b):
@@ -57,10 +62,23 @@ for cu in (2, 5, 10, 20):
         for eta in np.linspace(0.001, min(tau, 1 - tau) * 0.999, 600):
             if n <= 2 / eta: continue
             qm, qp = Ginv(tau - eta), Ginv(tau + eta); xs = np.linspace(qm, qp, 2001); gmn, gmx = dens(xs).min(), dens(xs).max()
-            first = kap * gmx / (2 * gmn ** 2) * (pb * (1 - pb) / (n + 2) + 1 / (n + 1) ** 2)
+            first = kap / (2 * gmn) * (pb * (1 - pb) / (n + 2) + 1 / (n + 1) ** 2)
             pe = math.exp(-n * Dkl(tau, tau - eta)) + math.exp(-n * Dkl(tau + tau / n, tau + eta))
             best = min(best, first + kap * math.sqrt(4 * M2 / (1 - tau) + 2 * qs ** 2) * math.sqrt(pe))
         print(f"   cu/co={cu:2d} n={n:4d}: MC excess {ex:.5f}  bound {best:.5f} (ratio {best / ex:7.1f})  holds: {ex <= best}   n*excess {n * ex:.3f} vs asymptotic {const:.3f}")
+
+print("   Theorem 1, exact form: E excess = kappa int |v - tau| T_n(v) Q'(v) dv, T_n = P(Bin(n, v) <= k-1) (v > tau), P(Bin(n, v) >= k) (v <= tau); cu/co = 10")
+def bcdf(kk, n, pr):                                              # P(Bin(n, pr) <= kk), vectorised in pr
+    pr = np.clip(np.asarray(pr, float), 1e-300, 1 - 1e-16); tot = np.zeros_like(pr)
+    for j in range(kk + 1): tot += np.exp(math.lgamma(n + 1) - math.lgamma(j + 1) - math.lgamma(n - j + 1) + j * np.log(pr) + (n - j) * np.log1p(-pr))
+    return np.minimum(tot, 1.0)
+cu = 10; tau = 1 / 11; kap = 11; qs = Ginv(tau)
+vv = np.linspace(1e-6, 1 - 1e-6, 400001); Qv = np.interp(vv, GG, GRID); Qp = 1 / dens(Qv)
+for n in (50, 100, 400):
+    k = int(math.ceil((n + 1) * tau)); T = np.where(vv > tau, bcdf(k - 1, n, vv), 1 - bcdf(k - 1, n, vv))
+    exact = kap * np.trapezoid(np.abs(vv - tau) * T * Qp, vv)
+    X = np.sort(rng.lognormal(0, SIG, (20000, n)), axis=1)[:, k - 1]; mc = float((kap * (np.interp(X, GRID, IG) - tau * X - (np.interp(qs, GRID, IG) - tau * qs))).mean())
+    print(f"   n={n:4d}: exact form {exact:.6f}   Monte Carlo {mc:.6f}")
 
 print("4. Proposition 3 (corrected): pooled quantiles after the two naive treatments, cu/co = 10, multipliers q_s drawn around q*")
 tau = 1 / 11; qs = Ginv(tau)
@@ -68,6 +86,19 @@ for name, qlaw in (("single multiplier 1.3 q*", lambda n: np.full(n, 1.3 * qs)),
     n = 400000; rho = rng.lognormal(0, SIG, n); q = qlaw(n); keep = rho <= q
     q_drop = np.quantile(rho[keep], tau); q_rec = np.quantile(np.minimum(rho, q), tau)
     print(f"   {name:48s}: q* = {qs:.4f}; discard: {q_drop:.4f} (< q*: {q_drop < qs - 1e-3}); record as exact: {q_rec:.4f} ({'below q*' if q_rec < qs - 1e-3 else 'equal to q*'})")
+
+print("   Proposition 3(c): every multiplier of a naive closed loop is at most the initial conformal quantile; lock-in probability P(Bin(N0, G(qbar)) >= k), cu/co = 10, N0 = 20")
+N0, NN, RUNS = 20, 150, 1500; k0 = int(math.ceil((N0 + 1) * tau)); viol = {"record": 0, "drop": 0}; lock = {"record": 0, "drop": 0}; QB = 0.55
+for _ in range(RUNS):
+    rho = rng.lognormal(0, SIG, NN); q0 = float(np.sort(rho[:N0])[k0 - 1])
+    for m in ("record", "drop"):
+        Y = list(rho[:N0]); mx = 0.0
+        for t in range(N0, NN):
+            q = conformal_quantile(np.array(Y), tau); mx = max(mx, q)
+            if rho[t] <= q: Y.append(rho[t])
+            elif m == "record": Y.append(q)
+        viol[m] += mx > q0 + 1e-12; lock[m] += mx <= QB
+Gq = float(G(QB)); print(f"   runs with a multiplier above the initial quantile: record {viol['record']}, drop {viol['drop']} of {RUNS}; share of runs with all multipliers <= {QB}: record {lock['record'] / RUNS:.3f}, drop {lock['drop'] / RUNS:.3f}, exact {1 - float(bcdf(k0 - 1, N0, np.array([Gq]))[0]):.3f}")
 
 print("5. Proposition 4: two strata (log-normal mu = -0.25 and +0.25, sigma 0.2), cu/co = 10; n = 200, 1000")
 cu = 10; tau = 1 / 11; kap = 11; s2 = 0.2

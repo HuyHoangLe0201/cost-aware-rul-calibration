@@ -1,0 +1,8 @@
+level qbar:                        0.30    0.40    0.50    0.55
+lower bound P(Bin(20,G(qbar))>=k): 0.000   0.004   0.081   0.218   (k = 2)
+naive (record as exact)            0.000   0.004   0.076   0.224   share of runs with all multipliers <= qbar
+drop censored                      0.000   0.004   0.076   0.224   share of runs with all multipliers <= qbar
+Kaplan-Meier                       0.000   0.000   0.000   0.000   share of runs with all multipliers <= qbar
+runs in which some multiplier of a naive loop exceeds the initial conformal quantile q0: 0 (record), 0 (drop) of 4000
+share of runs with q0 < q* = 0.627: 0.552   (exact P(Bin(N0, tau*) >= k) = 0.554)
+mean multiplier over the last 100 units: naive (record as exact) 0.569, drop censored 0.406, Kaplan-Meier 0.629   (q* = 0.627)
