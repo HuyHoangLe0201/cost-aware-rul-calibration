@@ -1,0 +1,5 @@
+shift +-0.03: V = 0.00307; n =    60: pooled - stratified expected cost = -0.00434 (s.e. 0.00024); prediction V - C/n[..] = -0.00397; stratifying pays: False, rule: False
+shift +-0.03: V = 0.00307; n =   100: pooled - stratified expected cost = -0.00108 (s.e. 0.00014); prediction V - C/n[..] = -0.00115; stratifying pays: False, rule: False
+shift +-0.03: V = 0.00307; n =   200: pooled - stratified expected cost = 0.00094 (s.e. 0.00007); prediction V - C/n[..] = 0.00096; stratifying pays: True, rule: True
+shift +-0.03: V = 0.00307; n =   800: pooled - stratified expected cost = 0.00255 (s.e. 0.00002); prediction V - C/n[..] = 0.00254; stratifying pays: True, rule: True
+shift +-0.03: V = 0.00307; n =  3200: pooled - stratified expected cost = 0.00294 (s.e. 0.00000); prediction V - C/n[..] = 0.00294; stratifying pays: True, rule: True

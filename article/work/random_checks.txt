@@ -1,0 +1,4 @@
+Proposition 2(a): 1500 random (distribution, q) pairs with flat parts; largest |oriented integral - exact excess| = 2.60e-05
+Proposition 2(b): 978 pairs with positive density on the interval; violations: 0; min excess/lower bound 1.000 (>= 1), max excess/upper bound 1.000 (<= 1)
+Theorem 1, exact form with atoms of dQ (flat parts of G): 40 random cases; largest |exact - Monte Carlo| in standard errors (40000 samples) 1.67
+Theorem 1 bound: 299 random cases with an admissible window; violations: 0; bound / exact excess between 1.00 and 41513.3 (median 15.2)
