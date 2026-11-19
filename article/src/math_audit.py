@@ -208,7 +208,7 @@ for _ in range(80):
     if okN(int(mid)): hi = mid
     else: lo = mid
 print(f"   p = {p:.4f}, Lambda = {Lam:.4f}, b = {b:.4f}, C1 = {C1:.3f}, A = {A:.3f}, B0 = {B0:.2f}, theta = {th:.5f}")
-print(f"   C0 = {C0:.3e}, n2 = {n2}, C' = {Cp:.3e}, C4 = {C4:.3e}, Gamma' = {Gp:.3e}; threshold N1 = {hi:.3e}; failure constant 64 b^2 + 3 = {64 * b * b + 3:.1f}")
+print(f"   C0 = {C0:.3e}, n2 = {n2}, C' = {Cp:.3e}, C2 = {C4:.3e}, Gamma' = {Gp:.3e}; threshold N1 = {hi:.3e}; failure constant 64 b^2 + 3 = {64 * b * b + 3:.1f}")
 Lam_f = lambda z: -np.log(1 - G(z)); worst_i = 0; worst_ii = 0
 for run in range(40):
     Nn_ = 2500; rho = rng.lognormal(0, SIGc, Nn_); Y = np.empty(Nn_); d = np.zeros(Nn_, bool); qv = np.full(Nn_, np.inf)

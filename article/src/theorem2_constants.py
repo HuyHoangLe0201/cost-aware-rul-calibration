@@ -13,7 +13,7 @@ theta = (TAU - G(x))/2; C0 = max(5, 1920*A**2/theta**2, 80*B0/theta)
 n1 = max(5, math.ceil(b), math.ceil(math.exp(N0*b/5))); n2 = max(n1, math.ceil(math.exp(2*N0*max(1, (Lam + theta/2)/theta)/C0)))
 Cp = 2/p*(C0 + 5*C1); C4 = 1 + 2/p*(C0 + 3/(4*p)); Gp = Cp + N0*C4 + 1 + C4*(3.2*C0 + 16)/p
 bound_N1 = max(3, 2*n2, math.ceil(Cp), math.ceil(8*Gp*math.log(8*Gp)**2) + 1)
-print(f"(e): p={p:.4f} b={b:.4f} C1={C1:.3f} A={A:.3f} B0={B0:.1f} theta={theta:.5f} C0={C0:.4g} n2={n2} C'={Cp:.4g} C4={C4:.4g} Gamma'={Gp:.4g}  N1 <= {bound_N1:.4g}")
+print(f"(e): p={p:.4f} b={b:.4f} C1={C1:.3f} A={A:.3f} B0={B0:.1f} theta={theta:.5f} C0={C0:.4g} n2={n2} C'={Cp:.4g} C2={C4:.4g} Gamma'={Gp:.4g}  N1 <= {bound_N1:.4g}")
 # exact least N >= 3 such that (alpha), (beta) hold for all larger N (conditions are monotone beyond the first solution)
 def beta_ok(N):
     Amax = (3.2*C0 + 16)*math.log(N)/p

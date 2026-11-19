@@ -1,0 +1,4 @@
+cu/co= 2: max deviation over the n tested: +0.95% at n=201; last n with |dev|>3%: None; last n with |dev|>2%: None; at n=210: +0.91%, n=420: +0.46%
+cu/co= 5: max deviation over the n tested: +1.94% at n=204; last n with |dev|>3%: None; last n with |dev|>2%: None; at n=210: +1.89%, n=420: +0.95%
+cu/co=10: max deviation over the n tested: +3.36% at n=209; last n with |dev|>3%: 231; last n with |dev|>2%: 352; at n=210: +2.55%, n=420: +0.92%
+cu/co=20: max deviation over the n tested: +5.97% at n=210; last n with |dev|>3%: 420; last n with |dev|>2%: 443; at n=210: +5.97%, n=420: +3.01%

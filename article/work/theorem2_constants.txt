@@ -1,5 +1,5 @@
 q* = 0.6267  G(M) = 0.5 > tau* : True
-(e): p=0.9665 b=1.0341 C1=5.069 A=6.587 B0=7.0 theta=0.02871 C0=1.011e+08 n2=5 C'=2.091e+08 C4=2.091e+08 Gamma'=6.996e+16  N1 <= 9.347e+20
+(e): p=0.9665 b=1.0341 C1=5.069 A=6.587 B0=7.0 theta=0.02871 C0=1.011e+08 n2=5 C'=2.091e+08 C2=2.091e+08 Gamma'=6.996e+16  N1 <= 9.347e+20
      least N satisfying (alpha), (beta): 3.116e+20   (the closed-form bound above is 9.347e+20; the audit gave 3.116e+20)
 (f): eps0 = 0.05: g_min = 0.574, g_max = 0.904, Upsilon_0 = 1.3e+06, Upsilon_3 = 1.44e+13; smallest n satisfying the conditions of n_f: 4.39e+47
 (f): eps0 = 0.1: g_min = 0.404, g_max = 1.035, Upsilon_0 = 3e+06, Upsilon_3 = 8.56e+13; smallest n satisfying the conditions of n_f: 1.01e+50
