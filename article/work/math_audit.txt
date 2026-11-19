@@ -49,7 +49,7 @@
    n= 200: V = 0.1371; threshold 0.00216; stratified excess 0.00446; pooled excess 0.13936; stratifying pays: True (rule V > threshold: True)
    n=1000: V = 0.1371; threshold 0.00043; stratified excess 0.00084; pooled excess 0.13753; stratifying pays: True (rule V > threshold: True)
    n=5000: V = 0.1371; threshold 0.00009; stratified excess 0.00017; pooled excess 0.13722; stratifying pays: True (rule V > threshold: True)
-6. Lemma 1: conditional variance of xi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2
+6. Lemma 1: conditional variance of chi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2
    largest ratio variance / bound over 60 random (u, v, q): 0.499  (must be <= 1)
 7-9. Lemmas 2(i), 3, 4 along closed-loop runs (tau* = 1/11, N0 = 20, n up to 3000, 40 runs)
    Lemma 2(i): smallest C1 with J^+ <= (2/p_x)(R^+ + C1 * 5 log n) needed over all checks: 0.000 (negative values mean the inequality held with C1 = 0)

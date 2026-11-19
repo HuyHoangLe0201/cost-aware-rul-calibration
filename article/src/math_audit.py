@@ -4,7 +4,7 @@
  3. Theorem 1: Monte Carlo expected excess of the conformal quantile against the stated bound, over admissible eta, and against the asymptotic constant; the exact form kappa int |v - tau| T_n(v) dQ(v).
  4. Proposition 3: quantiles of the two naive treatments against q*; part (c), the cap of every later multiplier by the initial conformal quantile and the exact lock-in probability.
  5. Proposition 4: the stratification threshold against Monte Carlo for two strata.
- 6. Lemma 1: conditional variance of the increment xi_s(u, v) against b (G(v) - G(u)) 1{q > u}, for random (u, v, q).
+ 6. Lemma 1: conditional variance of the increment chi_s(u, v) against b (G(v) - G(u)) 1{q > u}, for random (u, v, q).
  7. Lemma 2(i): J_n^+(x) <= (2 / p_x) (R_n^+(x) + C1 * 5 log n) along closed-loop runs; smallest C1 that works.
  8. Lemma 3: sup over levels with R_n >= c log n of |G_hat - G| (c = 5, 20).
  9. Lemma 4: E #{A_j(K)} against K / (1 - G(x)).
@@ -123,7 +123,7 @@ for n in (200, 1000, 5000):
         if len(exs) >= 400: break
     print(f"   n={n:4d}: V = {V:.4f}; threshold {thr:.5f}; stratified excess {np.mean(exs):.5f}; pooled excess {np.mean(exp_):.5f}; stratifying pays: {np.mean(exs) < np.mean(exp_)} (rule V > threshold: {V > thr})")
 
-print("6. Lemma 1: conditional variance of xi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2")
+print("6. Lemma 1: conditional variance of chi(u, v) against b (G(v) - G(u)) 1{q > u}, x = 1.2")
 x = 1.2; Lam = lambda z: -np.log(1 - G(z)); b = 1 + float(Lam(x)); worst = 0
 for _ in range(60):
     u = rng.uniform(0, 1.0); v = rng.uniform(u, x); q = rng.uniform(0.05, 2.0); rho = rng.lognormal(0, SIG, 200000)
