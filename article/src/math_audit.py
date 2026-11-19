@@ -63,8 +63,8 @@ for cu in (2, 5, 10, 20):
             if n <= 2 / eta: continue
             qm, qp = Ginv(tau - eta), Ginv(tau + eta); xs = np.linspace(qm, qp, 2001); gmn, gmx = dens(xs).min(), dens(xs).max()
             first = kap / (2 * gmn) * (pb * (1 - pb) / (n + 2) + 1 / (n + 1) ** 2)
-            pe = math.exp(-n * Dkl(tau, tau - eta)) + math.exp(-n * Dkl(tau + tau / n, tau + eta))
-            best = min(best, first + kap * math.sqrt(4 * M2 / (1 - tau) + 2 * qs ** 2) * math.sqrt(pe))
+            e_lo, e_hi = math.exp(-n * Dkl(tau, tau - eta)), math.exp(-n * Dkl(tau + tau / n, tau + eta))
+            best = min(best, first + kap * tau * qs * e_lo + kap * math.sqrt(2 * (1 - tau) * M2) * math.sqrt(e_hi))
         print(f"   cu/co={cu:2d} n={n:4d}: MC excess {ex:.5f}  bound {best:.5f} (ratio {best / ex:7.1f})  holds: {ex <= best}   n*excess {n * ex:.3f} vs asymptotic {const:.3f}")
 
 print("   Theorem 1, exact form: E excess = kappa int |v - tau| T_n(v) Q'(v) dv, T_n = P(Bin(n, v) <= k-1) (v > tau), P(Bin(n, v) >= k) (v <= tau); cu/co = 10")
@@ -245,3 +245,35 @@ for run in range(150):
             u = uses.setdefault(qv[s], [0, 0]); u[0] += 1; u[1] += (rho[s] > qv[s])
             tot5 += 1; bad5 += (u[1] <= p * u[0] / 2 - 3 / (4 * p) * math.log(N))
 print(f"   Lemma 4(ii): {bad4} violations in {150 * 2} (run, K) pairs; Lemma 5: {bad5} violations among {tot5} uses")
+
+print("13. A bounded, non-log-normal ratio rho = 2 Beta(2, 3), cu/co = 10 (tau* = 1/11): Theorem 1 (bound and exact form against Monte Carlo) and Theorem 2 (closed-loop Kaplan-Meier, five unfavourable initial labels)")
+_a, _b = 2.0, 3.0; _norm = math.gamma(_a + _b) / (math.gamma(_a) * math.gamma(_b))
+_x = np.linspace(0, 2, 400001); _pdf = np.where((_x > 0) & (_x < 2), 0.5 * _norm * (_x / 2) ** (_a - 1) * (1 - _x / 2) ** (_b - 1), 0.0)
+_G = np.concatenate([[0], np.cumsum((_pdf[1:] + _pdf[:-1]) / 2 * np.diff(_x))]); _G /= _G[-1]
+_IG = np.concatenate([[0], np.cumsum((_G[1:] + _G[:-1]) / 2 * np.diff(_x))]); _m1 = float(np.trapezoid(_x * _pdf, _x)); _m2 = float(np.trapezoid(_x ** 2 * _pdf, _x))
+cu = 10; tau = 1 / 11; kap = 11; _Q = lambda p: float(np.interp(p, _G, _x)); qs = _Q(tau)
+_Phi = lambda q: cu * np.interp(q, _x, _IG) + (_m1 - q + np.interp(q, _x, _IG))
+for n in (50, 100, 400):
+    k = int(math.ceil((n + 1) * tau)); pb = k / (n + 1)
+    X = np.sort(2 * rng.beta(_a, _b, (20000, n)), axis=1)[:, k - 1]; mc = float((_Phi(X) - _Phi(qs)).mean())
+    vv = np.linspace(1e-6, 1 - 1e-6, 200001); Qv = np.interp(vv, _G, _x); dens = lambda y: np.interp(y, _x, _pdf)
+    T = np.where(vv > tau, bcdf(k - 1, n, vv), 1 - bcdf(k - 1, n, vv)); exact = kap * np.trapezoid(np.abs(vv - tau) * T / np.maximum(dens(Qv), 1e-12), vv)
+    best = np.inf
+    for eta in np.linspace(0.001, min(tau, 1 - tau) * 0.999, 400):
+        if n <= 2 / eta: continue
+        xs = np.linspace(_Q(tau - eta), _Q(tau + eta), 2001); gmn = dens(xs).min()
+        e_lo, e_hi = math.exp(-n * Dkl(tau, tau - eta)), math.exp(-n * Dkl(tau + tau / n, tau + eta))
+        best = min(best, kap / (2 * gmn) * (pb * (1 - pb) / (n + 2) + 1 / (n + 1) ** 2) + kap * tau * qs * e_lo + kap * math.sqrt(2 * (1 - tau) * _m2) * math.sqrt(e_hi))
+    print(f"   n={n:4d}: Monte Carlo excess {mc:.5f}, exact form {exact:.5f}, Theorem 1 bound {best:.5f} (holds: {mc <= best}); n*excess {n * mc:.3f}")
+_kc = {"cu": cu}
+def _run(adv, N=500):
+    rho = 2 * rng.beta(_a, _b, N)
+    Y = list(np.full(5, 0.5 * qs)) if adv else list(rho[:20]); d = [True] * len(Y); out = []
+    for s in range(len(Y), N):
+        q = kaplan_meier_quantile(np.array(Y), np.array(d), tau, fallback=1.0); out.append(q)
+        if rho[s] <= q: Y.append(rho[s]); d.append(True)
+        else: Y.append(q); d.append(False)
+    return np.array(out)
+for adv in (False, True):
+    R = [_run(adv) for _ in range(100)]; last = [np.max(np.where(r < qs - 0.10)[0]) if np.any(r < qs - 0.10) else -1 for r in R]
+    print(f"   Kaplan-Meier closed loop, {'five unfavourable labels at 0.5 q*' if adv else '20 exact labels'}: mean multiplier over the last 100 steps {np.mean([r[-100:].mean() for r in R]):.4f} (q* = {qs:.4f}); last step below q* - 0.10 at a median of {np.median(last):.0f} and at most {max(last)} (100 runs of 500 units)")
