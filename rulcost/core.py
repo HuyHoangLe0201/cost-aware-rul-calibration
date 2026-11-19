@@ -79,5 +79,5 @@ def kaplan_meier_quantile(values, exact, tau: float, min_pool: int = 5, fallback
     surv = np.cumprod(1.0 - ds / (n - np.arange(n)))
     cdf = 1.0 - surv
     t = min(tau * (n + 1) / n, 1.0)
-    hit = np.where(cdf >= t)[0]
+    hit = np.where(cdf >= t - 1e-12)[0]         # tolerance: when (n + 1) * tau is an integer, cdf = j / n equals t up to rounding and the j-th label must be chosen
     return float(vs[hit[0]]) if hit.size else float(fallback)

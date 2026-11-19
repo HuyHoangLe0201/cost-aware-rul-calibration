@@ -53,7 +53,7 @@ case "${1:-}" in
              $PY src/km_theory_check.py > "$WORK/km_theory_check.txt"; $PY src/km_vs_naive_longrun.py > "$WORK/km_vs_naive_longrun.txt"; $PY src/lockin_check.py > "$WORK/lockin_check.txt"   # Theorem 5
              $PY src/misspecification_check.py > "$WORK/misspecification_check.txt"; $PY src/early_phase.py > "$WORK/early_phase.txt"; $PY src/alarm_coverage_check.py > "$WORK/alarm_coverage_check.txt"
              $PY src/lockin_tail.py > "$WORK/lockin_tail.txt"; $PY src/naive_lock.py > "$WORK/naive_lock.txt"; $PY src/math_audit.py > "$WORK/math_audit.txt"   # Appendix A
-             $PY src/random_checks.py > "$WORK/random_checks.txt"; $PY src/prop4_check.py > "$WORK/prop4_check.txt"; $PY src/theorem2_constants.py > "$WORK/theorem2_constants.txt"; $PY src/early_stream_scan.py > "$WORK/early_stream_scan.txt"
+             $PY src/random_checks.py > "$WORK/random_checks.txt"; $PY src/prop4_check.py > "$WORK/prop4_check.txt"; $PY src/theorem2_constants.py > "$WORK/theorem2_constants.txt"; $PY src/early_stream_scan.py > "$WORK/early_stream_scan.txt"; $PY src/elementary_checks.py > "$WORK/elementary_checks.txt"
              $PY src/early_stream_exact.py > "$WORK/early_stream_exact.txt"; $PY src/fallback_check.py > "$WORK/fallback_check.txt"; $PY src/fixed_penalty_check.py > "$WORK/fixed_penalty_check.txt"; $PY src/alarm_statistics.py > "$WORK/alarm_statistics.txt"
              for ds in FD001 FD003 FD002 FD004; do $PY src/prospective_eval.py $ds; done > "$WORK/prospective_eval.txt" ;;
   pronostia)      # needs PRONOSTIA_DIR

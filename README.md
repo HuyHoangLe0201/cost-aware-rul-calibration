@@ -108,7 +108,7 @@ pip install -e ".[dev]"
 pytest
 ```
 
-The tests check the quantile index, the Kaplan-Meier estimate, the direction of the bias of the naive treatments of censoring, the `C / n` law of the excess cost, and (when `article/work/` is present) that the library reproduces the policy costs and the closed-loop results of the article.
+The tests check the quantile index, the Kaplan-Meier estimate, that without censoring the Kaplan-Meier quantile equals the conformal quantile for every pool size (the comparison of the estimate with the level uses a tolerance of 1e-12, so that the case where `(n + 1) * tau` is an integer is handled exactly), the direction of the bias of the naive treatments of censoring, the `C / n` law of the excess cost, and (when `article/work/` is present) that the library reproduces the policy costs and the closed-loop results of the article.
 
 ## Reproducing the article
 

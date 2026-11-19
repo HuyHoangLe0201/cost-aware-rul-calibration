@@ -83,6 +83,7 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 5.7, Proposition 4: difference of the pooled and the stratified policy against the predicted value | `src/prop4_check.py` | `prop4_check.txt` |
 | Sec. 3 and Sec. 5.4, explicit constants and thresholds of Theorem 2 for the log-normal example (independent recomputation) | `src/theorem2_constants.py` | `theorem2_constants.txt` |
 | Sec. 3, Remark 4: n times the expected excess cost against the asymptotic constant for n = 200 ... 1200 | `src/early_stream_scan.py` | `early_stream_scan.txt` |
+| Appendix A and Sec. 3, elementary inequalities used in the proofs of Lemmas 3-5, Theorem 2(f) and Proposition 5 (grid scans of each inequality with the smallest margin) | `src/elementary_checks.py` | `elementary_checks.txt` |
 | Appendix A (numerical audit of Propositions 1-5, Theorem 1 including its exact form, and Lemmas 1-5) | `src/math_audit.py` | `math_audit.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |

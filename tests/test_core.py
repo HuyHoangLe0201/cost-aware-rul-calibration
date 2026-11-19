@@ -49,6 +49,16 @@ def test_kaplan_meier_equals_conformal_without_censoring(tau):
     assert rc.kaplan_meier_quantile(v, np.ones(200), tau) == rc.conformal_quantile(v, tau)
 
 
+@pytest.mark.parametrize("cu", [2, 5, 10, 20])
+def test_kaplan_meier_equals_conformal_for_every_pool_size(cu):
+    """Without censoring the two rules coincide for every n, including the n at which (n + 1) * tau is an integer (rounding of the comparison)."""
+    tau = 1.0 / (1.0 + cu)
+    rng = np.random.default_rng(11)
+    for n in range(5, 260):
+        v = rng.lognormal(size=n)
+        assert rc.kaplan_meier_quantile(v, np.ones(n), tau, min_pool=1) == rc.conformal_quantile(v, tau, min_pool=1), (cu, n)
+
+
 def test_kaplan_meier_recovers_quantile_under_random_censoring():
     rng = np.random.default_rng(4)
     n = 20000

@@ -1,0 +1,18 @@
+OK  e^{-x} <= 1-(1-e^{-1})x on [0,1]  (Lemma 4): smallest margin 0.000e+00 
+OK  t <= -log(1-t)  (Lemma 3): smallest margin 0.000e+00 
+OK  -log(1-t) <= t + t^2 on [0,1/2]  (Lemma 3): smallest margin 0.000e+00 
+OK  1/(1-e^{-1}) < 1.6  (Lemma 4): smallest margin 1.802e-02 
+OK  (e/l)^l <= e^{-l} for l >= e^2  (Lemma 2, Step 3): smallest margin 0.000e+00 
+OK  5b^2 + 2.13b <= 8b^2 for b >= 1  (Lemma 2, Step 5): smallest margin 8.700e-01 
+OK  ceil(log2(bn)) + 1 <= 5 log n for n >= max(5, b)  (Lemma 2, Step 5): smallest margin 2.047e+00 
+OK  10 b n^{-4} log n <= 2 b n^{-3} log n for n >= 5, and b n^{-4} <= 0.13 b n^{-3} log n for n >= 5  (Lemma 2, Step 5): smallest margin 0.000e+00 
+OK  sum_{n >= n0} n^{-3} log n <= (log n0 + 1)/n0^2 for n0 >= 2  (Theorem 2(e)): smallest margin 7.658e-12 
+OK  8 b^2 (log n0 + 1)/n0^2 <= 64 b^2 N^{-2} log N for N >= 3  (Theorem 2(e)): smallest margin 4.323e-10 
+OK  2 N^{-3} + N^{-2} <= 3 N^{-2} log N for N >= 3  (Theorem 2(e)): smallest margin 4.045e-11 
+OK  (E): y >= 4c log^2(4c) implies y > c log^2 y, c >= 1  (Theorem 2(e),(f)): smallest margin 2.495e-01 
+OK  Lemma 5: E exp{4 beta (beta - zeta)} <= exp{2 beta^2} for Bernoulli(pi), pi >= beta: smallest margin 1.992e-06 
+OK  Lemma 3: 2 sqrt30 A/sqrt(C0) + 20 B0/C0 <= theta/2 (random A, B0, theta): smallest margin 2.521e-04 
+OK  sum_j 1/T_j <= 2/T0 (geometric): smallest margin 0.000e+00 
+OK  Theorem 2(f): 8 Gbar log^2(8 Gbar) <= (200/9) Upsilon_3 n^{2/3}(log n)^{2/3} (granted log(8 Gbar) <= (5/3) log n): smallest margin 7.009e+01 
+OK  Proposition 5: 0 <= k/w - tau* < 2/w for k = ceil((w+1) tau*) with k <= w: smallest margin 2.506e-05 
+all checks passed

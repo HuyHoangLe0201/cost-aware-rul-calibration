@@ -1,7 +1,7 @@
 
 A  well predicted, exact initial labels: q* = 0.627, G(1) = 0.500, tau* = 0.091
-   M = 1: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0023
-   M = 3: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0023
+   M = 1: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0022
+   M = 3: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.000, mean excess cost 0.0022
 
 B  well predicted, censored history (0.40): q* = 0.627, G(1) = 0.500, tau* = 0.091
    M = 1: mean multiplier (units 1000-1500) 0.628 (sd 0.011), share at fallback 0.002, mean excess cost 0.0051

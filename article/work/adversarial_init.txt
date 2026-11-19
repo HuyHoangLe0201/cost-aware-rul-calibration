@@ -1,6 +1,6 @@
 FD001 c_u/c_o= 5  target coverage 0.83, population q* ~ 0.749, units 100
-   random init     | oracle cost 0.296 cov early 0.81 late 0.82 q 0.75->0.75 | naive  cost 0.300 cov early 0.85 late 0.86 q 0.75->0.71 | drop   cost 0.312 cov early 0.86 late 0.93 q 0.74->0.64 | kaplan cost 0.297 cov early 0.81 late 0.82 q 0.75->0.75 
-   biased-low init | oracle cost 0.299 cov early 0.89 late 0.87 q 0.68->0.72 | naive  cost 0.309 cov early 0.90 late 0.91 q 0.68->0.67 | drop   cost 0.319 cov early 0.92 late 0.95 q 0.68->0.63 | kaplan cost 0.299 cov early 0.88 late 0.86 q 0.68->0.72 
+   random init     | oracle cost 0.296 cov early 0.81 late 0.82 q 0.75->0.75 | naive  cost 0.300 cov early 0.85 late 0.86 q 0.75->0.71 | drop   cost 0.312 cov early 0.86 late 0.93 q 0.74->0.64 | kaplan cost 0.296 cov early 0.81 late 0.82 q 0.75->0.75 
+   biased-low init | oracle cost 0.299 cov early 0.89 late 0.87 q 0.68->0.72 | naive  cost 0.309 cov early 0.90 late 0.91 q 0.68->0.67 | drop   cost 0.319 cov early 0.92 late 0.95 q 0.68->0.63 | kaplan cost 0.299 cov early 0.88 late 0.87 q 0.68->0.72 
 FD001 c_u/c_o=20  target coverage 0.95, population q* ~ 0.647, units 100
    random init     | oracle cost 0.369 cov early 0.93 late 0.94 q 0.66->0.64 | naive  cost 0.375 cov early 0.95 late 0.97 q 0.62->0.60 | drop   cost 0.381 cov early 0.95 late 0.98 q 0.62->0.58 | kaplan cost 0.371 cov early 0.93 late 0.94 q 0.66->0.64 
    biased-low init | oracle cost 0.360 cov early 0.97 late 0.96 q 0.62->0.63 | naive  cost 0.386 cov early 0.98 late 0.98 q 0.58->0.58 | drop   cost 0.388 cov early 0.98 late 0.98 q 0.58->0.57 | kaplan cost 0.360 cov early 0.97 late 0.95 q 0.62->0.63 

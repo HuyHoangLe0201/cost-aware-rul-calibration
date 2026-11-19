@@ -38,7 +38,7 @@ def q_km(v, d, tau):
     if n < MINPOOL: return 1.0
     o = np.argsort(v, kind="stable"); vs, ds = v[o], d[o]
     G = 1.0 - np.cumprod(1.0 - ds / (n - np.arange(n)))
-    t = min(tau * (n + 1) / n, 1.0); hit = np.where(G >= t)[0]
+    t = min(tau * (n + 1) / n, 1.0); hit = np.where(G >= t - 1e-12)[0]
     return vs[hit[0]] if len(hit) else 1.0
 
 

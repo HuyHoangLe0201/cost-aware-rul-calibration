@@ -63,16 +63,16 @@
    drift 0.0020 (s = 0.00228), w =  50: eps_w = 0.3810; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
    drift 0.0020 (s = 0.00228), w = 200: eps_w = 0.3881; share of windows with error above eps_w: 0.0000 (must be <= 0.10)
 11. Structure of the proof of Theorem 2(e) along adversarial runs (N0 = 5 labels at 0.40, tau* = 1/11, x = q* - 0.10, 300 runs of 800 units)
-   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 20.37 and max J_n(x) / log n = 20.66 (bounded by constants C and C')
+   Claim 1: over all early steps with n >= 30, max R_n(y) / log n = 21.91 and max J_n(x) / log n = 20.66 (bounded by constants C and C')
    Lemma 5 / Step 4: max number of uses of one label before N = 800, divided by log N: 10.17
 12. Explicit constants of Lemmas 2-5 and of Theorem 2(e) for the log-normal example (sigma 0.35, cu/co = 10, x = q* - 0.10, N0 = 5)
    p = 0.9665, Lambda = 0.0341, b = 1.0341, C1 = 5.069, A = 6.587, B0 = 7.00, theta = 0.02871
    C0 = 1.011e+08, n2 = 5, C' = 2.091e+08, C2 = 2.091e+08, Gamma' = 6.996e+16; threshold N1 = 3.116e+20; failure constant 64 b^2 + 3 = 71.4
    Lemma 2 with the explicit constants, 40 closed-loop runs of 2500 units: largest LHS/RHS = 0.46 for (i) and 0.04 for (ii) (must be <= 1)
-   Lemma 4(ii): 0 violations in 300 (run, K) pairs; Lemma 5: 0 violations among 6791 uses
+   Lemma 4(ii): 0 violations in 300 (run, K) pairs; Lemma 5: 0 violations among 6870 uses
 13. A bounded, non-log-normal ratio rho = 2 Beta(2, 3), cu/co = 10 (tau* = 1/11): Theorem 1 (bound and exact form against Monte Carlo) and Theorem 2 (closed-loop Kaplan-Meier, five unfavourable initial labels)
    n=  50: Monte Carlo excess 0.01502, exact form 0.01504, Theorem 1 bound 6.30213 (holds: True); n*excess 0.751
    n= 100: Monte Carlo excess 0.00807, exact form 0.00803, Theorem 1 bound 2.81115 (holds: True); n*excess 0.807
    n= 400: Monte Carlo excess 0.00188, exact form 0.00188, Theorem 1 bound 0.03599 (holds: True); n*excess 0.750
    Kaplan-Meier closed loop, 20 exact labels: mean multiplier over the last 100 steps 0.2756 (q* = 0.2704); last step below q* - 0.10 at a median of -1 and at most 102 (100 runs of 500 units)
-   Kaplan-Meier closed loop, five unfavourable labels at 0.5 q*: mean multiplier over the last 100 steps 0.2586 (q* = 0.2704); last step below q* - 0.10 at a median of 82 and at most 249 (100 runs of 500 units)
+   Kaplan-Meier closed loop, five unfavourable labels at 0.5 q*: mean multiplier over the last 100 steps 0.2581 (q* = 0.2704); last step below q* - 0.10 at a median of 86 and at most 249 (100 runs of 500 units)

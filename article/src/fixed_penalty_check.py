@@ -53,7 +53,7 @@ def q_tau_exact(v, tau):
 def q_tau_km(v, ex, tau):
     n = len(v)
     if n < MINPOOL: return 1.0
-    G, _ = km_cdf_on_grid(v, ex, np.sort(v)); t = min(tau * (n + 1) / n, 1.0); hit = np.where(G >= t)[0]
+    G, _ = km_cdf_on_grid(v, ex, np.sort(v)); t = min(tau * (n + 1) / n, 1.0); hit = np.where(G >= t - 1e-12)[0]
     return np.sort(v)[hit[0]] if len(hit) else 1.0
 
 
