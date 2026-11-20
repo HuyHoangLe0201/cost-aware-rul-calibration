@@ -85,7 +85,8 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 3, Remark 4: n times the expected excess cost against the asymptotic constant for n = 200 ... 1200 | `src/early_stream_scan.py` | `early_stream_scan.txt` |
 | Appendix A and Sec. 3, elementary inequalities used in the proofs of Lemmas 3-5, Theorem 2(f), Corollary 1 and Propositions 5-6 (grid scans of each inequality with the smallest margin) | `src/elementary_checks.py` | `elementary_checks.txt` |
 | Sec. 5.1, gain over the fixed 90% rule in the three fold partitions, intervals to five decimals (exact counts of the intervals that exclude zero) | `src/fold_gain_check.py` | `fold_gain_check.txt` |
-| Sec. 3, Remark 2a (misjudged cost ratio) and Proposition 7 (ignoring the dependence between the prediction and the ratio): exact examples against the bounds | `src/robustness_checks.py` | `robustness_checks.txt` |
+| Sec. 3, Proposition 2(c) (misjudged cost ratio) and Proposition 7 (ignoring the dependence between the prediction and the ratio): exact examples against the bounds | `src/robustness_checks.py` | `robustness_checks.txt` |
+| Appendix A, Lemmas 3(a), 4 and 5 against seven predictable censoring policies other than Kaplan-Meier (adversarial tests) | `src/adversarial_lemmas.py` | `adversarial_lemmas.txt` |
 | Appendix A (numerical audit of Propositions 1-6, Theorem 1 including its exact form, Corollary 1, Lemmas 1-5, and the cumulative excess cost of the Kaplan-Meier closed loop) | `src/math_audit.py` | `math_audit.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |

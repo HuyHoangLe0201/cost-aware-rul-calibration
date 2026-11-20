@@ -1,5 +1,5 @@
 """Exact checks of two consequences of Propositions 1-2 (log-normal ratio, sigma = 0.35).
-A. Remark 2a (misjudged cost ratio): the multiplier Q(tau) designed for a wrong level tau has coverage error |tau - tau*|; its exact excess cost against the sandwich of Proposition 2(b).
+A. Proposition 2(c) (misjudged cost ratio): the multiplier Q(tau) designed for a wrong level tau has coverage error |tau - tau*|; its exact excess cost against the sandwich of Proposition 2(b).
 B. Proposition 7 (ignoring the dependence between the prediction p and the ratio rho): z ~ N(0, 1), rho = exp(sigma z), p = exp(s (phi z + sqrt(1 - phi^2) e)), e ~ N(0, 1) independent;
    the p-weighted law of rho is log-normal(sigma s phi, sigma), so that G_w, q_w, q* and the costs are exact. The excess cost of the ordinary quantile q* against the sandwich
    kappa Delta_w^2 / (2 g_max) <= excess / E p <= kappa Delta_w^2 / (2 g_min) and against the bound kappa tau* (1 - tau*) Var(w) / (2 g_min), with Var(w) = exp(s^2) - 1.

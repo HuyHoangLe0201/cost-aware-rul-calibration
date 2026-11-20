@@ -1,0 +1,19 @@
+A. Lemma 3(a): maximum over levels of |Lambda_hat - Lambda| sqrt(R/L) (S1) and of |Lambda_hat - Lambda| R/L (S2, not bounded by the lemma)
+   KM             n=500: max S1 0.09, max S2 0.35 [20 runs] | n=2000: max S1 0.09, max S2 0.59 [10 runs] | n=5000: max S1 0.13, max S2 1.27 [10 runs]
+   fixed_low      n=500: max S1 0.07, max S2 0.27 [20 runs] | n=2000: max S1 0.07, max S2 0.51 [10 runs] | n=5000: max S1 0.06, max S2 0.60 [10 runs]
+   uniform        n=500: max S1 0.28, max S2 0.46 [20 runs] | n=2000: max S1 0.24, max S2 0.76 [10 runs] | n=5000: max S1 0.22, max S2 1.15 [10 runs]
+   alternate      n=500: max S1 0.46, max S2 0.64 [20 runs] | n=2000: max S1 0.33, max S2 1.41 [10 runs] | n=5000: max S1 0.40, max S2 1.92 [10 runs]
+   max_label      n=500: max S1 0.42, max S2 1.28 [20 runs] | n=2000: max S1 0.33, max S2 1.64 [10 runs] | n=5000: max S1 0.31, max S2 2.37 [10 runs]
+   third_largest  n=500: max S1 0.22, max S2 0.70 [20 runs] | n=2000: max S1 0.29, max S2 1.45 [10 runs] | n=5000: max S1 0.28, max S2 2.43 [10 runs]
+   decreasing     n=500: max S1 0.21, max S2 0.36 [20 runs] | n=2000: max S1 0.27, max S2 0.77 [10 runs] | n=5000: max S1 0.18, max S2 0.89 [10 runs]
+B. Lemmas 4 and 5 (G(x) = 0.9, beta = 0.1, n = 1000, 10 runs)
+   just_above_U  K= 5: mean #A_j(K)  11.90, max  17, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 50.3 (must be > 0); most uses of one label 37
+   just_above_U  K=20: mean #A_j(K)  37.60, max  46, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 50.4 (must be > 0); most uses of one label 114
+   max_label     K= 5: mean #A_j(K)   0.00, max   0, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 52.8 (must be > 0); most uses of one label 995
+   max_label     K=20: mean #A_j(K)   0.00, max   0, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 52.8 (must be > 0); most uses of one label 995
+   top_K         K= 5: mean #A_j(K)  10.30, max  14, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 50.7 (must be > 0); most uses of one label 54
+   top_K         K=20: mean #A_j(K)  44.30, max  52, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 49.9 (must be > 0); most uses of one label 176
+   x             K= 5: mean #A_j(K)  10.00, max  15, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = no use (must be > 0); most uses of one label 0
+   x             K=20: mean #A_j(K)  49.80, max  65, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = no use (must be > 0); most uses of one label 0
+   low           K= 5: mean #A_j(K)   0.10, max   1, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = no use (must be > 0); most uses of one label 0
+   low           K=20: mean #A_j(K)   0.70, max   2, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = no use (must be > 0); most uses of one label 0
