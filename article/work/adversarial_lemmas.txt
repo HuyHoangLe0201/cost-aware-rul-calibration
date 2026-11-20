@@ -6,6 +6,14 @@ A. Lemma 3(a): maximum over levels of |Lambda_hat - Lambda| sqrt(R/L) (S1) and o
    max_label      n=500: max S1 0.42, max S2 1.28 [20 runs] | n=2000: max S1 0.33, max S2 1.64 [10 runs] | n=5000: max S1 0.31, max S2 2.37 [10 runs]
    third_largest  n=500: max S1 0.22, max S2 0.70 [20 runs] | n=2000: max S1 0.29, max S2 1.45 [10 runs] | n=5000: max S1 0.28, max S2 2.43 [10 runs]
    decreasing     n=500: max S1 0.21, max S2 0.36 [20 runs] | n=2000: max S1 0.27, max S2 0.77 [10 runs] | n=5000: max S1 0.18, max S2 0.89 [10 runs]
+C. Lemma 2 (n = 2000, 10 runs per policy): max over 25 levels and runs of the risk-set statistic of (i) and of the one-sided quantity (beta J/2 - R)/L (must be <= C1 = 2/beta + 3 = 23), and of the band statistic of (ii)
+   KM             risk-set statistic 0.18, one-sided quantity 0.01, band statistic 0.57
+   fixed_low      risk-set statistic 0.07, one-sided quantity 0.01, band statistic 0.34
+   uniform        risk-set statistic 0.22, one-sided quantity 0.01, band statistic 0.60
+   alternate      risk-set statistic 0.27, one-sided quantity 0.01, band statistic 0.72
+   max_label      risk-set statistic 0.18, one-sided quantity 0.01, band statistic 0.75
+   third_largest  risk-set statistic 0.19, one-sided quantity 0.01, band statistic 0.58
+   decreasing     risk-set statistic 0.22, one-sided quantity 0.01, band statistic 0.62
 B. Lemmas 4 and 5 (G(x) = 0.9, beta = 0.1, n = 1000, 10 runs)
    just_above_U  K= 5: mean #A_j(K)  11.90, max  17, Lemma 4 bound K/beta = 50; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 50.3 (must be > 0); most uses of one label 37
    just_above_U  K=20: mean #A_j(K)  37.60, max  46, Lemma 4 bound K/beta = 200; Lemma 5: min over labels and u of S_u - beta u/2 + (3/4beta) log N = 50.4 (must be > 0); most uses of one label 114
