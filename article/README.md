@@ -84,6 +84,7 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 3 and Sec. 5.4, explicit constants and thresholds of Theorem 2 for the log-normal example (independent recomputation) | `src/theorem2_constants.py` | `theorem2_constants.txt` |
 | Sec. 3, Remark 4: n times the expected excess cost against the asymptotic constant for n = 200 ... 1200 | `src/early_stream_scan.py` | `early_stream_scan.txt` |
 | Appendix A and Sec. 3, elementary inequalities used in the proofs of Lemmas 3-5, Theorem 2(f) and Proposition 5 (grid scans of each inequality with the smallest margin) | `src/elementary_checks.py` | `elementary_checks.txt` |
+| Sec. 5.1, gain over the fixed 90% rule in the three fold partitions, intervals to five decimals (exact counts of the intervals that exclude zero) | `src/fold_gain_check.py` | `fold_gain_check.txt` |
 | Appendix A (numerical audit of Propositions 1-5, Theorem 1 including its exact form, and Lemmas 1-5) | `src/math_audit.py` | `math_audit.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
@@ -92,7 +93,7 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Table 8 and Fig. 9 (countdown constraint) | `src/semisup_physics.py`, `src/semisup_oof.py`, `src/fleet_eval.py` | `semisup_FD00*.log` (default, `_lam3` threefold weight, `_late` later truncation, `_age` cut-off age independent of the life), `results_fleet_ss*.txt` |
 | PRONOSTIA pilot | `src/extract_features*.py`, `src/extract_faultfreq.py`, `src/extract_envspec.py`, `src/train_oof*.py`, `src/decision_eval*.py` | `features*.npz`, `envspec.npz`, `oof_pron_*.npz` |
 
-Notes on files whose origin is not a single script: `fold_repeat.json` and `fold_repeat3.json` summarise the repeated fold partitions (`r3/s0_*`, `r3/fs1_*`, `r3/fs2_*`) and were aggregated by hand; some numbers in `src/make_figures.py` are copied from named logs, as stated in its header.
+Notes on files whose origin is not a single script: `fold_repeat.json` and `fold_repeat3.json` summarise the repeated fold partitions (`r3/s0_*`, `r3/fs1_*`, `r3/fs2_*`) and were aggregated by hand (the counts of intervals that exclude zero in Sec. 5.1 come from `fold_gain_check.txt`, which prints the intervals to five decimals); some numbers in `src/make_figures.py` are copied from named logs, as stated in its header.
 
 ## Verification of this package
 
