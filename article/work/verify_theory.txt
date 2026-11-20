@@ -1,0 +1,30 @@
+(A) d*=0.6791  C(d*)=0.52566
+   d/d*=0.70  excess=0.09403  identity=0.09422  sandwich [0.02414, 0.36302]  ok=True
+   d/d*=0.85  excess=0.02617  identity=0.02632  sandwich [0.01600, 0.04092]  ok=True
+   d/d*=1.20  excess=0.05487  identity=0.05473  sandwich [0.04544, 0.07229]  ok=True
+   d/d*=1.50  excess=0.35632  identity=0.35604  sandwich [0.29251, 0.47412]  ok=True
+
+(B) 260 ratios, median 0.91, sd(log) 0.31
+   c_u/c_o=2, tau*=0.333
+     n=  5  E[excess]=0.03853   n*E[excess]=0.1926
+     n= 10  E[excess]=0.02379   n*E[excess]=0.2379   local slope -0.70
+     n= 20  E[excess]=0.01073   n*E[excess]=0.2146   local slope -1.15
+     n= 40  E[excess]=0.00574   n*E[excess]=0.2297   local slope -0.90
+     n= 80  E[excess]=0.00273   n*E[excess]=0.2183   local slope -1.07
+     n=160  E[excess]=0.00132   n*E[excess]=0.2112   local slope -1.05
+     n=320  E[excess]=0.00067   n*E[excess]=0.2140   local slope -0.98
+   c_u/c_o=10, tau*=0.091
+     n=  5  E[excess]=0.11159   n*E[excess]=0.5580
+     n= 10  E[excess]=0.03873   n*E[excess]=0.3873   local slope -1.53
+     n= 20  E[excess]=0.02138   n*E[excess]=0.4277   local slope -0.86
+     n= 40  E[excess]=0.01155   n*E[excess]=0.4618   local slope -0.89
+     n= 80  E[excess]=0.00618   n*E[excess]=0.4947   local slope -0.90
+     n=160  E[excess]=0.00293   n*E[excess]=0.4694   local slope -1.08
+     n=320  E[excess]=0.00145   n*E[excess]=0.4637   local slope -1.02
+
+(C) optimal rolling window vs drift speed a (log-location per step)
+   a=0.0003  w*=166  min excess 0.00412
+   a=0.0010  w*=86  min excess 0.01246
+   a=0.0030  w*=45  min excess 0.04859
+   a=0.0100  w*=23  min excess 1.62999
+   fitted log-log slope w* vs a: -0.57  (theory -2/3 = -0.67)
