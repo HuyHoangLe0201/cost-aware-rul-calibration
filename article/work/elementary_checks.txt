@@ -13,6 +13,12 @@ OK  (E): y >= 4c log^2(4c) implies y > c log^2 y, c >= 1  (Theorem 2(e),(f)): sm
 OK  Lemma 5: E exp{4 beta (beta - zeta)} <= exp{2 beta^2} for Bernoulli(pi), pi >= beta: smallest margin 1.992e-06 
 OK  Lemma 3: 2 sqrt30 A/sqrt(C0) + 20 B0/C0 <= theta/2 (random A, B0, theta): smallest margin 2.521e-04 
 OK  sum_j 1/T_j <= 2/T0 (geometric): smallest margin 0.000e+00 
-OK  Theorem 2(f): 8 Gbar log^2(8 Gbar) <= (200/9) Upsilon_3 n^{2/3}(log n)^{2/3} (granted log(8 Gbar) <= (5/3) log n): smallest margin 7.009e+01 
+OK  Theorem 2(f): 8 Gbar <= s and ceil(8 Gbar log^2(8 Gbar)) + 1 <= s when Gbar = s/(23 log^2 s), s >= 8: smallest margin 6.000e+00 
+OK  Theorem 2(f): sum_{s<=n} log s / sqrt(s) <= 2 sqrt(n) log n for n >= 2: smallest margin 1.470e+00 
+OK  Theorem 2(f): (8/log 2) sum_{m>=2} (log m)^2/m^2 <= 23: smallest margin 4.060e-02 
+OK  geometric sums sum 4^-k <= 4/3 and sum 2^-k <= 2: smallest margin 0.000e+00 
+OK  Theorem 2(f): (1 + log^2 n)/(sqrt(n) log n) nonincreasing for n >= 8: smallest margin 1.250e-09 
+OK  Corollary 1: the elementary sums and tau_m (1 - tau_m) <= tau* (1 - tau*) + 1/(m+1): smallest margin 0.000e+00 
+OK  Proposition 6: Fisher information of the prior cos^2(pi theta/2) on [-1, 1] equals pi^2 (relative error): smallest margin -2.159e-17 
 OK  Proposition 5: 0 <= k/w - tau* < 2/w for k = ceil((w+1) tau*) with k <= w: smallest margin 2.506e-05 
 all checks passed

@@ -76,3 +76,22 @@
    n= 400: Monte Carlo excess 0.00188, exact form 0.00188, Theorem 1 bound 0.03599 (holds: True); n*excess 0.750
    Kaplan-Meier closed loop, 20 exact labels: mean multiplier over the last 100 steps 0.2756 (q* = 0.2704); last step below q* - 0.10 at a median of -1 and at most 102 (100 runs of 500 units)
    Kaplan-Meier closed loop, five unfavourable labels at 0.5 q*: mean multiplier over the last 100 steps 0.2581 (q* = 0.2704); last step below q* - 0.10 at a median of 86 and at most 249 (100 runs of 500 units)
+14. Cumulative excess cost of the closed loop (log-normal 0.35, cu/co = 10; 40 runs of 2000 units, the same initial labels and ratios for the two policies): Kaplan-Meier against exact labels
+   20 exact i.i.d. labels  : cumulative excess after [100, 250, 500, 1000, 2000] units, Kaplan-Meier 1.072 1.610 2.079 2.656 3.071 ; exact labels 0.918 1.342 1.692 2.142 2.491 ; paired difference +0.154 +0.268 +0.387 +0.514 +0.580 (s.e. 0.042 0.065 0.097 0.132 0.149)
+                             increments of the Kaplan-Meier cumulative cost per doubling of n (250->500, 500->1000, 1000->2000): 0.47 0.58 0.41
+   five labels at 0.4 q*   : cumulative excess after [100, 250, 500, 1000, 2000] units, Kaplan-Meier 18.882 21.474 22.661 23.241 23.718 ; exact labels 16.664 18.137 18.703 19.139 19.544 ; paired difference +2.218 +3.337 +3.958 +4.102 +4.173 (s.e. 0.419 0.659 0.710 0.750 0.756)
+                             increments of the Kaplan-Meier cumulative cost per doubling of n (250->500, 500->1000, 1000->2000): 1.19 0.58 0.48
+   Theorem 1: kappa tau (1 - tau) / (2 g(q*)) = 0.609, so that the cumulative excess of exact labels grows by 0.42 per doubling of n
+15. Proposition 6: submodel dG_theta = (1 + theta u_m) dG_0, u_m = phi_m - E phi_m, phi_m(x) = min(1, max(0, m (q0 - x))); log-normal 0.35, cu/co = 10
+   m=   20: I_m = 0.06275, c_m = 0.06698 (tau (1 - tau) = 0.08264); derivative of the quantile -d q_theta / d theta = 0.0898 against c_m / g_0 = 0.0898; limit constant kappa c_m^2 / (2 g_0 I_m) = 0.5272
+   m=   80: I_m = 0.07737, c_m = 0.07849 (tau (1 - tau) = 0.08264); derivative of the quantile -d q_theta / d theta = 0.1052 against c_m / g_0 = 0.1052; limit constant kappa c_m^2 / (2 g_0 I_m) = 0.5871
+   m=  320: I_m = 0.08131, c_m = 0.08159 (tau (1 - tau) = 0.08264); derivative of the quantile -d q_theta / d theta = 0.1094 against c_m / g_0 = 0.1094; limit constant kappa c_m^2 / (2 g_0 I_m) = 0.6037
+   m= 1280: I_m = 0.08231, c_m = 0.08238 (tau (1 - tau) = 0.08264); derivative of the quantile -d q_theta / d theta = 0.1104 against c_m / g_0 = 0.1104; limit constant kappa c_m^2 / (2 g_0 I_m) = 0.6080
+   asymptotic constant of Theorem 1: 0.6094
+16. Corollary 1: exact cumulative excess cost of the conformal policy (log-normal 0.35) against (kappa / 2 g_min)[tau (1 - tau) log(n + 2) + 2] + S_eta
+   cu/co= 2, eta = 0.1667, g_min = 1.002, n = 100: exact cumulative 0.5788 <= bound 116.7828 : True  (S_eta = 112)
+   cu/co= 2, eta = 0.1667, g_min = 1.002, n = 300: exact cumulative 0.8836 <= bound 117.1441 : True  (S_eta = 112)
+   cu/co= 2, eta = 0.1667, g_min = 1.002, n = 600: exact cumulative 1.0753 <= bound 117.3737 : True  (S_eta = 112)
+   cu/co=10, eta = 0.0455, g_min = 0.493, n = 100: exact cumulative 0.5027 <= bound 2860.1701 : True  (S_eta = 2.83e+03)
+   cu/co=10, eta = 0.0455, g_min = 0.493, n = 300: exact cumulative 1.1807 <= bound 2861.1702 : True  (S_eta = 2.83e+03)
+   cu/co=10, eta = 0.0455, g_min = 0.493, n = 600: exact cumulative 1.6052 <= bound 2861.8057 : True  (S_eta = 2.83e+03)

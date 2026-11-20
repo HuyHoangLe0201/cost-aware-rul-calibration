@@ -81,11 +81,11 @@ Python 3.13, CPU only; package versions are in `requirements.txt`. Seeds are fix
 | Sec. 5.4, Proposition 3(c) (absorption of the naive loops below the initial conformal quantile) | `src/naive_lock.py` | `naive_lock.txt` |
 | Sec. 5.3, Proposition 2 and Theorem 1 on random piecewise-uniform ratio distributions with flat parts | `src/random_checks.py` | `random_checks.txt` |
 | Sec. 5.7, Proposition 4: difference of the pooled and the stratified policy against the predicted value | `src/prop4_check.py` | `prop4_check.txt` |
-| Sec. 3 and Sec. 5.4, explicit constants and thresholds of Theorem 2 for the log-normal example (independent recomputation) | `src/theorem2_constants.py` | `theorem2_constants.txt` |
+| Sec. 3 and Sec. 5.4, explicit constants, thresholds and the constant of the rate of Theorem 2 for the log-normal example (independent recomputation) | `src/theorem2_constants.py` | `theorem2_constants.txt` |
 | Sec. 3, Remark 4: n times the expected excess cost against the asymptotic constant for n = 200 ... 1200 | `src/early_stream_scan.py` | `early_stream_scan.txt` |
-| Appendix A and Sec. 3, elementary inequalities used in the proofs of Lemmas 3-5, Theorem 2(f) and Proposition 5 (grid scans of each inequality with the smallest margin) | `src/elementary_checks.py` | `elementary_checks.txt` |
+| Appendix A and Sec. 3, elementary inequalities used in the proofs of Lemmas 3-5, Theorem 2(f), Corollary 1 and Propositions 5-6 (grid scans of each inequality with the smallest margin) | `src/elementary_checks.py` | `elementary_checks.txt` |
 | Sec. 5.1, gain over the fixed 90% rule in the three fold partitions, intervals to five decimals (exact counts of the intervals that exclude zero) | `src/fold_gain_check.py` | `fold_gain_check.txt` |
-| Appendix A (numerical audit of Propositions 1-5, Theorem 1 including its exact form, and Lemmas 1-5) | `src/math_audit.py` | `math_audit.txt` |
+| Appendix A (numerical audit of Propositions 1-6, Theorem 1 including its exact form, Corollary 1, Lemmas 1-5, and the cumulative excess cost of the Kaplan-Meier closed loop) | `src/math_audit.py` | `math_audit.txt` |
 | Sec. 5.7 (independence of $p$ and the ratio; operating regimes) | `src/sensitivity_a0.py`, `src/regime_reliability.py` | `sensitivity_a0.txt`, `regime_reliability.txt` |
 | Sec. 5.8 (fixed predictor on a disjoint fleet) | `src/prospective_eval.py` | `prospective_eval.txt` |
 | Fig. 9c (paired on engines alarmed by both models); Monte Carlo error over stream orders | `src/paired_common_alarms.py`, `src/order_variability.py` | `paired_common_alarms.txt`, `order_variability.txt` |

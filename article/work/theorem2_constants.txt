@@ -1,7 +1,7 @@
 q* = 0.6267  G(M) = 0.5 > tau* : True
 (e): p=0.9665 b=1.0341 C1=5.069 A=6.587 B0=7.0 theta=0.02871 C0=1.011e+08 n2=5 C'=2.091e+08 C2=2.091e+08 Gamma'=6.996e+16  N1 <= 9.347e+20
      least N satisfying (alpha), (beta): 3.116e+20   (the closed-form bound above is 9.347e+20; the audit gave 3.116e+20)
-(f): eps0 = 0.05: g_min = 0.574, g_max = 0.904, Upsilon_0 = 1.3e+06, Upsilon_3 = 1.44e+13; smallest n satisfying the conditions of n_f: 4.39e+47
-(f): eps0 = 0.1: g_min = 0.404, g_max = 1.035, Upsilon_0 = 3e+06, Upsilon_3 = 8.56e+13; smallest n satisfying the conditions of n_f: 1.01e+50
-(f): eps0 = 0.15: g_min = 0.254, g_max = 1.131, Upsilon_0 = 8.84e+06, Upsilon_3 = 8.54e+14; smallest n satisfying the conditions of n_f: 1.13e+53
-(f): eps0 = 0.2: g_min = 0.138, g_max = 1.189, Upsilon_0 = 3.57e+07, Upsilon_3 = 1.63e+16; smallest n satisfying the conditions of n_f: 9.11e+56
+(f): eps0 = 0.05: g_min = 0.574, g_max = 0.904, Upsilon_0 = 1.3e+06, Upsilon_3 = 1.44e+13; n_f = 2.69e+24; C_u = 1.96e+04; C_up = 3.93e+09; C_f = 9.62e+11 (average excess <= C_f n^(-1/2) log n for n >= n_f)
+(f): eps0 = 0.1: g_min = 0.404, g_max = 1.035, Upsilon_0 = 3e+06, Upsilon_3 = 8.56e+13; n_f = 9.61e+23; C_u = 2.25e+04; C_up = 2.28e+09; C_f = 5.88e+11 (average excess <= C_f n^(-1/2) log n for n >= n_f)
+(f): eps0 = 0.15: g_min = 0.254, g_max = 1.131, Upsilon_0 = 8.84e+06, Upsilon_3 = 8.54e+14; n_f = 1.94e+24; C_u = 2.66e+04; C_up = 3.03e+09; C_f = 8.29e+11 (average excess <= C_f n^(-1/2) log n for n >= n_f)
+(f): eps0 = 0.2: g_min = 0.138, g_max = 1.189, Upsilon_0 = 3.57e+07, Upsilon_3 = 1.63e+16; n_f = 1.25e+25; C_u = 3.23e+04; C_up = 6.99e+09; C_f = 2.05e+12 (average excess <= C_f n^(-1/2) log n for n >= n_f)

@@ -8,6 +8,9 @@
  7. Lemma 2(i): J_n^+(x) <= (2 / p_x) (R_n^+(x) + C1 * 5 log n) along closed-loop runs; smallest C1 that works.
  8. Lemma 3: sup over levels with R_n >= c log n of |G_hat - G| (c = 5, 20).
  9. Lemma 4: E #{A_j(K)} against K / (1 - G(x)).
+14. Cumulative excess cost of the Kaplan-Meier closed loop against exact labels (growth per doubling of n against the constant of Theorem 1).
+15. Proposition 6: ingredients of the van Trees argument (Fisher information, derivative of the quantile along the submodel, resulting constant).
+16. Corollary 1: exact cumulative excess cost of the conformal policy against the stated bound.
 usage: python math_audit.py"""
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 from paths import WORK, FIGS, CMAPSS_ROOT, PRON_ROOT
@@ -277,3 +280,50 @@ def _run(adv, N=500):
 for adv in (False, True):
     R = [_run(adv) for _ in range(100)]; last = [np.max(np.where(r < qs - 0.10)[0]) if np.any(r < qs - 0.10) else -1 for r in R]
     print(f"   Kaplan-Meier closed loop, {'five unfavourable labels at 0.5 q*' if adv else '20 exact labels'}: mean multiplier over the last 100 steps {np.mean([r[-100:].mean() for r in R]):.4f} (q* = {qs:.4f}); last step below q* - 0.10 at a median of {np.median(last):.0f} and at most {max(last)} (100 runs of 500 units)")
+
+ln_dens = lambda x: np.exp(-0.5 * (np.log(x) / SIG) ** 2) / (x * SIG * math.sqrt(2 * math.pi))      # log-normal density (the name dens was reused for the Beta ratio above)
+print("14. Cumulative excess cost of the closed loop (log-normal 0.35, cu/co = 10; 40 runs of 2000 units, the same initial labels and ratios for the two policies): Kaplan-Meier against exact labels")
+cu = 10; tau = 1 / 11; kap = 11; qs = Ginv(tau); Pstar = float(Phi(qs, cu)); marks = [100, 250, 500, 1000, 2000]
+def _pair(init, n):
+    ratios = np.exp(SIG * rng.standard_normal(n)); res = []
+    for exact_labels in (False, True):
+        Y = list(init); d = [True] * len(Y); out = []
+        for m in range(len(Y), n):
+            q = conformal_quantile(np.array(Y), tau, min_pool=1) if exact_labels else kaplan_meier_quantile(np.array(Y), np.array(d), tau, min_pool=1, fallback=1.0)
+            r = ratios[m]; out.append(float(Phi(q, cu)) - Pstar)
+            if exact_labels or r <= q: Y.append(r); d.append(True)
+            else: Y.append(q); d.append(False)
+        res.append(np.cumsum(out))
+    return res
+for label, init in (("20 exact i.i.d. labels", lambda: list(np.exp(SIG * rng.standard_normal(20)))), ("five labels at 0.4 q*", lambda: [0.4 * qs] * 5)):
+    km_, ex_ = [], []
+    for _ in range(40):
+        y0 = init(); k0 = len(y0); a_, b_ = _pair(y0, 2000); km_.append(a_); ex_.append(b_)
+    km_, ex_ = np.array(km_), np.array(ex_); ix = [mk - k0 - 1 for mk in marks]
+    mk_ = km_[:, ix].mean(0); me_ = ex_[:, ix].mean(0); dd = (km_ - ex_)[:, ix]; se = dd.std(0) / math.sqrt(len(dd))
+    print(f"   {label:24s}: cumulative excess after {marks} units, Kaplan-Meier " + " ".join(f"{v:.3f}" for v in mk_) + " ; exact labels " + " ".join(f"{v:.3f}" for v in me_) + " ; paired difference " + " ".join(f"{v:+.3f}" for v in (mk_ - me_)) + " (s.e. " + " ".join(f"{v:.3f}" for v in se) + ")")
+    print(f"   {'':24s}  increments of the Kaplan-Meier cumulative cost per doubling of n (250->500, 500->1000, 1000->2000): " + " ".join(f"{b - a:.2f}" for a, b in zip(mk_[1:], mk_[2:])))
+_gq = float(ln_dens(qs)); print(f"   Theorem 1: kappa tau (1 - tau) / (2 g(q*)) = {kap * tau * (1 - tau) / (2 * _gq):.3f}, so that the cumulative excess of exact labels grows by {kap * tau * (1 - tau) / (2 * _gq) * math.log(2):.2f} per doubling of n")
+
+print("15. Proposition 6: submodel dG_theta = (1 + theta u_m) dG_0, u_m = phi_m - E phi_m, phi_m(x) = min(1, max(0, m (q0 - x))); log-normal 0.35, cu/co = 10")
+_x = np.linspace(1e-4, 12, 1_200_001); _dx = _x[1] - _x[0]; _g0 = ln_dens(_x); _G0 = G(_x); _q0 = Ginv(tau); _g0q = float(ln_dens(_q0))
+for m in (20, 80, 320, 1280):
+    phi = np.clip(m * (_q0 - _x), 0, 1); u = phi - np.trapezoid(phi * _g0, _x); Im = float(np.trapezoid(u * u * _g0, _x))
+    W = np.concatenate([[0], np.cumsum((u[1:] * _g0[1:] + u[:-1] * _g0[:-1]) / 2 * _dx)]); cm = float(np.interp(_q0, _x, W))
+    qth = lambda th: float(np.interp(tau, _G0 + th * W, _x)); fd = (qth(-1e-3) - qth(1e-3)) / 2e-3
+    print(f"   m={m:5d}: I_m = {Im:.5f}, c_m = {cm:.5f} (tau (1 - tau) = {tau * (1 - tau):.5f}); derivative of the quantile -d q_theta / d theta = {fd:.4f} against c_m / g_0 = {cm / _g0q:.4f}; limit constant kappa c_m^2 / (2 g_0 I_m) = {kap * cm ** 2 / (2 * _g0q * Im):.4f}")
+print(f"   asymptotic constant of Theorem 1: {kap * tau * (1 - tau) / (2 * _g0q):.4f}")
+
+print("16. Corollary 1: exact cumulative excess cost of the conformal policy (log-normal 0.35) against (kappa / 2 g_min)[tau (1 - tau) log(n + 2) + 2] + S_eta")
+for cu_ in (2, 10):
+    tau_ = 1 / (1 + cu_); kap_ = cu_ + 1; qs_ = Ginv(tau_); eta = 0.5 * min(tau_, 1 - tau_)
+    xs = np.linspace(Ginv(tau_ - eta), Ginv(tau_ + eta), 4001); gmn = ln_dens(xs).min(); m_eta = int(math.floor(2 / eta)) + 1
+    S = sum(kap_ * tau_ * qs_ * math.exp(-m * Dkl(tau_, tau_ - eta)) + kap_ * math.sqrt(2 * (1 - tau_) * M2) * math.exp(-m * Dkl(tau_ + tau_ / m, tau_ + eta) / 2) for m in range(m_eta, 4000))
+    vv = np.linspace(1e-6, 1 - 1e-6, 40001); Qv = np.interp(vv, GG, GRID); w = 1 / np.maximum(ln_dens(Qv), 1e-12)
+    tot = 0.0; res = {}
+    for m in range(m_eta, 601):
+        k = int(math.ceil((m + 1) * tau_)); T = np.where(vv > tau_, bcdf(k - 1, m, vv), 1 - bcdf(k - 1, m, vv)); tot += kap_ * np.trapezoid(np.abs(vv - tau_) * T * w, vv)
+        if m + 1 in (100, 300, 600): res[m + 1] = tot
+    for n_, v_ in res.items():
+        bound = kap_ / (2 * gmn) * (tau_ * (1 - tau_) * math.log(n_ + 2) + 2) + S
+        print(f"   cu/co={cu_:2d}, eta = {eta:.4f}, g_min = {gmn:.3f}, n = {n_:3d}: exact cumulative {v_:.4f} <= bound {bound:.4f} : {v_ <= bound}  (S_eta = {S:.3g})")

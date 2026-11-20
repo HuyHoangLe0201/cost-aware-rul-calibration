@@ -1,4 +1,4 @@
-"""Brute-force numerical verification of the elementary inequalities used in the proofs of Appendix A (Lemmas 2-5, Theorem 2(e),(f), Proposition 5).
+"""Brute-force numerical verification of the elementary inequalities used in the proofs of Appendix A (Lemmas 2-5, Theorem 2(e),(f), Corollary 1, Proposition 5, Proposition 6).
 Each check scans a fine grid and reports the worst margin (a non-negative margin means the inequality holds on the grid).
 usage: python elementary_checks.py"""
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
@@ -43,14 +43,38 @@ rng = np.random.default_rng(1); A = rng.uniform(5, 50, 100000); B0 = rng.uniform
 report("Lemma 3: 2 sqrt30 A/sqrt(C0) + 20 B0/C0 <= theta/2 (random A, B0, theta)", float(np.min(th/2 - (2*math.sqrt(30)*A/np.sqrt(C0) + 20*B0/C0))))
 # Lemma 3: Cauchy-Schwarz sums, sum_j 1/T_j <= 2/T0 for T_j = 2^j T0
 report("sum_j 1/T_j <= 2/T0 (geometric)", 2 - sum(2.0**-j for j in range(60)))
-# Theorem 2(f): 8 G log^2(8 G) <= (200/9) Upsilon n^{2/3} (log n)^{2/3} when G = Upsilon n^{2/3} (log n)^{-4/3} and 8G <= n^{5/3}
+# Theorem 2(f), Step 1: with eps_s^4 = 23 Upsilon_3 log^2 s / s, Gbar = Upsilon_3 / eps_s^4 = s / (23 log^2 s); then 8 Gbar <= s and ceil(8 Gbar log^2(8 Gbar)) + 1 <= s
 worst = 1e9
-for lu in (0, 1, 3, 6, 10, 15, 20):
-    Ups = 10.0**lu
-    for ln in np.linspace(math.log(max(8*Ups, 3)), 700, 4000):
-        n = math.exp(ln); Gb = Ups*n**(2/3)*ln**(-4/3); lg = math.log(8*Gb)
-        if lg <= (5/3)*ln: worst = min(worst, (200/9)*Ups*n**(2/3)*ln**(2/3) - 8*Gb*lg**2)
-report("Theorem 2(f): 8 Gbar log^2(8 Gbar) <= (200/9) Upsilon_3 n^{2/3}(log n)^{2/3} (granted log(8 Gbar) <= (5/3) log n)", worst)
+for s_ in list(range(8, 20000)) + [int(10**e) for e in np.linspace(4.3, 9, 400)]:
+    Gb = s_ / (23*math.log(s_)**2); lg = math.log(8*Gb)
+    worst = min(worst, s_ - (math.ceil(8*Gb*lg**2) + 1), s_ - 8*Gb)
+report("Theorem 2(f): 8 Gbar <= s and ceil(8 Gbar log^2(8 Gbar)) + 1 <= s when Gbar = s/(23 log^2 s), s >= 8", worst)
+# Theorem 2(f), Step 1: sum_{s <= n} log s / sqrt(s) <= 2 sqrt(n) log n  (n >= 2)
+cs = np.cumsum(np.log(np.arange(1, 2_000_001))/np.sqrt(np.arange(1, 2_000_001))); nn = np.arange(1, 2_000_001)
+report("Theorem 2(f): sum_{s<=n} log s / sqrt(s) <= 2 sqrt(n) log n for n >= 2", float(np.min((2*np.sqrt(nn)*np.log(nn) - cs)[1:])))
+# Theorem 2(f), Step 2: (8 b^2 / log 2) sum_{m>=2} (log m)^2 / m^2 <= 23 b^2, i.e. sum (log m)^2/m^2 <= 1.9877 * ... (tail by the integral)
+mm = np.arange(2, 5_000_001, dtype=float); tot = float(np.sum(np.log(mm)**2/mm**2)); Nn_ = 5_000_000.0
+tail = (math.log(Nn_)**2 + 2*math.log(Nn_) + 2)/Nn_                 # int_N^inf (log x)^2 / x^2 dx
+report("Theorem 2(f): (8/log 2) sum_{m>=2} (log m)^2/m^2 <= 23", 23 - 8/math.log(2)*(tot + tail))
+# Theorem 2(f), Step 2: sum_k eta_k^2 <= 4/3 eta_top^2, sum_k eta_k <= 2 eta_top (geometric); K <= (1/2) log_2 n when eta_min = sqrt(5 log n / n) and eta_top <= 1
+report("geometric sums sum 4^-k <= 4/3 and sum 2^-k <= 2", min(4/3 - sum(4.0**-k for k in range(80)), 2 - sum(2.0**-k for k in range(80))))
+# Theorem 2(f), Step 3: (1 + log^2 n) / (sqrt(n) log n) is nonincreasing for n >= e^2 and 1 + log^2 n <= 2 log^2 n for n >= 3
+nn2 = np.arange(8, 3_000_000, dtype=float); f = (1 + np.log(nn2)**2)/(np.sqrt(nn2)*np.log(nn2))
+report("Theorem 2(f): (1 + log^2 n)/(sqrt(n) log n) nonincreasing for n >= 8", float(np.min(f[:-1] - f[1:])))
+# Corollary 1: sum_{m >= 1} 1/((m+1)(m+2)) = 1/2, sum_{m >= 1} (m+1)^-2 < 0.65, sum_{m = m0}^{n-1} 1/(m+2) <= log(n+2), tau_m (1 - tau_m) <= tau (1 - tau) + 1/(m+1)
+worst = min(0.5 - 1/2, 0.65 - (math.pi**2/6 - 1))
+for n_ in (3, 10, 100, 10**4, 10**6):
+    for m0 in (1, 2, 5):
+        if m0 < n_: worst = min(worst, math.log(n_ + 2) - sum(1/(m + 2) for m in range(m0, n_)))
+rg = np.random.default_rng(5)
+for _ in range(20000):
+    tau = rg.uniform(0.01, 0.99); m = int(rg.integers(5, 5000)); k = math.ceil((m + 1)*tau); tm = k/(m + 1)
+    worst = min(worst, tau*(1 - tau) + 1/(m + 1) - tm*(1 - tm))
+report("Corollary 1: the elementary sums and tau_m (1 - tau_m) <= tau* (1 - tau*) + 1/(m+1)", worst)
+# Proposition 6: Fisher information of the prior cos^2(pi theta / 2 delta)/delta on [-delta, delta] is pi^2 / delta^2
+th = np.linspace(-1, 1, 2_000_001); lam = np.cos(np.pi*th/2)**2; lam1 = -np.pi*np.cos(np.pi*th/2)*np.sin(np.pi*th/2)
+inner = np.where(lam > 1e-12, lam1**2/np.maximum(lam, 1e-12), 0.0)
+report("Proposition 6: Fisher information of the prior cos^2(pi theta/2) on [-1, 1] equals pi^2 (relative error)", 1e-6 - abs(float(np.trapezoid(inner, th)) - math.pi**2)/math.pi**2)
 # Proposition 5: sum over i of i*lambda / w = lambda (w+1)/2 ; k/w - tau in [0, 2/w)
 ws = np.arange(5, 2000); taus = np.linspace(0.01, 0.99, 99); worst = 1e9; worst0 = 1e9
 for w in ws[::37]:
