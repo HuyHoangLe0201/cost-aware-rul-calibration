@@ -51,7 +51,7 @@ for eps0 in (0.05, 0.1, 0.15, 0.2):
     nf = hi
     # constant of the proof: lower part 4 kappa g_max (23 U3)^(1/2); remainder of order kappa q_max n_f (burn-in) and the upper side C_up
     Cu = 2/p0*(2*(2*math.sqrt(6)*Ab + 4*(b0 + 6))**2 + C1b)
-    ET = n1p + 23*b0**2; m0 = max(n1p, math.ceil(4*TAU/eta_top))
+    ET = n1p + 24*b0**2; m0 = max(n1p, math.ceil(4*TAU/eta_top))
     a0 = KAP*QMAX*(ET + m0 + 4) + KAP/(2*glo)*(4/3*eta_top**2*(n1p + 3) + 16*TAU*eta_top); a1 = 5*KAP*QMAX*Cu/eta_top**2 + 10*KAP/glo; a2 = 5*KAP*Cu/(glo*math.log(2))
     Cup = a0 + a1 + a2
     Cf = 4*KAP*ghi*math.sqrt(23*U3) + KAP*QMAX*(nf + 64*b0**2 + 3)/(math.sqrt(nf)*math.log(nf)) + 2*Cup*math.log(nf)/math.sqrt(nf)
